@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,12 +11,22 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Nzh.Master.Common\Nzh.Master.Common.csproj" />
+    <ProjectReference Include="..\Nzh.Master.IRepository\Nzh.Master.IRepository.csproj" />
+    <ProjectReference Include="..\Nzh.Master.IService\Nzh.Master.IService.csproj" />
+    <ProjectReference Include="..\Nzh.Master.Model\Nzh.Master.Model.csproj" />
+    <ProjectReference Include="..\Nzh.Master.Repository\Nzh.Master.Repository.csproj" />
+    <ProjectReference Include="..\Nzh.Master.Service\Nzh.Master.Service.csproj" />
   </ItemGroup>
 
 </Project>

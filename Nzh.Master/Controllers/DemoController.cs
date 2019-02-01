@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Nzh.Master.IService;
+using Nzh.Master.Model;
 
 namespace Nzh.Master.Controllers
 {
@@ -19,7 +21,7 @@ namespace Nzh.Master.Controllers
         /// <param name="demoServices"></param>
         public DemoController(IDemoService demoService)
         {
-            this._demoService = demoService;
+            _demoService = demoService;
         }
 
         /// <summary>
@@ -33,7 +35,7 @@ namespace Nzh.Master.Controllers
         {
             int TotalCount = 1;
             List<Demo> DemoList = new List<Demo>();
-            DemoList = await _demoServices.GetDemoList();
+            DemoList = await _demoService.GetDemoList();
             TotalCount = DemoList.Count() / page_size;
             DemoList = DemoList.OrderBy(d => d.Age).Skip((page_index - 1) * page_size).Take(page_size).ToList();
             return Json(new
@@ -55,7 +57,7 @@ namespace Nzh.Master.Controllers
         public async Task<JsonResult> GetDemo(int id)
         {
             Demo demo = new Demo();
-            demo = await _demoServices.GetDemo(id);
+            demo = await _demoService.GetDemo(id);
             return Json(new
             {
                 code = 0,
@@ -75,7 +77,7 @@ namespace Nzh.Master.Controllers
         [HttpGet("AddDemo")]
         public async Task<JsonResult> AddDemo(string Name, string Sex, int Age, string Remark)
         {
-            bool result = await _demoServices.AddDemo(Name, Sex, Age, Remark);
+            bool result = await _demoService.AddDemo(Name, Sex, Age, Remark);
             return Json(new
             {
                 code = 0,
@@ -96,7 +98,7 @@ namespace Nzh.Master.Controllers
         [HttpGet("UpdateDemo")]
         public async Task<JsonResult> UpdateDemo(int id, string Name, string Sex, int Age, string Remark)
         {
-            bool result = await _demoServices.UpdateDemo(id, Name, Sex, Age, Remark);
+            bool result = await _demoService.UpdateDemo(id, Name, Sex, Age, Remark);
             return Json(new
             {
                 code = 0,
@@ -113,7 +115,7 @@ namespace Nzh.Master.Controllers
         [HttpGet("DeleteDemo")]
         public async Task<JsonResult> DeleteDemo(int id)
         {
-            bool result = await _demoServices.DeleteDemo(id);
+            bool result = await _demoService.DeleteDemo(id);
             return Json(new
             {
                 code = 0,
