@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Nzh.Frame.Common.Logger;
 using Nzh.Master.IService;
 using Nzh.Master.Model;
 
@@ -38,6 +40,7 @@ namespace Nzh.Master.Controllers
             DemoList = await _demoService.GetDemoList();
             TotalCount = DemoList.Count() / page_size;
             DemoList = DemoList.OrderBy(d => d.Age).Skip((page_index - 1) * page_size).Take(page_size).ToList();
+            Logger.Info(JsonConvert.SerializeObject(DemoList)); //此处调用日志记录函数记录日志
             return Json(new
             {
                 code = 0,
@@ -58,6 +61,7 @@ namespace Nzh.Master.Controllers
         {
             Demo demo = new Demo();
             demo = await _demoService.GetDemo(id);
+            Logger.Info(JsonConvert.SerializeObject(demo)); //此处调用日志记录函数记录日志
             return Json(new
             {
                 code = 0,
@@ -78,6 +82,7 @@ namespace Nzh.Master.Controllers
         public async Task<JsonResult> AddDemo(string Name, string Sex, int Age, string Remark)
         {
             bool result = await _demoService.AddDemo(Name, Sex, Age, Remark);
+            Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
             return Json(new
             {
                 code = 0,
@@ -99,6 +104,7 @@ namespace Nzh.Master.Controllers
         public async Task<JsonResult> UpdateDemo(int id, string Name, string Sex, int Age, string Remark)
         {
             bool result = await _demoService.UpdateDemo(id, Name, Sex, Age, Remark);
+            Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
             return Json(new
             {
                 code = 0,
@@ -116,6 +122,7 @@ namespace Nzh.Master.Controllers
         public async Task<JsonResult> DeleteDemo(int id)
         {
             bool result = await _demoService.DeleteDemo(id);
+            Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
             return Json(new
             {
                 code = 0,

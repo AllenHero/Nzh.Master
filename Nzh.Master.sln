@@ -3,21 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Master", "Nzh.Master\Nzh.Master.csproj", "{0A94592C-43DE-4720-B4A4-D510A9B15DE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Master", "Nzh.Master\Nzh.Master.csproj", "{0A94592C-43DE-4720-B4A4-D510A9B15DE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Master.Common", "Nzh.Master.Common\Nzh.Master.Common.csproj", "{446AD27C-5F8A-4703-9BCA-F00C85E31917}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Master.Common", "Nzh.Master.Common\Nzh.Master.Common.csproj", "{446AD27C-5F8A-4703-9BCA-F00C85E31917}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Master.IRepository", "Nzh.Master.IRepository\Nzh.Master.IRepository.csproj", "{FA1F7B0A-57C6-48C5-ADE0-466E7366F9DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Master.IRepository", "Nzh.Master.IRepository\Nzh.Master.IRepository.csproj", "{FA1F7B0A-57C6-48C5-ADE0-466E7366F9DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Master.IService", "Nzh.Master.IService\Nzh.Master.IService.csproj", "{59085741-DB53-42F3-9314-2890652824DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Master.IService", "Nzh.Master.IService\Nzh.Master.IService.csproj", "{59085741-DB53-42F3-9314-2890652824DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Master.Model", "Nzh.Master.Model\Nzh.Master.Model.csproj", "{357ED0D6-F71C-4664-8B5C-9950F146B41D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Master.Model", "Nzh.Master.Model\Nzh.Master.Model.csproj", "{357ED0D6-F71C-4664-8B5C-9950F146B41D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Master.Repository", "Nzh.Master.Repository\Nzh.Master.Repository.csproj", "{EA0123FF-0DF2-4EF4-97C7-25B7E07CC871}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Master.Repository", "Nzh.Master.Repository\Nzh.Master.Repository.csproj", "{EA0123FF-0DF2-4EF4-97C7-25B7E07CC871}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Master.Service", "Nzh.Master.Service\Nzh.Master.Service.csproj", "{C48584D1-9692-477C-A9CF-791FEEB84E0F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlSugar", "SqlSugar\SqlSugar.csproj", "{D33771E9-4E9E-4D24-B40E-302470A63736}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Master.Service", "Nzh.Master.Service\Nzh.Master.Service.csproj", "{C48584D1-9692-477C-A9CF-791FEEB84E0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +51,6 @@ Global
 		{C48584D1-9692-477C-A9CF-791FEEB84E0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C48584D1-9692-477C-A9CF-791FEEB84E0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C48584D1-9692-477C-A9CF-791FEEB84E0F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D33771E9-4E9E-4D24-B40E-302470A63736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D33771E9-4E9E-4D24-B40E-302470A63736}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D33771E9-4E9E-4D24-B40E-302470A63736}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D33771E9-4E9E-4D24-B40E-302470A63736}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
