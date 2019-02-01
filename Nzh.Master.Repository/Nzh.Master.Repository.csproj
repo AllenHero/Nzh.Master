@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="SqlSugar\" />
+    <PackageReference Include="sqlSugarCore" Version="4.6.4.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Nzh.Master.IRepository\Nzh.Master.IRepository.csproj" />
   </ItemGroup>
 
 </Project>
