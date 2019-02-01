@@ -4,6 +4,11 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\64450\Desktop\Nzh.Master\Nzh.Master\Nzh.Master.xml</DocumentationFile>
+    <OutputPath>bin\Debug\netcoreapp2.1\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <Folder Include="wwwroot\" />
     <Folder Include="Log\" />

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nzh.Master</name>
+    </assembly>
+    <members>
+        <member name="M:Nzh.Master.Controllers.DemoController.#ctor(Nzh.Master.IService.IDemoService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="demoServices"></param>
+        </member>
+        <member name="M:Nzh.Master.Controllers.DemoController.GetDemoList(System.Int32,System.Int32)">
+            <summary>
+            获取Demo列表
+            </summary>
+            <param name="page_index"></param>
+            <param name="page_size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.DemoController.GetDemo(System.Int32)">
+            <summary>
+            获取Demo
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.DemoController.AddDemo(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            添加Demo
+            </summary>
+            <param name="Name"></param>
+            <param name="Sex"></param>
+            <param name="Age"></param>
+            <param name="Remark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.DemoController.UpdateDemo(System.Int32,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            修改Demo
+            </summary>
+            <param name="id"></param>
+            <param name="Name"></param>
+            <param name="Sex"></param>
+            <param name="Age"></param>
+            <param name="Remark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.DemoController.DeleteDemo(System.Int32)">
+            <summary>
+            删除Demo
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nzh.Master.SwaggerHelp.SwaggerDocTag">
+            <summary>
+            Swagger注释帮助类
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.SwaggerHelp.SwaggerDocTag.Apply(Swashbuckle.AspNetCore.Swagger.SwaggerDocument,Swashbuckle.AspNetCore.SwaggerGen.DocumentFilterContext)">
+            <summary>
+            添加附加注释
+            </summary>
+            <param name="swaggerDoc"></param>
+            <param name="context"></param>
+        </member>
+    </members>
+</doc>
