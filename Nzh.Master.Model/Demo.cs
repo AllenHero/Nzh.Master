@@ -4,9 +4,12 @@ using System.Text;
 
 namespace Nzh.Master.Model
 {
+    /// <summary>
+    /// Demo
+    /// </summary>
     public class Demo
     {
-        public int ID { get; set; }
+        public Guid ID { get; set; }
 
         public string Name { get; set; }
 

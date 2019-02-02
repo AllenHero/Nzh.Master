@@ -13,14 +13,14 @@ namespace Nzh.Master.IService
         /// 获取Demo列表
         /// </summary>
         /// <returns></returns>
-        Task<ResultModel<Demo>> GetDemoList(int page_index, int page_size, string Name);
+       ResultModel<Demo> GetDemoList(int page_index, int page_size, string Name);
 
         /// <summary>
         /// 获取Demo
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<Demo> GetDemo(int id);
+        Demo GetDemo(Guid id);
 
         /// <summary>
         /// 添加Demo
@@ -30,7 +30,7 @@ namespace Nzh.Master.IService
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        Task<bool> AddDemo(string Name, string Sex, int Age, string Remark);
+        bool AddDemo(string Name, string Sex, int Age, string Remark);
 
         /// <summary>
         /// 修改Demo
@@ -41,13 +41,13 @@ namespace Nzh.Master.IService
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        Task<bool> UpdateDemo(int id, string Name, string Sex, int Age, string Remark);
+        bool UpdateDemo(Guid id, string Name, string Sex, int Age, string Remark);
 
         /// <summary>
         /// 删除Demo
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<bool> DeleteDemo(int id);
+        bool DeleteDemo(Guid id);
     }
 }

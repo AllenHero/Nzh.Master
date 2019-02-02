@@ -24,7 +24,7 @@ namespace Nzh.Master.Service
         /// 获取Demo列表
         /// </summary>
         /// <returns></returns>
-        public async Task<ResultModel<Demo>> GetDemoList(int pageIndex, int pageSize, string Name)
+        public  ResultModel<Demo> GetDemoList(int pageIndex, int pageSize, string Name)
         {
             PageModel pm = new PageModel() { PageIndex = pageIndex, PageSize = pageSize };
             Expression<Func<Demo, bool>> expression = ex => ex.Name == Name;
@@ -42,7 +42,7 @@ namespace Nzh.Master.Service
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<Demo> GetDemo(int id)
+        public Demo GetDemo(Guid id)
         {
             var demo =  _demorepository.GetById(id);
             return demo;
@@ -56,7 +56,7 @@ namespace Nzh.Master.Service
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public async Task<bool> AddDemo(string Name, string Sex, int Age, string Remark)
+        public bool AddDemo(string Name, string Sex, int Age, string Remark)
         {
             bool result = false;
             try
@@ -88,7 +88,7 @@ namespace Nzh.Master.Service
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public async Task<bool> UpdateDemo(int id, string Name, string Sex, int Age, string Remark)
+        public bool UpdateDemo(Guid id, string Name, string Sex, int Age, string Remark)
         {
             bool result = false;
             try
@@ -120,7 +120,7 @@ namespace Nzh.Master.Service
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<bool> DeleteDemo(int id)
+        public bool DeleteDemo(Guid id)
         {
             bool result = false;
             try

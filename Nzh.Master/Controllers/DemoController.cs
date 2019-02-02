@@ -20,7 +20,7 @@ namespace Nzh.Master.Controllers
         /// <summary>
         /// 构造函数
         /// </summary>
-        /// <param name="demoServices"></param>
+        /// <param name="demoService"></param>
         public DemoController(IDemoService demoService)
         {
             _demoService = demoService;
@@ -34,7 +34,7 @@ namespace Nzh.Master.Controllers
         /// <param name="Name"></param>
         /// <returns></returns>
         [HttpGet("GetDemoList")]
-        public async Task<JsonResult> GetDemoList(int page_index, int page_size, string Name)
+        public  JsonResult GetDemoList(int page_index, int page_size, string Name)
         {
             var result = _demoService.GetDemoList(page_index, page_size, Name);
             Logger.Info(JsonConvert.SerializeObject(result));//此处调用日志记录函数记录日志
@@ -47,10 +47,10 @@ namespace Nzh.Master.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("GetDemo")]
-        public async Task<JsonResult> GetDemo(int id)
+        public  JsonResult GetDemo(Guid id)
         {
             Demo demo = new Demo();
-            demo = await _demoService.GetDemo(id);
+            demo =  _demoService.GetDemo(id);
             Logger.Info(JsonConvert.SerializeObject(demo)); //此处调用日志记录函数记录日志
             return Json(demo);
         }
@@ -64,9 +64,9 @@ namespace Nzh.Master.Controllers
         /// <param name="Remark"></param>
         /// <returns></returns>
         [HttpGet("AddDemo")]
-        public async Task<JsonResult> AddDemo(string Name, string Sex, int Age, string Remark)
+        public  JsonResult AddDemo(string Name, string Sex, int Age, string Remark)
         {
-            bool result = await _demoService.AddDemo(Name, Sex, Age, Remark);
+            bool result =  _demoService.AddDemo(Name, Sex, Age, Remark);
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
             return Json(result);
         }
@@ -81,9 +81,9 @@ namespace Nzh.Master.Controllers
         /// <param name="Remark"></param>
         /// <returns></returns>
         [HttpGet("UpdateDemo")]
-        public async Task<JsonResult> UpdateDemo(int id, string Name, string Sex, int Age, string Remark)
+        public  JsonResult UpdateDemo(Guid id, string Name, string Sex, int Age, string Remark)
         {
-            bool result = await _demoService.UpdateDemo(id, Name, Sex, Age, Remark);
+            bool result =  _demoService.UpdateDemo(id, Name, Sex, Age, Remark);
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
             return Json(result);
         }
@@ -94,9 +94,9 @@ namespace Nzh.Master.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("DeleteDemo")]
-        public async Task<JsonResult> DeleteDemo(int id)
+        public  JsonResult DeleteDemo(Guid id)
         {
-            bool result = await _demoService.DeleteDemo(id);
+            bool result =  _demoService.DeleteDemo(id);
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
             return Json(result);
         }
