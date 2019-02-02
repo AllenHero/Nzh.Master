@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using SqlSugar;
 
 namespace Nzh.Master.IRepository.Base
 {
@@ -14,46 +15,109 @@ namespace Nzh.Master.IRepository.Base
 
         void RollbackTran();
 
-        Task<T> QueryByID(object objId);
+        List<T> GetListBySql(string Sql);
 
-        Task<T> QueryByID(object objId, bool blnUseCache = false);
+        List<T> GetListBySql(string Sql, Expression<Func<T, bool>> whereExpression);
 
-        Task<List<T>> QueryByIDs(object[] lstIds);
+        List<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> whereExpression, PageModel page);
 
-        Task<bool> Add(T model);
+        List<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> whereExpression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
-        Task<bool> DeleteById(object id);
+        List<T> GetPageListBySql(string Sql, List<IConditionalModel> conditionalList, PageModel page);
 
-        Task<bool> Delete(T model);
+        List<T> GetPageListBySql(string Sql, List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
 
-        Task<bool> DeleteByIds(object[] ids);
+        DataTable GetDataTableBySql(string Sql, object parameters);
 
-        Task<bool> Update(T model);
+        DataTable GetDataTableBySql(string Sql, params SugarParameter[] parameters);
 
-        Task<bool> Update(T entity, string strWhere);
+        DataTable GetDataTableBySql(string Sql, List<SugarParameter> parameters);
 
-        Task<bool> Update(T entity, List<string> lstColumns = null, List<string> lstIgnoreColumns = null, string strWhere = "");
+        DataSet GetDataSetBySql(string Sql, object parameters);
 
-        Task<List<T>> Query();
+        DataSet GetDataSetBySql(string Sql, params SugarParameter[] parameters);
 
-        Task<List<T>> Query(string strWhere);
+        DataSet GetDataSetBySql(string Sql, List<SugarParameter> parameters);
 
-        Task<List<T>> Query(Expression<Func<T, bool>> whereExpression);
+        bool ExecuteSql(string Sql, object parameters = null);
 
-        Task<List<T>> Query(Expression<Func<T, bool>> whereExpression, string strOrderByFileds);
+        bool ExecuteSql(string Sql, params SugarParameter[] parameters);
 
-        Task<List<T>> Query(Expression<Func<T, bool>> whereExpression, Expression<Func<T, object>> orderByExpression, bool isAsc = true);
+        bool ExecuteSql(string Sql, List<SugarParameter> parameters);
 
-        Task<List<T>> Query(string strWhere, string strOrderByFileds);
+        List<T> GetList(string Sql, object parameters = null);
 
-        Task<List<T>> Query(Expression<Func<T, bool>> whereExpression, int intTop, string strOrderByFileds);
+        List<T> GetList(string Sql, params SugarParameter[] parameters);
 
-        Task<List<T>> Query(string strWhere, int intTop, string strOrderByFileds);
+        List<T> GetList(string Sql, List<SugarParameter> parameters);
 
-        Task<List<T>> Query(Expression<Func<T, bool>> whereExpression, int intPageIndex, int intPageSize, string strOrderByFileds);
+        T Get(string Sql, object parameters = null);
 
-        Task<List<T>> Query(string strWhere, int intPageIndex, int intPageSize, string strOrderByFileds);
+        T Get(string Sql, params SugarParameter[] parameters);
 
-        Task<List<T>> QueryPage(Expression<Func<T, bool>> whereExpression, int intPageIndex = 0, int intPageSize = 20, string strOrderByFileds = null);
+        T Get(string Sql, List<SugarParameter> parameters);
+
+        dynamic GetDynamic(string Sql, object parameters = null);
+
+        dynamic GetDynamic(string Sql, params SugarParameter[] parameters);
+
+        dynamic GetDynamic(string Sql, List<SugarParameter> parameters);
+
+        DataTable QueryProcedure(string procedureName, List<SugarParameter> parameters);
+
+        List<T> Take(Expression<Func<T, bool>> whereLambda, int num);
+
+        T First(Expression<Func<T, bool>> whereLambda);
+
+        int Sum(string field);
+
+        object Max(string field);
+
+        object Min(string field);
+
+        int Avg(string field);
+
+        int Count(Expression<Func<T, bool>> whereExpression);
+
+        bool IsAny(Expression<Func<T, bool>> whereExpression);
+
+        T GetById(dynamic id);
+
+        List<T> GetList();
+
+        List<T> GetList(Expression<Func<T, bool>> whereExpression);
+
+        T GetSingle(Expression<Func<T, bool>> whereExpression);
+
+        List<T> GetPageList(Expression<Func<T, bool>> whereExpression, PageModel page);
+
+        List<T> GetPageList(Expression<Func<T, bool>> whereExpression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+
+        List<T> GetPageList(List<IConditionalModel> conditionalList, PageModel page);
+
+        List<T> GetPageList(List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc);
+
+        bool Insert(T insertObj);
+
+        int InsertReturnIdentity(T insertObj);
+
+        bool InsertRange(T[] insertObjs);
+
+        bool InsertRange(List<T>[] insertObjs);
+
+        bool Update(T updateObj);
+
+        bool UpdateRange(T[] updateObjs);
+
+        bool Update(Expression<Func<T, T>> columns, Expression<Func<T, bool>> whereExpression);
+
+        bool Delete(T deleteObj);
+
+        bool Delete(Expression<Func<T, bool>> whereExpression);
+
+        bool DeleteById(dynamic id);
+
+        bool DeleteByIds(dynamic[] ids);
+
     }
 }

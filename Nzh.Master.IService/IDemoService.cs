@@ -1,4 +1,5 @@
 ﻿using Nzh.Master.Model;
+using Nzh.Master.Model.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Nzh.Master.IService
         /// 获取Demo列表
         /// </summary>
         /// <returns></returns>
-        Task<List<Demo>> GetDemoList();
+        Task<ResultModel<Demo>> GetDemoList(int page_index, int page_size, string Name);
 
         /// <summary>
         /// 获取Demo

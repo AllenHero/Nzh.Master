@@ -41,6 +41,8 @@ namespace Nzh.Master.Repository.Base
             entityDB = context.GetEntityDB<T>(db);
         }
 
+        #region  Transaction
+
         /// <summary>
         /// 开始事务
         /// </summary>
@@ -65,262 +67,626 @@ namespace Nzh.Master.Repository.Base
             db.Ado.RollbackTran();
         }
 
+        #endregion
+
+        #region   About Sql
 
         /// <summary>
-        /// 根据Id查询数据
+        /// 执行sql获取List
         /// </summary>
-        /// <param name="objId"></param>
+        /// <param name="Sql"></param>
         /// <returns></returns>
-        public async Task<T> QueryByID(object objId)
+        public List<T> GetListBySql(string Sql)
         {
-            return await Task.Run(() => db.Queryable<T>().InSingle(objId));
+            return db.SqlQueryable<T>(Sql).ToList();
         }
 
         /// <summary>
-        /// 根据ID查询一条数据
+        /// 执行sql根据条件获取List
         /// </summary>
-        /// <param name="objId">id（必须指定主键特性 [SugarColumn(IsPrimaryKey=true)]），如果是联合主键，请使用Where条件</param>
-        /// <param name="blnUseCache">是否使用缓存</param>
-        /// <returns>数据实体</returns>
-        public async Task<T> QueryByID(object objId, bool blnUseCache = false)
-        {
-            return await Task.Run(() => db.Queryable<T>().WithCacheIF(blnUseCache).InSingle(objId));
-        }
-
-        /// <summary>
-        /// 根据ID查询数据
-        /// </summary>
-        /// <param name="lstIds">id列表（必须指定主键特性 [SugarColumn(IsPrimaryKey=true)]），如果是联合主键，请使用Where条件</param>
-        /// <returns>数据实体列表</returns>
-        public async Task<List<T>> QueryByIDs(object[] lstIds)
-        {
-            return await Task.Run(() => db.Queryable<T>().In(lstIds).ToList());
-        }
-
-        /// <summary>
-        /// 写入实体数据
-        /// </summary>
-        /// <param name="entity">博文实体类</param>
+        /// <param name="Sql"></param>
+        /// <param name="whereExpression"></param>
         /// <returns></returns>
-        public async Task<bool> Add(T entity)
+        public List<T> GetListBySql(string Sql, Expression<Func<T, bool>> whereExpression)
         {
-            return await Task.Run(() => db.Insertable(entity).ExecuteReturnBigIdentity()) > 0;
+            return db.SqlQueryable<T>(Sql).Where(whereExpression).ToList();
         }
 
         /// <summary>
-        /// 更新实体数据
+        /// 执行sql根据条件获取分页
         /// </summary>
-        /// <param name="entity">博文实体类</param>
+        /// <param name="Sql"></param>
         /// <returns></returns>
-        public async Task<bool> Update(T entity)
+        public List<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> whereExpression, PageModel page)
         {
-            return await Task.Run(() => db.Updateable(entity).ExecuteCommand()) > 0;
+            int count = 0;
+            var result = db.SqlQueryable<T>(Sql).Where(whereExpression).ToPageList(page.PageIndex, page.PageSize, ref count);
+            page.PageCount = count;
+            return result;
         }
 
         /// <summary>
-        /// 根据条件更新实体
+        ///  执行sql根据条件获取分页并且排序
         /// </summary>
-        /// <param name="entity"></param>
-        /// <param name="strWhere"></param>
+        /// <param name="Sql"></param>
+        /// <param name="whereExpression"></param>
+        /// <param name="page"></param>
+        /// <param name="orderByExpression"></param>
+        /// <param name="orderByType"></param>
         /// <returns></returns>
-        public async Task<bool> Update(T entity, string strWhere)
+        public List<T> GetPageListBySql(string Sql, Expression<Func<T, bool>> whereExpression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc)
         {
-            return await Task.Run(() => db.Updateable(entity).Where(strWhere).ExecuteCommand() > 0);
+            int count = 0;
+            var result = db.SqlQueryable<T>(Sql).OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(whereExpression).ToPageList(page.PageIndex, page.PageSize, ref count);
+            page.PageCount = count;
+            return result;
         }
 
         /// <summary>
-        /// 根据条件更新实体
+        /// 执行sql根据多条件获取分页
         /// </summary>
-        /// <param name="strSql"></param>
+        /// <param name="Sql"></param>
+        /// <param name="conditionalList"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        public List<T> GetPageListBySql(string Sql, List<IConditionalModel> conditionalList, PageModel page)
+        {
+            int count = 0;
+            var result = db.SqlQueryable<T>(Sql).Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref count);
+            page.PageCount = count;
+            return result;
+        }
+
+        /// <summary>
+        ///  执行sql根据多条件获取分页并且排序
+        /// </summary>
+        /// <param name="conditionalList"></param>
+        /// <param name="page"></param>
+        /// <param name="orderByExpression"></param>
+        /// <param name="orderByType"></param>
+        /// <returns></returns>
+        public List<T> GetPageListBySql(string Sql, List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc)
+        {
+            int count = 0;
+            var result = db.SqlQueryable<T>(Sql).OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref count);
+            page.PageCount = count;
+            return result;
+        }
+
+        /// <summary>
+        /// 执行sql根据参数返回DataTable
+        /// </summary>
+        /// <param name="Sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public async Task<bool> Update(string strSql, SugarParameter[] parameters = null)
+        public DataTable GetDataTableBySql(string Sql, object parameters)
         {
-            return await Task.Run(() => db.Ado.ExecuteCommand(strSql, parameters) > 0);
+            return db.Ado.GetDataTable(Sql, parameters);
         }
 
         /// <summary>
-        /// 批量更新
+        /// 执行sql根据数组参数返回DataTable
         /// </summary>
-        /// <param name="entity"></param>
-        /// <param name="lstColumns"></param>
-        /// <param name="lstIgnoreColumns"></param>
-        /// <param name="strWhere"></param>
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
         /// <returns></returns>
-        public async Task<bool> Update(T entity, List<string> lstColumns = null, List<string> lstIgnoreColumns = null, string strWhere = "")
+        public DataTable GetDataTableBySql(string Sql, params SugarParameter[] parameters)
         {
-            IUpdateable<T> up = await Task.Run(() => db.Updateable(entity));
-            if (lstIgnoreColumns != null && lstIgnoreColumns.Count > 0)
-            {
-                up = await Task.Run(() => up.IgnoreColumns(it => lstIgnoreColumns.Contains(it)));
-            }
-            if (lstColumns != null && lstColumns.Count > 0)
-            {
-                up = await Task.Run(() => up.UpdateColumns(it => lstColumns.Contains(it)));
-            }
-            if (!string.IsNullOrEmpty(strWhere))
-            {
-                up = await Task.Run(() => up.Where(strWhere));
-            }
-            return await Task.Run(() => up.ExecuteCommand()) > 0;
+            return db.Ado.GetDataTable(Sql, parameters);
         }
 
         /// <summary>
-        /// 根据实体删除一条数据
+        /// 执行sql根据集合参数返回DataTable
         /// </summary>
-        /// <param name="entity">博文实体类</param>
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
         /// <returns></returns>
-        public async Task<bool> Delete(T entity)
+        public DataTable GetDataTableBySql(string Sql, List<SugarParameter> parameters)
         {
-            return await Task.Run(() => db.Deleteable(entity).ExecuteCommand()) > 0;
+            return db.Ado.GetDataTable(Sql, parameters);
         }
 
         /// <summary>
-        /// 删除指定ID的数据
+        /// 执行sql根据参数返回DataSet
         /// </summary>
-        /// <param name="id">主键ID</param>
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
         /// <returns></returns>
-        public async Task<bool> DeleteById(object id)
+        public DataSet GetDataSetBySql(string Sql, object parameters)
         {
-            return await Task.Run(() => db.Deleteable<T>(id).ExecuteCommand()) > 0;
+            return db.Ado.GetDataSetAll(Sql, parameters);
         }
 
         /// <summary>
-        /// 删除指定ID集合的数据(批量删除)
+        /// 执行sql根据数组参数返回DataSet
         /// </summary>
-        /// <param name="ids">主键ID集合</param>
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
         /// <returns></returns>
-        public async Task<bool> DeleteByIds(object[] ids)
+        public DataSet GetDataSetBySql(string Sql, params SugarParameter[] parameters)
         {
-            return await Task.Run(() => db.Deleteable<T>().In(ids).ExecuteCommand()) > 0;
+            return db.Ado.GetDataSetAll(Sql, parameters);
         }
 
         /// <summary>
-        /// 查询所有数据
+        ///  执行sql根据集合参数返回DataSet
         /// </summary>
-        /// <returns>数据列表</returns>
-        public async Task<List<T>> Query()
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public DataSet GetDataSetBySql(string Sql, List<SugarParameter> parameters)
         {
-            return await Task.Run(() => entityDB.GetList());
+            return db.Ado.GetDataSetAll(Sql, parameters);
         }
 
         /// <summary>
-        ///查询数据列表
+        /// 根据参数执行Sql
         /// </summary>
-        /// <param name="strWhere">条件</param>
-        /// <returns>数据列表</returns>
-        public async Task<List<T>> Query(string strWhere)
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public bool ExecuteSql(string Sql, object parameters = null)
         {
-            return await Task.Run(() => db.Queryable<T>().WhereIF(!string.IsNullOrEmpty(strWhere), strWhere).ToList());
+            return db.Ado.ExecuteCommand(Sql, parameters) > 0;
         }
 
         /// <summary>
-        /// 查询数据列表
+        /// 根据数组参数执行Sql
         /// </summary>
-        /// <param name="whereExpression">whereExpression</param>
-        /// <returns>数据列表</returns>
-        public async Task<List<T>> Query(Expression<Func<T, bool>> whereExpression)
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public bool ExecuteSql(string Sql, params SugarParameter[] parameters)
         {
-            return await Task.Run(() => entityDB.GetList(whereExpression));
+            return db.Ado.ExecuteCommand(Sql, parameters) > 0;
         }
 
         /// <summary>
-        /// 查询一个列表
+        /// 根据集合参数执行Sql
         /// </summary>
-        /// <param name="whereExpression">条件表达式</param>
-        /// <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
-        /// <returns>数据列表</returns>
-        public async Task<List<T>> Query(Expression<Func<T, bool>> whereExpression, string strOrderByFileds)
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public bool ExecuteSql(string Sql, List<SugarParameter> parameters)
         {
-            return await Task.Run(() => db.Queryable<T>().OrderByIF(!string.IsNullOrEmpty(strOrderByFileds), strOrderByFileds).WhereIF(whereExpression != null, whereExpression).ToList());
+            return db.Ado.ExecuteCommand(Sql, parameters) > 0;
         }
 
         /// <summary>
-        /// 查询一个列表
+        /// 执行sql根据条件获取List
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public List<T> GetList(string Sql, object parameters = null)
+        {
+            return db.Ado.SqlQuery<T>(Sql, parameters);
+        }
+
+        /// <summary>
+        /// 执行sql根据数组条件获取List
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public List<T> GetList(string Sql, params SugarParameter[] parameters)
+        {
+            return db.Ado.SqlQuery<T>(Sql, parameters);
+        }
+
+        /// <summary>
+        /// 执行sql根据集合条件获取List
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public List<T> GetList(string Sql, List<SugarParameter> parameters)
+        {
+            return db.Ado.SqlQuery<T>(Sql, parameters);
+        }
+
+        /// <summary>
+        ///  执行sql根据条件获取实体
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public T Get(string Sql, object parameters = null)
+        {
+            return db.Ado.SqlQuerySingle<T>(Sql, parameters);
+        }
+
+        /// <summary>
+        ///  执行sql根据数组条件获取实体
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public T Get(string Sql, params SugarParameter[] parameters)
+        {
+            return db.Ado.SqlQuerySingle<T>(Sql, parameters);
+        }
+
+        /// <summary>
+        /// 执行sql根据集合条件获取实体
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public T Get(string Sql, List<SugarParameter> parameters)
+        {
+            return db.Ado.SqlQuerySingle<T>(Sql, parameters);
+        }
+
+        /// <summary>
+        /// 执行sql根据条件获取结果
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public dynamic GetDynamic(string Sql, object parameters = null)
+        {
+            return db.Ado.SqlQueryDynamic(Sql, parameters);
+        }
+
+        /// <summary>
+        ///  执行sql根据数组条件获取结果
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public dynamic GetDynamic(string Sql, params SugarParameter[] parameters)
+        {
+            return db.Ado.SqlQueryDynamic(Sql, parameters);
+        }
+
+        /// <summary>
+        ///  执行sql根据集合条件获取结果
+        /// </summary>
+        /// <param name="Sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public dynamic GetDynamic(string Sql, List<SugarParameter> parameters)
+        {
+            return db.Ado.SqlQueryDynamic(Sql, parameters);
+        }
+
+        #endregion
+
+        #region Other
+
+        /// <summary>
+        /// 查询存储过程
+        /// </summary>
+        /// <param name="procedureName"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public DataTable QueryProcedure(string procedureName, List<SugarParameter> parameters)
+        {
+            var datas = db.Ado.UseStoredProcedure().GetDataTable(procedureName, parameters);
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询前多少条数据 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="whereLambda"></param>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        public List<T> Take(Expression<Func<T, bool>> whereLambda, int num)
+        {
+            var datas = db.Queryable<T>().With(SqlWith.NoLock).Where(whereLambda).Take(num).ToList();
+            return datas;
+        }
+
+        /// <summary>
+        /// 查询单条数据
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="whereLambda"></param>
+        /// <returns></returns>
+        public T First(Expression<Func<T, bool>> whereLambda)
+        {
+            var datas = db.Queryable<T>().With(SqlWith.NoLock).Where(whereLambda).First();
+            return datas;
+        }
+
+        /// <summary>
+        /// 求和
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="field"></param>
+        /// <returns></returns>
+        public int Sum(string field)
+        {
+            var datas = db.Queryable<T>().Sum<int>(field);
+            return datas;
+        }
+
+        /// <summary>
+        /// 最大值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="field"></param>
+        /// <returns></returns>
+        public object Max(string field)
+        {
+            var datas = db.Queryable<T>().Max<object>(field);
+            return datas;
+        }
+
+        /// <summary>
+        /// 最小值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="field"></param>
+        /// <returns></returns>
+        public object Min(string field)
+        {
+            var datas = db.Queryable<T>().Min<object>(field);
+            return datas;
+        }
+
+        /// <summary>
+        /// 平均值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="field"></param>
+        /// <returns></returns>
+        public int Avg(string field)
+        {
+            var datas = db.Queryable<T>().Avg<int>(field);
+            return datas;
+        }
+
+        /// <summary>
+        /// 根据条件返回数量
         /// </summary>
         /// <param name="whereExpression"></param>
+        /// <returns></returns>
+        public int Count(Expression<Func<T, bool>> whereExpression)
+        {
+            return db.Queryable<T>().Where(whereExpression).Count();
+        }
+
+        /// <summary>
+        /// 是否存在
+        /// </summary>
+        /// <param name="whereExpression"></param>
+        /// <returns></returns>
+        public bool IsAny(Expression<Func<T, bool>> whereExpression)
+        {
+            return db.Queryable<T>().Where(whereExpression).Any();
+        }
+
+        #endregion
+
+        #region  Query
+
+        /// <summary>
+        ///根据ID获取单个实体
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public T GetById(dynamic id)
+        {
+            return db.Queryable<T>().InSingle(id);
+        }
+
+        /// <summary>
+        /// 获取List
+        /// </summary>
+        /// <returns></returns>
+        public List<T> GetList()
+        {
+            return db.Queryable<T>().ToList();
+        }
+
+        /// <summary>
+        /// 根据条件获取List
+        /// </summary>
+        /// <param name="whereExpression"></param>
+        /// <returns></returns>
+        public List<T> GetList(Expression<Func<T, bool>> whereExpression)
+        {
+            return db.Queryable<T>().Where(whereExpression).ToList();
+        }
+
+        /// <summary>
+        /// 根据条件获取参数或者列
+        /// </summary>
+        /// <param name="whereExpression"></param>
+        /// <returns></returns>
+        public T GetSingle(Expression<Func<T, bool>> whereExpression)
+        {
+            return db.Queryable<T>().Single(whereExpression);
+        }
+
+        /// <summary>
+        /// 获取分页
+        /// </summary>
+        /// <param name="whereExpression"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        public List<T> GetPageList(Expression<Func<T, bool>> whereExpression, PageModel page)
+        {
+            int count = 0;
+            var result = db.Queryable<T>().Where(whereExpression).ToPageList(page.PageIndex, page.PageSize, ref count);
+            page.PageCount = count;
+            return result;
+        }
+
+        /// <summary>
+        /// 根据条件获取分页并排序
+        /// </summary>
+        /// <param name="whereExpression"></param>
+        /// <param name="page"></param>
         /// <param name="orderByExpression"></param>
-        /// <param name="isAsc"></param>
+        /// <param name="orderByType"></param>
         /// <returns></returns>
-        public async Task<List<T>> Query(Expression<Func<T, bool>> whereExpression, Expression<Func<T, object>> orderByExpression, bool isAsc = true)
+        public List<T> GetPageList(Expression<Func<T, bool>> whereExpression, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc)
         {
-            return await Task.Run(() => db.Queryable<T>().OrderByIF(orderByExpression != null, orderByExpression, isAsc ? OrderByType.Asc : OrderByType.Desc).WhereIF(whereExpression != null, whereExpression).ToList());
+            int count = 0;
+            var result = db.Queryable<T>().OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(whereExpression).ToPageList(page.PageIndex, page.PageSize, ref count);
+            page.PageCount = count;
+            return result;
         }
 
         /// <summary>
-        /// 查询一个列表
+        /// 根据多条件获取分页
         /// </summary>
-        /// <param name="strWhere">条件</param>
-        /// <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
-        /// <returns>数据列表</returns>
-        public async Task<List<T>> Query(string strWhere, string strOrderByFileds)
+        /// <param name="conditionalList"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        public List<T> GetPageList(List<IConditionalModel> conditionalList, PageModel page)
         {
-            return await Task.Run(() => db.Queryable<T>().OrderByIF(!string.IsNullOrEmpty(strOrderByFileds), strOrderByFileds).WhereIF(!string.IsNullOrEmpty(strWhere), strWhere).ToList());
+            int count = 0;
+            var result = db.Queryable<T>().Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref count);
+            page.PageCount = count;
+            return result;
         }
 
         /// <summary>
-        /// 查询前N条数据
+        /// 根据多条件获取分页并分页
         /// </summary>
-        /// <param name="whereExpression">条件表达式</param>
-        /// <param name="intTop">前N条</param>
-        /// <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
-        /// <returns>数据列表</returns>
-        public async Task<List<T>> Query(Expression<Func<T, bool>> whereExpression, int intTop, string strOrderByFileds)
+        /// <param name="conditionalList"></param>
+        /// <param name="page"></param>
+        /// <param name="orderByExpression"></param>
+        /// <param name="orderByType"></param>
+        /// <returns></returns>
+        public List<T> GetPageList(List<IConditionalModel> conditionalList, PageModel page, Expression<Func<T, object>> orderByExpression = null, OrderByType orderByType = OrderByType.Asc)
         {
-            return await Task.Run(() => db.Queryable<T>().OrderByIF(!string.IsNullOrEmpty(strOrderByFileds), strOrderByFileds).WhereIF(whereExpression != null, whereExpression).Take(intTop).ToList());
+            int count = 0;
+            var result = db.Queryable<T>().OrderByIF(orderByExpression != null, orderByExpression, orderByType).Where(conditionalList).ToPageList(page.PageIndex, page.PageSize, ref count);
+            page.PageCount = count;
+            return result;
         }
 
+        #endregion
+
+        #region  Insert
+
         /// <summary>
-        /// 查询前N条数据
+        /// 新增
         /// </summary>
-        /// <param name="strWhere">条件</param>
-        /// <param name="intTop">前N条</param>
-        /// <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
-        /// <returns>数据列表</returns>
-        public async Task<List<T>> Query(string strWhere, int intTop, string strOrderByFileds)
+        /// <param name="insertObj"></param>
+        /// <returns></returns>
+        public bool Insert(T insertObj)
         {
-            return await Task.Run(() => db.Queryable<T>().OrderByIF(!string.IsNullOrEmpty(strOrderByFileds), strOrderByFileds).WhereIF(!string.IsNullOrEmpty(strWhere), strWhere).Take(intTop).ToList());
+            return this.db.Insertable(insertObj).ExecuteCommand() > 0;
         }
 
         /// <summary>
-        /// 分页查询
+        /// 新增返回ID
         /// </summary>
-        /// <param name="whereExpression">条件表达式</param>
-        /// <param name="intPageIndex">页码（下标0）</param>
-        /// <param name="intPageSize">页大小</param>
-        /// <param name="intTotalCount">数据总量</param>
-        /// <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
-        /// <returns>数据列表</returns>
-        public async Task<List<T>> Query(Expression<Func<T, bool>> whereExpression, int intPageIndex, int intPageSize, string strOrderByFileds)
+        /// <param name="insertObj"></param>
+        /// <returns></returns>
+        public int InsertReturnIdentity(T insertObj)
         {
-            return await Task.Run(() => db.Queryable<T>().OrderByIF(!string.IsNullOrEmpty(strOrderByFileds), strOrderByFileds).WhereIF(whereExpression != null, whereExpression).ToPageList(intPageIndex, intPageSize));
+            return this.db.Insertable(insertObj).ExecuteReturnIdentity();
         }
 
         /// <summary>
-        /// 分页查询
+        /// 新增（实体）
         /// </summary>
-        /// <param name="strWhere">条件</param>
-        /// <param name="intPageIndex">页码（下标0）</param>
-        /// <param name="intPageSize">页大小</param>
-        /// <param name="intTotalCount">数据总量</param>
-        /// <param name="strOrderByFileds">排序字段，如name asc,age desc</param>
-        /// <returns>数据列表</returns>
-        public async Task<List<T>> Query(string strWhere, int intPageIndex, int intPageSize, string strOrderByFileds)
+        /// <param name="insertObjs"></param>
+        /// <returns></returns>
+        public bool InsertRange(T[] insertObjs)
         {
-            return await Task.Run(() => db.Queryable<T>().OrderByIF(!string.IsNullOrEmpty(strOrderByFileds), strOrderByFileds).WhereIF(!string.IsNullOrEmpty(strWhere), strWhere).ToPageList(intPageIndex, intPageSize));
+            return this.db.Insertable(insertObjs).ExecuteCommand() > 0;
         }
 
         /// <summary>
-        /// 分页查询
+        /// 新增（List）
+        /// </summary>
+        /// <param name="insertObjs"></param>
+        /// <returns></returns>
+        public bool InsertRange(List<T>[] insertObjs)
+        {
+            return this.db.Insertable(insertObjs).ExecuteCommand() > 0;
+        }
+
+        #endregion
+
+        #region   Update
+
+        /// <summary>
+        /// 更新实体
+        /// </summary>
+        /// <param name="updateObj"></param>
+        /// <returns></returns>
+        public bool Update(T updateObj)
+        {
+            return this.db.Updateable(updateObj).ExecuteCommand() > 0;
+        }
+
+        /// <summary>
+        /// 更新多实体
+        /// </summary>
+        /// <param name="updateObjs"></param>
+        /// <returns></returns>
+        public bool UpdateRange(T[] updateObjs)
+        {
+            return this.db.Updateable(updateObjs).ExecuteCommand() > 0;
+        }
+
+        /// <summary>
+        /// 根据条件更新
+        /// </summary>
+        /// <param name="columns"></param>
+        /// <param name="whereExpression"></param>
+        /// <returns></returns>
+        public bool Update(Expression<Func<T, T>> columns, Expression<Func<T, bool>> whereExpression)
+        {
+            return this.db.Updateable<T>().UpdateColumns(columns).Where(whereExpression).ExecuteCommand() > 0;
+        }
+
+        #endregion
+
+        #region  Delete
+
+        /// <summary>
+        /// 删除实体
+        /// </summary>
+        /// <param name="deleteObj"></param>
+        /// <returns></returns>
+        public bool Delete(T deleteObj)
+        {
+            return this.db.Deleteable<T>().Where(deleteObj).ExecuteCommand() > 0;
+        }
+
+        /// <summary>
+        /// 根据条件删除
         /// </summary>
         /// <param name="whereExpression"></param>
-        /// <param name="intPageIndex"></param>
-        /// <param name="intPageSize"></param>
-        /// <param name="strOrderByFileds"></param>
         /// <returns></returns>
-        public async Task<List<T>> QueryPage(Expression<Func<T, bool>> whereExpression, int intPageIndex = 0, int intPageSize = 20, string strOrderByFileds = null)
+        public bool Delete(Expression<Func<T, bool>> whereExpression)
         {
-            return await Task.Run(() => db.Queryable<T>().OrderByIF(!string.IsNullOrEmpty(strOrderByFileds), strOrderByFileds).WhereIF(whereExpression != null, whereExpression).ToPageList(intPageIndex, intPageSize));
+            return this.db.Deleteable<T>().Where(whereExpression).ExecuteCommand() > 0;
         }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool DeleteById(dynamic id)
+        {
+            return this.db.Deleteable<T>().In(id).ExecuteCommand() > 0;
+        }
+
+        /// <summary>
+        /// 批量删除
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public bool DeleteByIds(dynamic[] ids)
+        {
+            return this.db.Deleteable<T>().In(ids).ExecuteCommand() > 0;
+        }
+
+        #endregion
+  
     }
 }

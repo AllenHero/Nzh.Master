@@ -31,24 +31,14 @@ namespace Nzh.Master.Controllers
         /// </summary>
         /// <param name="page_index"></param>
         /// <param name="page_size"></param>
+        /// <param name="Name"></param>
         /// <returns></returns>
         [HttpGet("GetDemoList")]
-        public async Task<JsonResult> GetDemoList(int page_index, int page_size)
+        public async Task<JsonResult> GetDemoList(int page_index, int page_size, string Name)
         {
-            int TotalCount = 1;
-            List<Demo> DemoList = new List<Demo>();
-            DemoList = await _demoService.GetDemoList();
-            TotalCount = DemoList.Count() / page_size;
-            DemoList = DemoList.OrderBy(d => d.Age).Skip((page_index - 1) * page_size).Take(page_size).ToList();
-            Logger.Info(JsonConvert.SerializeObject(DemoList)); //此处调用日志记录函数记录日志
-            return Json(new
-            {
-                code = 0,
-                success = true,
-                page = page_index,
-                pageCount = TotalCount,
-                data = DemoList
-            });
+            var result = _demoService.GetDemoList(page_index, page_size, Name);
+            Logger.Info(JsonConvert.SerializeObject(result));//此处调用日志记录函数记录日志
+            return Json(result);
         }
 
         /// <summary>
@@ -62,12 +52,7 @@ namespace Nzh.Master.Controllers
             Demo demo = new Demo();
             demo = await _demoService.GetDemo(id);
             Logger.Info(JsonConvert.SerializeObject(demo)); //此处调用日志记录函数记录日志
-            return Json(new
-            {
-                code = 0,
-                success = true,
-                data = demo
-            });
+            return Json(demo);
         }
 
         /// <summary>
@@ -83,12 +68,7 @@ namespace Nzh.Master.Controllers
         {
             bool result = await _demoService.AddDemo(Name, Sex, Age, Remark);
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
-            return Json(new
-            {
-                code = 0,
-                success = true,
-                data = result
-            });
+            return Json(result);
         }
 
         /// <summary>
@@ -105,12 +85,7 @@ namespace Nzh.Master.Controllers
         {
             bool result = await _demoService.UpdateDemo(id, Name, Sex, Age, Remark);
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
-            return Json(new
-            {
-                code = 0,
-                success = true,
-                data = result
-            });
+            return Json(result);
         }
 
         /// <summary>
@@ -123,12 +98,7 @@ namespace Nzh.Master.Controllers
         {
             bool result = await _demoService.DeleteDemo(id);
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
-            return Json(new
-            {
-                code = 0,
-                success = true,
-                data = result
-            });
+            return Json(result);
         }
     }
 }

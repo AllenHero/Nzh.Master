@@ -1,8 +1,11 @@
 ﻿using Nzh.Master.IRepository;
 using Nzh.Master.IService;
 using Nzh.Master.Model;
+using Nzh.Master.Model.Base;
+using SqlSugar;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,10 +24,17 @@ namespace Nzh.Master.Service
         /// 获取Demo列表
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Demo>> GetDemoList()
+        public async Task<ResultModel<Demo>> GetDemoList(int pageIndex, int pageSize, string Name)
         {
-            var demolist = await _demorepository.Query();
-            return demolist;
+            PageModel pm = new PageModel() { PageIndex = pageIndex, PageSize = pageSize };
+            Expression<Func<Demo, bool>> expression = ex => ex.Name == Name;
+            List<Demo> data = _demorepository.GetPageList(expression, pm);
+            ResultModel<Demo> rm = new ResultModel<Demo>();
+            rm.Code = 0;
+            rm.Count = pm.PageCount;
+            rm.Data = data;
+            rm.Msg = "成功";
+            return rm;
         }
 
         /// <summary>
@@ -34,7 +44,7 @@ namespace Nzh.Master.Service
         /// <returns></returns>
         public async Task<Demo> GetDemo(int id)
         {
-            var demo = await _demorepository.QueryByID(id);
+            var demo =  _demorepository.GetById(id);
             return demo;
         }
 
@@ -57,7 +67,7 @@ namespace Nzh.Master.Service
                 Demo.Sex = Sex;
                 Demo.Age = Age;
                 Demo.Remark = Remark;
-                result = await _demorepository.Add(Demo);
+                result =  _demorepository.Insert(Demo);
                 _demorepository.CommitTran();//提交事务
                 result = true;
                 return result;
@@ -84,7 +94,7 @@ namespace Nzh.Master.Service
             try
             {
                 _demorepository.BeginTran();//开始事务
-                var Demo = await _demorepository.QueryByID(id);
+                var Demo =  _demorepository.GetById(id);
                 if (Demo != null)
                 {
                     Demo.ID = id;
@@ -92,7 +102,7 @@ namespace Nzh.Master.Service
                     Demo.Sex = Sex;
                     Demo.Age = Age;
                     Demo.Remark = Remark;
-                    result = await _demorepository.Update(Demo);
+                    result =  _demorepository.Update(Demo);
                     _demorepository.CommitTran();//提交事务
                     result = true;
                 }
@@ -116,10 +126,10 @@ namespace Nzh.Master.Service
             try
             {
                 _demorepository.BeginTran();//开始事务
-                var Demo = await _demorepository.QueryByID(id);
+                var Demo =  _demorepository.GetById(id);
                 if (Demo != null)
                 {
-                    result = await _demorepository.DeleteById(id);
+                    result =  _demorepository.DeleteById(id);
                     _demorepository.CommitTran();//提交事务
                     result = true;
                 }
