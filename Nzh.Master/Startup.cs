@@ -36,6 +36,8 @@ namespace Nzh.Master
             services.AddTransient<IDemoRepository, DemoRepository>();
             services.AddTransient<IDemoService, DemoService>();
 
+            #region Swagger
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info
@@ -59,8 +61,9 @@ namespace Nzh.Master
                 c.IncludeXmlComments(comonPath);
                 //添加对控制器的标签(描述)
                 c.DocumentFilter<SwaggerDocTag>();
-                // c.OperationFilter<HttpHeaderOperation>(); // 添加httpHeader参数
             });
+
+            #endregion
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -80,7 +83,6 @@ namespace Nzh.Master
 
             // 使中间件能够将生成的swagger作为json端点
             app.UseSwagger();
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
 
             //启用中间件服务swagger-ui，指定json端点
             app.UseSwaggerUI(c =>
@@ -92,7 +94,7 @@ namespace Nzh.Master
             {
                 routes.MapRoute(
                 name: "default",
-                template: "{controller=Vehicles}/{id?}");
+                template: "{controller=Demo}/{id?}");
 
             });
         }
