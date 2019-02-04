@@ -24,7 +24,7 @@ namespace Nzh.Master.Service
         /// 获取Demo列表
         /// </summary>
         /// <returns></returns>
-        public  ResultModel<Demo> GetDemoList(int pageIndex, int pageSize, string Name)
+        public  ResultModel<Demo> GetDmeoPageList(int pageIndex, int pageSize, string Name)
         {
             PageModel pm = new PageModel() { PageIndex = pageIndex, PageSize = pageSize };
             Expression<Func<Demo, bool>> expression = ex => ex.Name == Name;
@@ -42,7 +42,7 @@ namespace Nzh.Master.Service
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Demo GetDemo(Guid id)
+        public Demo GetDemoById(Guid id)
         {
             var demo =  _demorepository.GetById(id);
             return demo;

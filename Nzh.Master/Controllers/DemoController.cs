@@ -33,10 +33,10 @@ namespace Nzh.Master.Controllers
         /// <param name="page_size"></param>
         /// <param name="Name"></param>
         /// <returns></returns>
-        [HttpGet("GetDemoList")]
-        public  JsonResult GetDemoList(int page_index, int page_size, string Name)
+        [HttpGet("GetDmeoPageList")]
+        public  JsonResult GetDmeoPageList(int page_index, int page_size, string Name)
         {
-            var result = _demoService.GetDemoList(page_index, page_size, Name);
+            var result = _demoService.GetDmeoPageList(page_index, page_size, Name);
             Logger.Info(JsonConvert.SerializeObject(result));//此处调用日志记录函数记录日志
             return Json(result);
         }
@@ -46,11 +46,11 @@ namespace Nzh.Master.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("GetDemo")]
-        public  JsonResult GetDemo(Guid id)
+        [HttpGet("GetDemoById")]
+        public  JsonResult GetDemoById(Guid id)
         {
             Demo demo = new Demo();
-            demo =  _demoService.GetDemo(id);
+            demo =  _demoService.GetDemoById(id);
             Logger.Info(JsonConvert.SerializeObject(demo)); //此处调用日志记录函数记录日志
             return Json(demo);
         }

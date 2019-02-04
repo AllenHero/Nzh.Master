@@ -119,6 +119,5 @@ namespace Nzh.Master.Controllers
                 return Json(result);
             }
         }
-
     }
 }

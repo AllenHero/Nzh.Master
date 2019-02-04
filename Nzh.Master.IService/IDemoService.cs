@@ -13,14 +13,14 @@ namespace Nzh.Master.IService
         /// 获取Demo列表
         /// </summary>
         /// <returns></returns>
-       ResultModel<Demo> GetDemoList(int page_index, int page_size, string Name);
+       ResultModel<Demo> GetDmeoPageList(int page_index, int page_size, string Name);
 
         /// <summary>
         /// 获取Demo
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Demo GetDemo(Guid id);
+        Demo GetDemoById(Guid id);
 
         /// <summary>
         /// 添加Demo
