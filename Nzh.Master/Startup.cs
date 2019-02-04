@@ -36,6 +36,9 @@ namespace Nzh.Master
             services.AddTransient<IDemoRepository, DemoRepository>();
             services.AddTransient<IDemoService, DemoService>();
 
+            services.AddTransient<ITestRepository, TestRepository>();
+            services.AddTransient<ITestService, TestService>();
+
             #region Swagger
 
             services.AddSwaggerGen(c =>

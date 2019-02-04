@@ -25,7 +25,7 @@ namespace Nzh.Master.SwaggerHelp
                 //new Tag { Name = "Values", Description = "测试模块" },
                 new Tag { Name = "Demo", Description = "Demo模块" },
                 // new Tag { Name = "Entity", Description = "Entity生成实体类" },
-                //new Tag { Name = "Test", Description = "Sql语句操作" },
+                new Tag { Name = "Test", Description = "Sql语句操作" },
             };
         }
     }
