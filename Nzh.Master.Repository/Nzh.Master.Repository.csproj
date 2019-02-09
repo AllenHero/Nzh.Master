@@ -5,11 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
     <PackageReference Include="sqlSugarCore" Version="4.9.8.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Nzh.Master.IRepository\Nzh.Master.IRepository.csproj" />
+    <ProjectReference Include="..\Nzh.Master.IService\Nzh.Master.IService.csproj" />
+    <ProjectReference Include="..\Nzh.Master.Service\Nzh.Master.Service.csproj" />
   </ItemGroup>
 
 </Project>

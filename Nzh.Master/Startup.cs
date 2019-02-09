@@ -13,6 +13,7 @@ using Microsoft.Extensions.PlatformAbstractions;
 using Nzh.Master.IRepository;
 using Nzh.Master.IService;
 using Nzh.Master.Repository;
+using Nzh.Master.Repository.Factory;
 using Nzh.Master.Service;
 using Nzh.Master.SwaggerHelp;
 using Swashbuckle.AspNetCore.Swagger;
@@ -33,11 +34,13 @@ namespace Nzh.Master
             services.AddMvc();
 
             //注入服务、仓储类
-            services.AddTransient<IDemoRepository, DemoRepository>();
-            services.AddTransient<IDemoService, DemoService>();
+            //services.AddTransient<IDemoRepository, DemoRepository>();
+            //services.AddTransient<IDemoService, DemoService>();
 
-            services.AddTransient<ITestRepository, TestRepository>();
-            services.AddTransient<ITestService, TestService>();
+            //services.AddTransient<ITestRepository, TestRepository>();
+            //services.AddTransient<ITestService, TestService>();
+
+            services.AddRepositories();
 
             #region Swagger
 
