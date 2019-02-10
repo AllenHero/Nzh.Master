@@ -11,6 +11,9 @@ using Nzh.Master.Model;
 
 namespace Nzh.Master.Controllers
 {
+    /// <summary>
+    ///Demo 
+    /// </summary>
     [Produces("application/json")]
     [Route("api/Demo")]
     public class DemoController : Controller

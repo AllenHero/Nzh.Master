@@ -10,6 +10,9 @@ using Nzh.Master.IService;
 
 namespace Nzh.Master.Controllers
 {
+    /// <summary>
+    /// Test
+    /// </summary>
     [Produces("application/json")]
     [Route("api/Test")]
     public class TestController : Controller
