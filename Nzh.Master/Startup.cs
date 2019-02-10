@@ -12,7 +12,6 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.PlatformAbstractions;
 using Nzh.Master.IRepository;
 using Nzh.Master.IService;
-using Nzh.Master.Repository;
 using Nzh.Master.Repository.Factory;
 using Nzh.Master.Service;
 using Nzh.Master.SwaggerHelp;
