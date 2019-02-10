@@ -13,11 +13,11 @@ namespace Nzh.Master.Service
 {
     public class DemoService : IDemoService
     {
-        IDemoRepository _demorepository;
+        IDemoRepository _demoRepository;
 
-        public DemoService(IDemoRepository demorepository)
+        public DemoService(IDemoRepository demoRepository)
         {
-            _demorepository = demorepository;
+            _demoRepository = demoRepository;
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Nzh.Master.Service
         {
             PageModel pm = new PageModel() { PageIndex = pageIndex, PageSize = pageSize };
             Expression<Func<Demo, bool>> expression = ex => ex.Name == Name;
-            List<Demo> data = _demorepository.GetPageList(expression, pm);
+            List<Demo> data = _demoRepository.GetPageList(expression, pm);
             ResultModel<Demo> rm = new ResultModel<Demo>();
             rm.Code = 0;
             rm.Count = pm.PageCount;
@@ -44,7 +44,7 @@ namespace Nzh.Master.Service
         /// <returns></returns>
         public Demo GetDemoById(Guid id)
         {
-            var demo =  _demorepository.GetById(id);
+            var demo = _demoRepository.GetById(id);
             return demo;
         }
 
@@ -61,20 +61,20 @@ namespace Nzh.Master.Service
             bool result = false;
             try
             {
-                _demorepository.BeginTran();//开始事务
+                _demoRepository.BeginTran();//开始事务
                 Demo Demo = new Demo();
                 Demo.Name = Name;
                 Demo.Sex = Sex;
                 Demo.Age = Age;
                 Demo.Remark = Remark;
-                result =  _demorepository.Insert(Demo);
-                _demorepository.CommitTran();//提交事务
+                result = _demoRepository.Insert(Demo);
+                _demoRepository.CommitTran();//提交事务
                 result = true;
                 return result;
             }
             catch (Exception ex)
             {
-                _demorepository.RollbackTran();//回滚事务
+                _demoRepository.RollbackTran();//回滚事务
                 throw ex;
             }
         }
@@ -93,8 +93,8 @@ namespace Nzh.Master.Service
             bool result = false;
             try
             {
-                _demorepository.BeginTran();//开始事务
-                var Demo =  _demorepository.GetById(id);
+                _demoRepository.BeginTran();//开始事务
+                var Demo = _demoRepository.GetById(id);
                 if (Demo != null)
                 {
                     Demo.ID = id;
@@ -102,15 +102,15 @@ namespace Nzh.Master.Service
                     Demo.Sex = Sex;
                     Demo.Age = Age;
                     Demo.Remark = Remark;
-                    result =  _demorepository.Update(Demo);
-                    _demorepository.CommitTran();//提交事务
+                    result = _demoRepository.Update(Demo);
+                    _demoRepository.CommitTran();//提交事务
                     result = true;
                 }
                 return result;
             }
             catch (Exception ex)
             {
-                _demorepository.RollbackTran();//回滚事务
+                _demoRepository.RollbackTran();//回滚事务
                 throw ex;
             }
         }
@@ -125,19 +125,19 @@ namespace Nzh.Master.Service
             bool result = false;
             try
             {
-                _demorepository.BeginTran();//开始事务
-                var Demo =  _demorepository.GetById(id);
+                _demoRepository.BeginTran();//开始事务
+                var Demo = _demoRepository.GetById(id);
                 if (Demo != null)
                 {
-                    result =  _demorepository.DeleteById(id);
-                    _demorepository.CommitTran();//提交事务
+                    result = _demoRepository.DeleteById(id);
+                    _demoRepository.CommitTran();//提交事务
                     result = true;
                 }
                 return result;
             }
             catch (Exception ex)
             {
-                _demorepository.RollbackTran();//回滚事务
+                _demoRepository.RollbackTran();//回滚事务
                 throw ex;
             }
         }

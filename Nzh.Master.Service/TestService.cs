@@ -12,11 +12,11 @@ namespace Nzh.Master.Service
 {
    public class TestService  : ITestService
     {
-        IDemoRepository _demorepository;
+        IDemoRepository _demoRepository;
 
-        public TestService(IDemoRepository demorepository)
+        public TestService(IDemoRepository demoRepository)
         {
-            _demorepository = demorepository;
+            _demoRepository = demoRepository;
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Nzh.Master.Service
             string sql = "SELECT * from  Demo";
             PageModel pm = new PageModel() { PageIndex = pageIndex, PageSize = pageSize };
             Expression<Func<Demo, bool>> expression = ex => ex.Name == Name;
-            List<Demo> data = _demorepository.GetPageListBySql(sql,expression, pm);
+            List<Demo> data = _demoRepository.GetPageListBySql(sql,expression, pm);
             ResultModel<Demo> rm = new ResultModel<Demo>();
             rm.Code = 0;
             rm.Count = pm.PageCount;
@@ -49,7 +49,7 @@ namespace Nzh.Master.Service
         public Demo GetDemoById(string ID)
         {
             string sql = "SELECT * from  Demo where ID=@ID";
-            var model = _demorepository.Get(sql, new { ID = ID });
+            var model = _demoRepository.Get(sql, new { ID = ID });
             return model;
         }
 
@@ -66,7 +66,7 @@ namespace Nzh.Master.Service
             bool result = false;
             try
             {
-                _demorepository.BeginTran(); //开始事务
+                _demoRepository.BeginTran(); //开始事务
                 Demo entity = new Demo();
                 entity.ID = Guid.NewGuid();
                 entity.Name = Name;
@@ -82,14 +82,14 @@ namespace Nzh.Master.Service
                new SugarParameter("@Age", entity.Age),
                new SugarParameter("@Remark", entity.Remark)
                };
-                result = _demorepository.ExecuteSql(sql, Parameter);
-                _demorepository.CommitTran();//提交事务
+                result = _demoRepository.ExecuteSql(sql, Parameter);
+                _demoRepository.CommitTran();//提交事务
                 result = true;
                 return result;
             }
             catch (Exception ex)
             {
-                _demorepository.RollbackTran();//回滚事务
+                _demoRepository.RollbackTran();//回滚事务
                 throw ex;
             }
         }
@@ -108,7 +108,7 @@ namespace Nzh.Master.Service
             bool result = false;
             try
             {
-                _demorepository.BeginTran(); //开始事务
+                _demoRepository.BeginTran(); //开始事务
                 Demo entity = new Demo();
                 entity.ID = Guid.Parse(ID);
                 entity.Name = Name;
@@ -124,14 +124,14 @@ namespace Nzh.Master.Service
                new SugarParameter("@Age", entity.Age),
                new SugarParameter("@Remark", entity.Remark)
                };
-                result = _demorepository.ExecuteSql(sql, Parameter);
-                _demorepository.CommitTran();//提交事务
+                result = _demoRepository.ExecuteSql(sql, Parameter);
+                _demoRepository.CommitTran();//提交事务
                 result = true;
                 return result;
             }
             catch (Exception ex)
             {
-                _demorepository.RollbackTran();//回滚事务
+                _demoRepository.RollbackTran();//回滚事务
                 throw ex;
             }
         }
@@ -146,20 +146,20 @@ namespace Nzh.Master.Service
             bool result = false;
             try
             {
-                _demorepository.BeginTran(); //开始事务
+                _demoRepository.BeginTran(); //开始事务
                 string sql = "delete from  Demo where ID=@ID";
                 SugarParameter[] Parameter = new SugarParameter[]
                 {
                new SugarParameter("@ID",ID)
                 };
-                result = _demorepository.ExecuteSql(sql, Parameter);
-                _demorepository.CommitTran();//提交事务
+                result = _demoRepository.ExecuteSql(sql, Parameter);
+                _demoRepository.CommitTran();//提交事务
                 result = true;
                 return result;
             }
             catch (Exception ex)
             {
-                _demorepository.RollbackTran();//回滚事务
+                _demoRepository.RollbackTran();//回滚事务
                 throw ex;
             }
         }
