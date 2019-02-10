@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Master.Repository", "Nz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Master.Service", "Nzh.Master.Service\Nzh.Master.Service.csproj", "{C48584D1-9692-477C-A9CF-791FEEB84E0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Master.Extension", "Nzh.Master.Extension\Nzh.Master.Extension.csproj", "{4ECB764A-3220-4103-9C69-9D980ACD5897}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{C48584D1-9692-477C-A9CF-791FEEB84E0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C48584D1-9692-477C-A9CF-791FEEB84E0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C48584D1-9692-477C-A9CF-791FEEB84E0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ECB764A-3220-4103-9C69-9D980ACD5897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ECB764A-3220-4103-9C69-9D980ACD5897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ECB764A-3220-4103-9C69-9D980ACD5897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ECB764A-3220-4103-9C69-9D980ACD5897}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

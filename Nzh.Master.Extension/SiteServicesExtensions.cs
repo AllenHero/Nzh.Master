@@ -1,12 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Nzh.Master.IRepository;
 using Nzh.Master.IService;
+using Nzh.Master.Repository;
 using Nzh.Master.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Nzh.Master.Repository.Factory
+namespace Nzh.Master.Extension
 {
     public static class SiteServicesExtensions
     {
@@ -27,7 +28,6 @@ namespace Nzh.Master.Repository.Factory
             services.AddScoped<ITestService, TestService>();
 
             return services;
-
         }
     }
 }

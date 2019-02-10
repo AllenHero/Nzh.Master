@@ -27,9 +27,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Nzh.Master.Common\Nzh.Master.Common.csproj" />
+    <ProjectReference Include="..\Nzh.Master.Extension\Nzh.Master.Extension.csproj" />
     <ProjectReference Include="..\Nzh.Master.IService\Nzh.Master.IService.csproj" />
     <ProjectReference Include="..\Nzh.Master.Model\Nzh.Master.Model.csproj" />
-    <ProjectReference Include="..\Nzh.Master.Repository\Nzh.Master.Repository.csproj" />
   </ItemGroup>
 
 </Project>
