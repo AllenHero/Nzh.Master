@@ -64,20 +64,15 @@ namespace Nzh.Master.Service
             try
             {
                 _demoRepository.BeginTran(); //开始事务
-                Demo entity = new Demo();
-                entity.ID = Guid.NewGuid();
-                entity.Name = Name;
-                entity.Sex = Sex;
-                entity.Age = Age;
-                entity.Remark = Remark;
+                Guid ID = new Guid();
                 string sql = "insert into Demo(ID,Name,Sex,Age,Remark) values(@ID,@Name,@Sex,@Age,@Remark)";
                 SugarParameter[] Parameter = new SugarParameter[]
                 {
-               new SugarParameter("@ID",entity.ID),
-               new SugarParameter("@Name", entity.Name),
-               new SugarParameter("@Sex",  entity.Sex),
-               new SugarParameter("@Age", entity.Age),
-               new SugarParameter("@Remark", entity.Remark)
+               new SugarParameter("@ID",ID),
+               new SugarParameter("@Name", Name),
+               new SugarParameter("@Sex",  Sex),
+               new SugarParameter("@Age", Age),
+               new SugarParameter("@Remark", Remark)
                };
                 result.Data = _demoRepository.ExecuteSql(sql, Parameter);
                 _demoRepository.CommitTran();//提交事务
@@ -105,20 +100,14 @@ namespace Nzh.Master.Service
             try
             {
                 _demoRepository.BeginTran(); //开始事务
-                Demo entity = new Demo();
-                entity.ID = ID;
-                entity.Name = Name;
-                entity.Sex = Sex;
-                entity.Age = Age;
-                entity.Remark = Remark;
                 string sql = "update Demo set Name=@Name,Sex=@Sex,Age=@Age,Remark=@Remark WHERE ID=@ID";
                 SugarParameter[] Parameter = new SugarParameter[]
                 {
-               new SugarParameter("@ID",entity.ID),
-               new SugarParameter("@Name", entity.Name),
-               new SugarParameter("@Sex",  entity.Sex),
-               new SugarParameter("@Age", entity.Age),
-               new SugarParameter("@Remark", entity.Remark)
+               new SugarParameter("@ID",ID),
+               new SugarParameter("@Name", Name),
+               new SugarParameter("@Sex",  Sex),
+               new SugarParameter("@Age", Age),
+               new SugarParameter("@Remark", Remark)
                };
                 result.Data = _demoRepository.ExecuteSql(sql, Parameter);
                 _demoRepository.CommitTran();//提交事务
