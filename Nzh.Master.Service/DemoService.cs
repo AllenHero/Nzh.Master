@@ -45,8 +45,8 @@ namespace Nzh.Master.Service
         /// <returns></returns>
         public Demo GetDemoById(Guid ID)
         {
-            var demo = _demoRepository.GetById(ID);
-            return demo;
+            var model = _demoRepository.GetById(ID);
+            return model;
         }
 
         /// <summary>
