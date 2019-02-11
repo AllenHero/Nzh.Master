@@ -46,8 +46,8 @@ namespace Nzh.Master.Service
         public Demo GetDemoById(Guid ID)
         {
             string sql = "SELECT * from  Demo where ID=@ID";
-            var model = _demoRepository.Get(sql, new { ID = ID });
-            return model;
+            var demo = _demoRepository.Get(sql, new { ID = ID });
+            return demo;
         }
 
         /// <summary>
