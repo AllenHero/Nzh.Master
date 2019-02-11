@@ -33,17 +33,17 @@ namespace Nzh.Master.Controllers
         /// <summary>
         /// 获取Demo分页
         /// </summary>
-        /// <param name="pageIndex"></param>
-        /// <param name="pageSize"></param>
+        /// <param name="PageIndex"></param>
+        /// <param name="PageSize"></param>
         /// <param name="Name"></param>
         /// <returns></returns>
         [HttpGet("GetDmeoPageList")]
-        public JsonResult GetDmeoPageList(int pageIndex, int pageSize, string Name)
+        public JsonResult GetDmeoPageList(int PageIndex, int PageSize, string Name)
         {
             var result = new ResultModel<Demo>();
             try
             {
-                result = _testService.GetDmeoPageList(pageIndex, pageSize, Name);
+                result = _testService.GetDmeoPageList(PageIndex, PageSize, Name);
             }
             catch (Exception ex)
             {
@@ -55,7 +55,7 @@ namespace Nzh.Master.Controllers
         }
 
         /// <summary>
-        /// 根据ID获取Demo
+        /// 获取Demo
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>

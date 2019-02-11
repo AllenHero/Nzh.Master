@@ -31,19 +31,19 @@ namespace Nzh.Master.Controllers
         }
 
         /// <summary>
-        /// 获取Demo列表
+        /// 获取Demo分页
         /// </summary>
-        /// <param name="page_index"></param>
-        /// <param name="page_size"></param>
+        /// <param name="PageIndex"></param>
+        /// <param name="PageSize"></param>
         /// <param name="Name"></param>
         /// <returns></returns>
         [HttpGet("GetDmeoPageList")]
-        public  JsonResult GetDmeoPageList(int page_index, int page_size, string Name)
+        public  JsonResult GetDmeoPageList(int PageIndex, int PageSize, string Name)
         {
             var result = new ResultModel<Demo>();
             try
             {
-                result = _demoService.GetDmeoPageList(page_index, page_size, Name);
+                result = _demoService.GetDmeoPageList(PageIndex, PageSize, Name);
             }
             catch (Exception ex)
             {
@@ -57,15 +57,15 @@ namespace Nzh.Master.Controllers
         /// <summary>
         /// 获取Demo
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="ID"></param>
         /// <returns></returns>
         [HttpGet("GetDemoById")]
-        public  JsonResult GetDemoById(Guid id)
+        public  JsonResult GetDemoById(Guid ID)
         {
             var result = new ResultModel<Demo>();
             try
             {
-                result.Data = _demoService.GetDemoById(id);
+                result.Data = _demoService.GetDemoById(ID);
             }
             catch (Exception ex)
             {
@@ -104,19 +104,19 @@ namespace Nzh.Master.Controllers
         /// <summary>
         /// 修改Demo
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="ID"></param>
         /// <param name="Name"></param>
         /// <param name="Sex"></param>
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
         [HttpGet("UpdateDemo")]
-        public  JsonResult UpdateDemo(Guid id, string Name, string Sex, int Age, string Remark)
+        public  JsonResult UpdateDemo(Guid ID, string Name, string Sex, int Age, string Remark)
         {
             var result = new ResultModel<bool>();
             try
             {
-                 result = _demoService.UpdateDemo(id, Name, Sex, Age, Remark);
+                 result = _demoService.UpdateDemo(ID, Name, Sex, Age, Remark);
             }
             catch (Exception ex)
             {
@@ -130,15 +130,15 @@ namespace Nzh.Master.Controllers
         /// <summary>
         /// 删除Demo
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="ID"></param>
         /// <returns></returns>
         [HttpGet("DeleteDemo")]
-        public JsonResult DeleteDemo(Guid id)
+        public JsonResult DeleteDemo(Guid ID)
         {
             var result = new ResultModel<bool>();
             try
             {
-                 result = _demoService.DeleteDemo(id);
+                 result = _demoService.DeleteDemo(ID);
             }
             catch (Exception ex)
             {

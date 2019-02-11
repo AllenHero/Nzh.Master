@@ -21,12 +21,15 @@ namespace Nzh.Master.Service
         }
 
         /// <summary>
-        /// 获取Demo列表
+        ///  获取Demo分页
         /// </summary>
+        /// <param name="PageIndex"></param>
+        /// <param name="PageSize"></param>
+        /// <param name="Name"></param>
         /// <returns></returns>
-        public ResultModel<Demo> GetDmeoPageList(int pageIndex, int pageSize, string Name)
+        public ResultModel<Demo> GetDmeoPageList(int PageIndex, int PageSize, string Name)
         {
-            PageModel pm = new PageModel() { PageIndex = pageIndex, PageSize = pageSize };
+            PageModel pm = new PageModel() { PageIndex = PageIndex, PageSize = PageSize };
             Expression<Func<Demo, bool>> expression = ex => ex.Name == Name;
             dynamic data = _demoRepository.GetPageList(expression, pm);
             ResultModel<Demo> rm = new ResultModel<Demo>();
@@ -38,11 +41,11 @@ namespace Nzh.Master.Service
         /// <summary>
         /// 获取Demo
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="ID"></param>
         /// <returns></returns>
-        public Demo GetDemoById(Guid id)
+        public Demo GetDemoById(Guid ID)
         {
-            var demo = _demoRepository.GetById(id);
+            var demo = _demoRepository.GetById(ID);
             return demo;
         }
 
@@ -79,22 +82,22 @@ namespace Nzh.Master.Service
         /// <summary>
         /// 修改Demo
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="ID"></param>
         /// <param name="Name"></param>
         /// <param name="Sex"></param>
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public ResultModel<bool> UpdateDemo(Guid id, string Name, string Sex, int Age, string Remark)
+        public ResultModel<bool> UpdateDemo(Guid ID, string Name, string Sex, int Age, string Remark)
         {
             var result = new ResultModel<bool>();
             try
             {
                 _demoRepository.BeginTran();//开始事务
-                var Demo = _demoRepository.GetById(id);
+                var Demo = _demoRepository.GetById(ID);
                 if (Demo != null)
                 {
-                    Demo.ID = id;
+                    Demo.ID = ID;
                     Demo.Name = Name;
                     Demo.Sex = Sex;
                     Demo.Age = Age;
@@ -114,18 +117,18 @@ namespace Nzh.Master.Service
         /// <summary>
         /// 删除Demo
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="ID"></param>
         /// <returns></returns>
-        public ResultModel<bool> DeleteDemo(Guid id)
+        public ResultModel<bool> DeleteDemo(Guid ID)
         {
             var result = new ResultModel<bool>();
             try
             {
                 _demoRepository.BeginTran();//开始事务
-                var Demo = _demoRepository.GetById(id);
+                var Demo = _demoRepository.GetById(ID);
                 if (Demo != null)
                 {
-                    result.Data = _demoRepository.DeleteById(id);
+                    result.Data = _demoRepository.DeleteById(ID);
                     _demoRepository.CommitTran();//提交事务
                 }
                 return result;

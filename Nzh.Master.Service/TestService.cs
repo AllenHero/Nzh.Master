@@ -22,14 +22,14 @@ namespace Nzh.Master.Service
         /// <summary>
         /// 获取Demo分页
         /// </summary>
-        /// <param name="pageIndex"></param>
-        /// <param name="pageSize"></param>
+        /// <param name="PageIndex"></param>
+        /// <param name="PageSize"></param>
         /// <param name="Name"></param>
         /// <returns></returns>
-        public ResultModel<Demo> GetDmeoPageList(int pageIndex, int pageSize, string Name)
+        public ResultModel<Demo> GetDmeoPageList(int PageIndex, int PageSize, string Name)
         {
             string sql = "SELECT * from  Demo";
-            PageModel pm = new PageModel() { PageIndex = pageIndex, PageSize = pageSize };
+            PageModel pm = new PageModel() { PageIndex = PageIndex, PageSize = PageSize };
             Expression<Func<Demo, bool>> expression = ex => ex.Name == Name;
             dynamic data = _demoRepository.GetPageListBySql(sql, expression, pm);
             ResultModel<Demo> rm = new ResultModel<Demo>();
@@ -39,7 +39,7 @@ namespace Nzh.Master.Service
         }
 
         /// <summary>
-        /// 根据ID获取Demo
+        /// 获取Demo
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>

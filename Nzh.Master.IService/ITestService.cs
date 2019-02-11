@@ -11,11 +11,11 @@ namespace Nzh.Master.IService
         /// <summary>
         /// 获取Demo分页
         /// </summary>
-        /// <param name="pageIndex"></param>
-        /// <param name="pageSize"></param>
+        /// <param name="PageIndex"></param>
+        /// <param name="PageSize"></param>
         /// <param name="Name"></param>
         /// <returns></returns>
-        ResultModel<Demo> GetDmeoPageList(int pageIndex, int pageSize, string Name);
+        ResultModel<Demo> GetDmeoPageList(int PageIndex, int PageSize, string Name);
 
         /// <summary>
         /// 根据ID获取Demo

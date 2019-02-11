@@ -10,17 +10,20 @@ namespace Nzh.Master.IService
     public interface IDemoService 
     {
         /// <summary>
-        /// 获取Demo列表
+        ///  获取Demo分页
         /// </summary>
+        /// <param name="PageIndex"></param>
+        /// <param name="PageSize"></param>
+        /// <param name="Name"></param>
         /// <returns></returns>
-       ResultModel<Demo> GetDmeoPageList(int page_index, int page_size, string Name);
+        ResultModel<Demo> GetDmeoPageList(int PageIndex, int PageSize, string Name);
 
         /// <summary>
         /// 获取Demo
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="ID"></param>
         /// <returns></returns>
-        Demo GetDemoById(Guid id);
+        Demo GetDemoById(Guid ID);
 
         /// <summary>
         /// 添加Demo
@@ -35,19 +38,19 @@ namespace Nzh.Master.IService
         /// <summary>
         /// 修改Demo
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="ID"></param>
         /// <param name="Name"></param>
         /// <param name="Sex"></param>
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        ResultModel<bool> UpdateDemo(Guid id, string Name, string Sex, int Age, string Remark);
+        ResultModel<bool> UpdateDemo(Guid ID, string Name, string Sex, int Age, string Remark);
 
         /// <summary>
         /// 删除Demo
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="ID"></param>
         /// <returns></returns>
-        ResultModel<bool> DeleteDemo(Guid id);
+        ResultModel<bool> DeleteDemo(Guid ID);
     }
 }
