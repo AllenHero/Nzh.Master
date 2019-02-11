@@ -32,7 +32,7 @@ namespace Nzh.Master.IService
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        bool AddDemo(string Name, string Sex, int Age, string Remark);
+        ResultModel<bool> AddDemo(string Name, string Sex, int Age, string Remark);
 
         /// <summary>
         ///  修改Demo
@@ -43,13 +43,13 @@ namespace Nzh.Master.IService
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        bool UpdateDemo(string ID, string Name, string Sex, int Age, string Remark);
+        ResultModel<bool> UpdateDemo(string ID, string Name, string Sex, int Age, string Remark);
 
         /// <summary>
         /// 删除Demo
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
-        bool DeleteDemo(string ID);
+        ResultModel<bool> DeleteDemo(string ID);
     }
 }

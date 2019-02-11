@@ -28,16 +28,13 @@ namespace Nzh.Master.Service
         /// <returns></returns>
         public ResultModel<Demo> GetDmeoPageList(int pageIndex, int pageSize, string Name)
         {
-
             string sql = "SELECT * from  Demo";
             PageModel pm = new PageModel() { PageIndex = pageIndex, PageSize = pageSize };
             Expression<Func<Demo, bool>> expression = ex => ex.Name == Name;
-            List<Demo> data = _demoRepository.GetPageListBySql(sql,expression, pm);
+            dynamic data = _demoRepository.GetPageListBySql(sql,expression, pm);
             ResultModel<Demo> rm = new ResultModel<Demo>();
-            rm.Code = 0;
             rm.Count = pm.PageCount;
             rm.Data = data;
-            rm.Msg = "成功";
             return rm;
         }
 
@@ -61,9 +58,9 @@ namespace Nzh.Master.Service
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public bool AddDemo(string Name, string Sex, int Age,string Remark)
+        public ResultModel<bool> AddDemo(string Name, string Sex, int Age,string Remark)
         {
-            bool result = false;
+            var result = new ResultModel<bool>();
             try
             {
                 _demoRepository.BeginTran(); //开始事务
@@ -82,9 +79,8 @@ namespace Nzh.Master.Service
                new SugarParameter("@Age", entity.Age),
                new SugarParameter("@Remark", entity.Remark)
                };
-                result = _demoRepository.ExecuteSql(sql, Parameter);
+                result.Data = _demoRepository.ExecuteSql(sql, Parameter);
                 _demoRepository.CommitTran();//提交事务
-                result = true;
                 return result;
             }
             catch (Exception ex)
@@ -103,9 +99,9 @@ namespace Nzh.Master.Service
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public bool UpdateDemo(string ID, string Name, string Sex, int Age, string Remark)
+        public ResultModel<bool> UpdateDemo(string ID, string Name, string Sex, int Age, string Remark)
         {
-            bool result = false;
+            var result = new ResultModel<bool>();
             try
             {
                 _demoRepository.BeginTran(); //开始事务
@@ -124,9 +120,8 @@ namespace Nzh.Master.Service
                new SugarParameter("@Age", entity.Age),
                new SugarParameter("@Remark", entity.Remark)
                };
-                result = _demoRepository.ExecuteSql(sql, Parameter);
+                result.Data = _demoRepository.ExecuteSql(sql, Parameter);
                 _demoRepository.CommitTran();//提交事务
-                result = true;
                 return result;
             }
             catch (Exception ex)
@@ -141,9 +136,9 @@ namespace Nzh.Master.Service
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
-        public bool DeleteDemo(string ID)
+        public ResultModel<bool> DeleteDemo(string ID)
         {
-            bool result = false;
+            var result = new ResultModel<bool>();
             try
             {
                 _demoRepository.BeginTran(); //开始事务
@@ -152,9 +147,8 @@ namespace Nzh.Master.Service
                 {
                new SugarParameter("@ID",ID)
                 };
-                result = _demoRepository.ExecuteSql(sql, Parameter);
+                result.Data = _demoRepository.ExecuteSql(sql, Parameter);
                 _demoRepository.CommitTran();//提交事务
-                result = true;
                 return result;
             }
             catch (Exception ex)

@@ -8,11 +8,12 @@ using Newtonsoft.Json;
 using Nzh.Frame.Common.Logger;
 using Nzh.Master.IService;
 using Nzh.Master.Model;
+using Nzh.Master.Model.Base;
 
 namespace Nzh.Master.Controllers
 {
     /// <summary>
-    ///Demo 
+    /// Demo 
     /// </summary>
     [Produces("application/json")]
     [Route("api/Demo")]
@@ -39,7 +40,16 @@ namespace Nzh.Master.Controllers
         [HttpGet("GetDmeoPageList")]
         public  JsonResult GetDmeoPageList(int page_index, int page_size, string Name)
         {
-            var result = _demoService.GetDmeoPageList(page_index, page_size, Name);
+            var result = new ResultModel<Demo>();
+            try
+            {
+                result = _demoService.GetDmeoPageList(page_index, page_size, Name);
+            }
+            catch (Exception ex)
+            {
+                result.Code = -1;
+                result.Msg = ex.Message;
+            }
             Logger.Info(JsonConvert.SerializeObject(result));//此处调用日志记录函数记录日志
             return Json(result);
         }
@@ -52,10 +62,18 @@ namespace Nzh.Master.Controllers
         [HttpGet("GetDemoById")]
         public  JsonResult GetDemoById(Guid id)
         {
-            Demo demo = new Demo();
-            demo =  _demoService.GetDemoById(id);
-            Logger.Info(JsonConvert.SerializeObject(demo)); //此处调用日志记录函数记录日志
-            return Json(demo);
+            var result = new ResultModel<Demo>();
+            try
+            {
+                result.Data = _demoService.GetDemoById(id);
+            }
+            catch (Exception ex)
+            {
+                result.Code = -1;
+                result.Msg = ex.Message;
+            }
+            Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            return Json(result);
         }
 
         /// <summary>
@@ -69,7 +87,16 @@ namespace Nzh.Master.Controllers
         [HttpGet("AddDemo")]
         public  JsonResult AddDemo(string Name, string Sex, int Age, string Remark)
         {
-            bool result =  _demoService.AddDemo(Name, Sex, Age, Remark);
+            var result = new ResultModel<bool>();
+            try
+            {
+                result = _demoService.AddDemo(Name, Sex, Age, Remark);
+            }
+            catch (Exception ex)
+            {
+                result.Code = -1;
+                result.Msg = ex.Message;
+            }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
             return Json(result);
         }
@@ -86,7 +113,16 @@ namespace Nzh.Master.Controllers
         [HttpGet("UpdateDemo")]
         public  JsonResult UpdateDemo(Guid id, string Name, string Sex, int Age, string Remark)
         {
-            bool result =  _demoService.UpdateDemo(id, Name, Sex, Age, Remark);
+            var result = new ResultModel<bool>();
+            try
+            {
+                 result = _demoService.UpdateDemo(id, Name, Sex, Age, Remark);
+            }
+            catch (Exception ex)
+            {
+                result.Code = -1;
+                result.Msg = ex.Message;
+            }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
             return Json(result);
         }
@@ -97,9 +133,18 @@ namespace Nzh.Master.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("DeleteDemo")]
-        public  JsonResult DeleteDemo(Guid id)
+        public JsonResult DeleteDemo(Guid id)
         {
-            bool result =  _demoService.DeleteDemo(id);
+            var result = new ResultModel<bool>();
+            try
+            {
+                 result = _demoService.DeleteDemo(id);
+            }
+            catch (Exception ex)
+            {
+                result.Code = -1;
+                result.Msg = ex.Message;
+            }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
             return Json(result);
         }

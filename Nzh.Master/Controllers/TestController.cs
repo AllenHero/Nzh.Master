@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Nzh.Frame.Common.Logger;
 using Nzh.Master.IService;
+using Nzh.Master.Model;
+using Nzh.Master.Model.Base;
 
 namespace Nzh.Master.Controllers
 {
@@ -38,7 +40,16 @@ namespace Nzh.Master.Controllers
         [HttpGet("GetDmeoPageList")]
         public JsonResult GetDmeoPageList(int pageIndex, int pageSize, string Name)
         {
-            var result = _testService.GetDmeoPageList(pageIndex, pageSize, Name);
+            var result = new ResultModel<Demo>();
+            try
+            {
+                result = _testService.GetDmeoPageList(pageIndex, pageSize, Name);
+            }
+            catch (Exception ex)
+            {
+                result.Code = -1;
+                result.Msg = ex.Message;
+            }
             Logger.Info(JsonConvert.SerializeObject(result));//此处调用日志记录函数记录日志
             return Json(result);
         }
@@ -51,7 +62,16 @@ namespace Nzh.Master.Controllers
         [HttpGet("GetDemoById")]
         public JsonResult GetDemoById(string ID)
         {
-            var result = _testService.GetDemoById(ID);
+            var result = new ResultModel<Demo>();
+            try
+            {
+                 result.Data = _testService.GetDemoById(ID);
+            }
+            catch (Exception ex)
+            {
+                result.Code = -1;
+                result.Msg = ex.Message;
+            }
             Logger.Info(JsonConvert.SerializeObject(result));//此处调用日志记录函数记录日志
             return Json(result);
         }
@@ -67,16 +87,18 @@ namespace Nzh.Master.Controllers
         [HttpPost("AddDemo")]
         public JsonResult AddDemo(string Name, string Sex, int Age, string Remark)
         {
-            var result = _testService.AddDemo(Name, Sex, Age, Sex);
-            if (string.IsNullOrEmpty(Name) && string.IsNullOrEmpty(Sex) && string.IsNullOrEmpty(Age.ToString())&& string.IsNullOrEmpty(Remark))
+            var result = new ResultModel<bool>();
+            try
             {
-                return Json("参数为空");
+                 result = _testService.AddDemo(Name, Sex, Age, Sex);
             }
-            else
+            catch (Exception ex)
             {
-                Logger.Info(JsonConvert.SerializeObject(result));//此处调用日志记录函数记录日志
-                return Json(result);
+                result.Code = -1;
+                result.Msg = ex.Message;
             }
+            Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            return Json(result);
         }
 
         /// <summary>
@@ -91,16 +113,18 @@ namespace Nzh.Master.Controllers
         [HttpPut("UpdateDemo")]
         public JsonResult UpdateDemo(string ID, string Name, string Sex, int Age, string Remark)
         {
-            var result = _testService.UpdateDemo(ID,Name, Sex, Age, Sex);
-            if (string.IsNullOrEmpty(ID) && string.IsNullOrEmpty(Name) && string.IsNullOrEmpty(Sex) && string.IsNullOrEmpty(Age.ToString())&& string.IsNullOrEmpty(Remark))
+            var result = new ResultModel<bool>();
+            try
             {
-                return Json("参数为空");
+                 result = _testService.UpdateDemo(ID, Name, Sex, Age, Sex);
             }
-            else
+            catch (Exception ex)
             {
-                Logger.Info(JsonConvert.SerializeObject(result));//此处调用日志记录函数记录日志
-                return Json(result);
+                result.Code = -1;
+                result.Msg = ex.Message;
             }
+            Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            return Json(result);
         }
 
         /// <summary>
@@ -111,16 +135,18 @@ namespace Nzh.Master.Controllers
         [HttpDelete("DeleteDemo")]
         public JsonResult DeleteDemo(string ID)
         {
-            var result = _testService.DeleteDemo(ID);
-            if (ID.Length == 0)
+            var result = new ResultModel<bool>();
+            try
             {
-                return Json("参数为空");
+                 result = _testService.DeleteDemo(ID);
             }
-            else
+            catch (Exception ex)
             {
-                Logger.Info(JsonConvert.SerializeObject(result));//此处调用日志记录函数记录日志
-                return Json(result);
+                result.Code = -1;
+                result.Msg = ex.Message;
             }
+            Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            return Json(result);
         }
     }
 }

@@ -24,16 +24,14 @@ namespace Nzh.Master.Service
         /// 获取Demo列表
         /// </summary>
         /// <returns></returns>
-        public  ResultModel<Demo> GetDmeoPageList(int pageIndex, int pageSize, string Name)
+        public ResultModel<Demo> GetDmeoPageList(int pageIndex, int pageSize, string Name)
         {
             PageModel pm = new PageModel() { PageIndex = pageIndex, PageSize = pageSize };
             Expression<Func<Demo, bool>> expression = ex => ex.Name == Name;
-            List<Demo> data = _demoRepository.GetPageList(expression, pm);
+            dynamic data = _demoRepository.GetPageList(expression, pm);
             ResultModel<Demo> rm = new ResultModel<Demo>();
-            rm.Code = 0;
             rm.Count = pm.PageCount;
             rm.Data = data;
-            rm.Msg = "成功";
             return rm;
         }
 
@@ -56,9 +54,9 @@ namespace Nzh.Master.Service
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public bool AddDemo(string Name, string Sex, int Age, string Remark)
+        public ResultModel<bool> AddDemo(string Name, string Sex, int Age, string Remark)
         {
-            bool result = false;
+            var result = new ResultModel<bool>();
             try
             {
                 _demoRepository.BeginTran();//开始事务
@@ -67,9 +65,8 @@ namespace Nzh.Master.Service
                 Demo.Sex = Sex;
                 Demo.Age = Age;
                 Demo.Remark = Remark;
-                result = _demoRepository.Insert(Demo);
+                result.Data =  _demoRepository.Insert(Demo);
                 _demoRepository.CommitTran();//提交事务
-                result = true;
                 return result;
             }
             catch (Exception ex)
@@ -88,9 +85,9 @@ namespace Nzh.Master.Service
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public bool UpdateDemo(Guid id, string Name, string Sex, int Age, string Remark)
+        public ResultModel<bool> UpdateDemo(Guid id, string Name, string Sex, int Age, string Remark)
         {
-            bool result = false;
+            var result = new ResultModel<bool>();
             try
             {
                 _demoRepository.BeginTran();//开始事务
@@ -102,9 +99,8 @@ namespace Nzh.Master.Service
                     Demo.Sex = Sex;
                     Demo.Age = Age;
                     Demo.Remark = Remark;
-                    result = _demoRepository.Update(Demo);
+                    result.Data = _demoRepository.Update(Demo);
                     _demoRepository.CommitTran();//提交事务
-                    result = true;
                 }
                 return result;
             }
@@ -120,18 +116,17 @@ namespace Nzh.Master.Service
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool DeleteDemo(Guid id)
+        public ResultModel<bool> DeleteDemo(Guid id)
         {
-            bool result = false;
+            var result = new ResultModel<bool>();
             try
             {
                 _demoRepository.BeginTran();//开始事务
                 var Demo = _demoRepository.GetById(id);
                 if (Demo != null)
                 {
-                    result = _demoRepository.DeleteById(id);
+                    result.Data = _demoRepository.DeleteById(id);
                     _demoRepository.CommitTran();//提交事务
-                    result = true;
                 }
                 return result;
             }
