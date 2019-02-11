@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Nzh.Master.Service
 {
-   public class TestService  : ITestService
+    public class TestService : ITestService
     {
         IDemoRepository _demoRepository;
 
@@ -31,7 +31,7 @@ namespace Nzh.Master.Service
             string sql = "SELECT * from  Demo";
             PageModel pm = new PageModel() { PageIndex = pageIndex, PageSize = pageSize };
             Expression<Func<Demo, bool>> expression = ex => ex.Name == Name;
-            dynamic data = _demoRepository.GetPageListBySql(sql,expression, pm);
+            dynamic data = _demoRepository.GetPageListBySql(sql, expression, pm);
             ResultModel<Demo> rm = new ResultModel<Demo>();
             rm.Count = pm.PageCount;
             rm.Data = data;
@@ -58,7 +58,7 @@ namespace Nzh.Master.Service
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public ResultModel<bool> AddDemo(string Name, string Sex, int Age,string Remark)
+        public ResultModel<bool> AddDemo(string Name, string Sex, int Age, string Remark)
         {
             var result = new ResultModel<bool>();
             try
