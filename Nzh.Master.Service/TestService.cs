@@ -43,7 +43,7 @@ namespace Nzh.Master.Service
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
-        public Demo GetDemoById(string ID)
+        public Demo GetDemoById(Guid ID)
         {
             string sql = "SELECT * from  Demo where ID=@ID";
             var model = _demoRepository.Get(sql, new { ID = ID });
@@ -99,14 +99,14 @@ namespace Nzh.Master.Service
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public ResultModel<bool> UpdateDemo(string ID, string Name, string Sex, int Age, string Remark)
+        public ResultModel<bool> UpdateDemo(Guid ID, string Name, string Sex, int Age, string Remark)
         {
             var result = new ResultModel<bool>();
             try
             {
                 _demoRepository.BeginTran(); //开始事务
                 Demo entity = new Demo();
-                entity.ID = Guid.Parse(ID);
+                entity.ID = ID;
                 entity.Name = Name;
                 entity.Sex = Sex;
                 entity.Age = Age;
@@ -136,7 +136,7 @@ namespace Nzh.Master.Service
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
-        public ResultModel<bool> DeleteDemo(string ID)
+        public ResultModel<bool> DeleteDemo(Guid ID)
         {
             var result = new ResultModel<bool>();
             try

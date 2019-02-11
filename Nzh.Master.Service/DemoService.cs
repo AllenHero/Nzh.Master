@@ -97,7 +97,7 @@ namespace Nzh.Master.Service
                 var Demo = _demoRepository.GetById(ID);
                 if (Demo != null)
                 {
-                    Demo.ID = ID;
+                    Demo.ID =ID;
                     Demo.Name = Name;
                     Demo.Sex = Sex;
                     Demo.Age = Age;
