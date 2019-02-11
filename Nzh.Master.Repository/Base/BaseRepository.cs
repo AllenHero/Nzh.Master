@@ -574,7 +574,7 @@ namespace Nzh.Master.Repository.Base
         /// <returns></returns>
         public bool Insert(T insertObj)
         {
-            return this.db.Insertable(insertObj).ExecuteCommand() > 0;
+            return db.Insertable(insertObj).ExecuteCommand() > 0;
         }
 
         /// <summary>
@@ -584,7 +584,7 @@ namespace Nzh.Master.Repository.Base
         /// <returns></returns>
         public int InsertReturnIdentity(T insertObj)
         {
-            return this.db.Insertable(insertObj).ExecuteReturnIdentity();
+            return db.Insertable(insertObj).ExecuteReturnIdentity();
         }
 
         /// <summary>
@@ -594,7 +594,7 @@ namespace Nzh.Master.Repository.Base
         /// <returns></returns>
         public bool InsertRange(T[] insertObjs)
         {
-            return this.db.Insertable(insertObjs).ExecuteCommand() > 0;
+            return db.Insertable(insertObjs).ExecuteCommand() > 0;
         }
 
         /// <summary>
@@ -604,7 +604,7 @@ namespace Nzh.Master.Repository.Base
         /// <returns></returns>
         public bool InsertRange(List<T>[] insertObjs)
         {
-            return this.db.Insertable(insertObjs).ExecuteCommand() > 0;
+            return db.Insertable(insertObjs).ExecuteCommand() > 0;
         }
 
         #endregion
@@ -618,7 +618,7 @@ namespace Nzh.Master.Repository.Base
         /// <returns></returns>
         public bool Update(T updateObj)
         {
-            return this.db.Updateable(updateObj).ExecuteCommand() > 0;
+            return db.Updateable(updateObj).ExecuteCommand() > 0;
         }
 
         /// <summary>
@@ -628,7 +628,7 @@ namespace Nzh.Master.Repository.Base
         /// <returns></returns>
         public bool UpdateRange(T[] updateObjs)
         {
-            return this.db.Updateable(updateObjs).ExecuteCommand() > 0;
+            return db.Updateable(updateObjs).ExecuteCommand() > 0;
         }
 
         /// <summary>
@@ -639,7 +639,7 @@ namespace Nzh.Master.Repository.Base
         /// <returns></returns>
         public bool Update(Expression<Func<T, T>> columns, Expression<Func<T, bool>> whereExpression)
         {
-            return this.db.Updateable<T>().UpdateColumns(columns).Where(whereExpression).ExecuteCommand() > 0;
+            return db.Updateable<T>().UpdateColumns(columns).Where(whereExpression).ExecuteCommand() > 0;
         }
 
         #endregion
@@ -653,7 +653,7 @@ namespace Nzh.Master.Repository.Base
         /// <returns></returns>
         public bool Delete(T deleteObj)
         {
-            return this.db.Deleteable<T>().Where(deleteObj).ExecuteCommand() > 0;
+            return db.Deleteable<T>().Where(deleteObj).ExecuteCommand() > 0;
         }
 
         /// <summary>
@@ -663,7 +663,7 @@ namespace Nzh.Master.Repository.Base
         /// <returns></returns>
         public bool Delete(Expression<Func<T, bool>> whereExpression)
         {
-            return this.db.Deleteable<T>().Where(whereExpression).ExecuteCommand() > 0;
+            return db.Deleteable<T>().Where(whereExpression).ExecuteCommand() > 0;
         }
 
         /// <summary>
@@ -673,7 +673,7 @@ namespace Nzh.Master.Repository.Base
         /// <returns></returns>
         public bool DeleteById(dynamic id)
         {
-            return this.db.Deleteable<T>().In(id).ExecuteCommand() > 0;
+            return db.Deleteable<T>().In(id).ExecuteCommand() > 0;
         }
 
         /// <summary>
@@ -683,7 +683,7 @@ namespace Nzh.Master.Repository.Base
         /// <returns></returns>
         public bool DeleteByIds(dynamic[] ids)
         {
-            return this.db.Deleteable<T>().In(ids).ExecuteCommand() > 0;
+            return db.Deleteable<T>().In(ids).ExecuteCommand() > 0;
         }
 
         #endregion
