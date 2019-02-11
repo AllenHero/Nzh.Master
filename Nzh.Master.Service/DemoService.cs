@@ -64,6 +64,7 @@ namespace Nzh.Master.Service
             {
                 _demoRepository.BeginTran();//开始事务
                 Demo Demo = new Demo();
+                Demo.ID = Guid.NewGuid();
                 Demo.Name = Name;
                 Demo.Sex = Sex;
                 Demo.Age = Age;
@@ -97,7 +98,6 @@ namespace Nzh.Master.Service
                 var Demo = _demoRepository.GetById(ID);
                 if (Demo != null)
                 {
-                    Demo.ID =ID;
                     Demo.Name = Name;
                     Demo.Sex = Sex;
                     Demo.Age = Age;
