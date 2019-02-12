@@ -81,6 +81,11 @@ namespace Nzh.Master.Repository.Base
             return db.SqlQueryable<T>(Sql).ToList();
         }
 
+        //public async Task<List<T>> GetListBySqlAsync(string Sql)
+        //{
+        //    return await Task.Run(() => db.SqlQueryable<T>(Sql).ToList());
+        //}
+
         /// <summary>
         /// 执行sql根据条件获取List
         /// </summary>
