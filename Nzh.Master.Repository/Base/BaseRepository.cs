@@ -41,7 +41,7 @@ namespace Nzh.Master.Repository.Base
             entityDB = context.GetEntityDB<T>(db);
         }
 
-        #region  Transaction
+        #region  事务
 
         /// <summary>
         /// 开始事务
@@ -69,7 +69,7 @@ namespace Nzh.Master.Repository.Base
 
         #endregion
 
-        #region   About Sql
+        #region    Sql
 
         /// <summary>
         /// 执行sql获取List
@@ -633,7 +633,7 @@ namespace Nzh.Master.Repository.Base
 
         #endregion
 
-        #region Other
+        #region 其他
 
         /// <summary>
         /// 查询存储过程
@@ -848,7 +848,7 @@ namespace Nzh.Master.Repository.Base
 
         #endregion
 
-        #region  Query
+        #region  查询
 
         /// <summary>
         ///根据ID获取单个实体
@@ -1051,7 +1051,7 @@ namespace Nzh.Master.Repository.Base
 
         #endregion
 
-        #region  Insert
+        #region  新增
 
         /// <summary>
         /// 新增
@@ -1135,7 +1135,7 @@ namespace Nzh.Master.Repository.Base
 
         #endregion
 
-        #region   Update
+        #region   修改
 
         /// <summary>
         /// 更新实体
@@ -1221,7 +1221,7 @@ namespace Nzh.Master.Repository.Base
 
         #endregion
 
-        #region  Delete
+        #region  删除
 
         /// <summary>
         /// 删除实体
