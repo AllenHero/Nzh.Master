@@ -51,5 +51,8 @@ namespace Nzh.Master.IService
         /// <param name="ID"></param>
         /// <returns></returns>
         ResultModel<bool> DeleteDemo(Guid ID);
+
+
+        List<Demo> TestExportExcel(string Name);
     }
 }

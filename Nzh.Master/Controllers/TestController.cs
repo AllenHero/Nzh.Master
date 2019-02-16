@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -9,6 +11,7 @@ using Nzh.Frame.Common.Logger;
 using Nzh.Master.IService;
 using Nzh.Master.Model;
 using Nzh.Master.Model.Base;
+using OfficeOpenXml;
 
 namespace Nzh.Master.Controllers
 {
@@ -20,14 +23,16 @@ namespace Nzh.Master.Controllers
     public class TestController : Controller
     {
         ITestService _testService;
+        private IHostingEnvironment _hostingEnvironment;
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="testService"></param>
-        public TestController(ITestService testService)
+        public TestController(ITestService testService, IHostingEnvironment hostingEnvironment)
         {
             _testService = testService;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         /// <summary>
@@ -147,6 +152,34 @@ namespace Nzh.Master.Controllers
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
             return Json(result);
+        }
+
+        /// <summary>
+        /// 测试导出
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
+        [HttpGet("TestExcelExport")]
+        public IActionResult TestExportExcel(string Name)
+        {
+            //string sWebRootFolder = _hostingEnvironment.WebRootPath;
+            string sWebRootFolder = @"D:\Github\Nzh.Master\Nzh.Master\Doc";
+            string sFileName = $@"ExcelExport{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx";
+            var path = Path.Combine(sWebRootFolder, sFileName);
+            FileInfo file = new FileInfo(path);
+            List<Demo> list = _testService.TestExportExcel(Name);
+            if (file.Exists)
+            {
+                file.Delete();
+                file = new FileInfo(path);
+            }
+            using (ExcelPackage package = new ExcelPackage(file))
+            {
+                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("测试Test");
+                worksheet.Cells.LoadFromCollection(list, true);
+                package.Save();
+            }
+            return File(new FileStream(Path.Combine(sWebRootFolder, sFileName), FileMode.Open), "application/octet-stream", $"Excel导出测试{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx");
         }
     }
 }

@@ -146,5 +146,12 @@ namespace Nzh.Master.Service
                 throw ex;
             }
         }
+
+        public List<Demo> TestExportExcel(string Name)
+        {
+            string sql = "select * from Demo where Name=@Name";
+            List<Demo> list = _demoRepository.GetList(sql, new { Name = Name });
+            return list;
+        }
     }
 }
