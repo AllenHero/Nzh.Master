@@ -160,26 +160,80 @@ namespace Nzh.Master.Controllers
         /// <param name="Name"></param>
         /// <returns></returns>
         [HttpGet("TestExcelExport")]
-        public IActionResult TestExportExcel(string Name)
+        public JsonResult TestExportExcel()
         {
-            //string sWebRootFolder = _hostingEnvironment.WebRootPath;
-            string sWebRootFolder = @"D:\Github\Nzh.Master\Nzh.Master\Doc";
-            string sFileName = $@"ExcelExport{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx";
-            var path = Path.Combine(sWebRootFolder, sFileName);
-            FileInfo file = new FileInfo(path);
-            List<Demo> list = _testService.TestExportExcel(Name);
-            if (file.Exists)
+            var result = new ResultModel<bool>();
+            try
             {
-                file.Delete();
-                file = new FileInfo(path);
+                //string sWebRootFolder = _hostingEnvironment.WebRootPath;
+                string sWebRootFolder = @"D:\Github\Nzh.Master\Nzh.Master\Doc";
+                string sFileName = $@"ExcelExport{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx";
+                var path = Path.Combine(sWebRootFolder, sFileName);
+                FileInfo file = new FileInfo(path);
+                List<Demo> list = _testService.TestExportExcel();
+                if (file.Exists)
+                {
+                    file.Delete();
+                    file = new FileInfo(path);
+                }
+                using (ExcelPackage package = new ExcelPackage(file))
+                {
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("测试Test");
+                    worksheet.Cells.LoadFromCollection(list, true);
+                    package.Save();
+                }
+               var info= File(new FileStream(Path.Combine(sWebRootFolder, sFileName), FileMode.Open), "application/octet-stream", $"Excel导出测试{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx");
             }
-            using (ExcelPackage package = new ExcelPackage(file))
+            catch (Exception ex)
             {
-                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("测试Test");
-                worksheet.Cells.LoadFromCollection(list, true);
-                package.Save();
+                result.Code = -1;
+                result.Msg = ex.Message;
             }
-            return File(new FileStream(Path.Combine(sWebRootFolder, sFileName), FileMode.Open), "application/octet-stream", $"Excel导出测试{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx");
+            Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            return Json(result);
+        }
+
+        /// <summary>
+        /// 测试导入
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("TestImportExcel")]
+        public JsonResult TestImportExcel()
+        {
+            var result = new ResultModel<bool>();
+            try
+            {
+                string filepath=@"D:\测试导入.xlsx";
+                FileInfo file = new FileInfo(filepath);
+                if (file != null)
+                {
+                    using (ExcelPackage package = new ExcelPackage(file))
+                    {
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
+                        int rowCount = worksheet.Dimension.Rows;
+                        int ColCount = worksheet.Dimension.Columns;
+                        var demos = new List<Demo>();
+                        for (int row = 2; row <= rowCount; row++)
+                        {
+                            Demo demo = new Demo();
+                            demo.ID = Guid.Parse(worksheet.Cells[row, 1].Value.ToString());
+                            demo.Name = worksheet.Cells[row, 2].Value.ToString();
+                            demo.Sex = worksheet.Cells[row, 3].Value.ToString();
+                            demo.Age =int.Parse( worksheet.Cells[row, 4].Value.ToString());
+                            demo.Remark = worksheet.Cells[row, 5].Value.ToString();
+                            demos.Add(demo);
+                        }
+                        result= _testService.TestImportExcel(demos);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Code = -1;
+                result.Msg = ex.Message;
+            }
+            Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            return Json(result);
         }
     }
 }

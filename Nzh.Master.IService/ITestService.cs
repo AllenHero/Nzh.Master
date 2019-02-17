@@ -52,7 +52,17 @@ namespace Nzh.Master.IService
         /// <returns></returns>
         ResultModel<bool> DeleteDemo(Guid ID);
 
+        /// <summary>
+        /// 测试导出
+        /// </summary>
+        /// <returns></returns>
+        List<Demo> TestExportExcel();
 
-        List<Demo> TestExportExcel(string Name);
+        /// <summary>
+        /// 测试导入
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        ResultModel<bool> TestImportExcel(List<Demo> list);
     }
 }

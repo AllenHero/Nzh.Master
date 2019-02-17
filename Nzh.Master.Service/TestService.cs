@@ -147,11 +147,40 @@ namespace Nzh.Master.Service
             }
         }
 
-        public List<Demo> TestExportExcel(string Name)
+        /// <summary>
+        /// 测试导出
+        /// </summary>
+        /// <returns></returns>
+        public List<Demo> TestExportExcel()
         {
-            string sql = "select * from Demo where Name=@Name";
-            List<Demo> list = _demoRepository.GetList(sql, new { Name = Name });
+            string sql = "select * from Demo ";
+            List<Demo> list = _demoRepository.GetList(sql);
             return list;
+        }
+
+        /// <summary>
+        /// 测试导入
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public ResultModel<bool> TestImportExcel(List<Demo>  list)
+        {
+            var result = new ResultModel<bool>();
+            try
+            {
+                _demoRepository.BeginTran();//开始事务
+                foreach (var item in list)
+                {
+                    result.Data = _demoRepository.Insert(item);
+                }
+                _demoRepository.CommitTran();//提交事务
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _demoRepository.RollbackTran();//回滚事务
+                throw ex;
+            }
         }
     }
 }
