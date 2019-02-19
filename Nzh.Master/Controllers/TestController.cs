@@ -186,7 +186,7 @@ namespace Nzh.Master.Controllers
                     worksheet.Cells.LoadFromCollection(list, true);
                     package.Save();
                 }
-               var info= File(new FileStream(Path.Combine(sWebRootFolder, sFileName), FileMode.Open), "application/octet-stream", $"Excel导出测试{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx");
+                var info= File(new FileStream(Path.Combine(sWebRootFolder, sFileName), FileMode.Open), "application/octet-stream", $"Excel导出测试{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx");
             }
             catch (Exception ex)
             {
@@ -265,8 +265,8 @@ namespace Nzh.Master.Controllers
                     //文件后缀
                     var fileExtension = Path.GetExtension(uploadfile.FileName);
                     //判断后缀是否是图片
-                    //const string fileFilt = ".gif|.jpg|.php|.jsp|.jpeg|.png|......"; //图片
-                    const string fileFilt = ".doc|.xls|.ppt|.txt|.pdf|.html|......";   //附件
+                    const string fileFilt = ".gif|.jpg|.php|.jsp|.jpeg|.png|......"; //图片
+                    //const string fileFilt = ".doc|.xls|.ppt|.txt|.pdf|.html|......";   //附件
                     if (fileExtension == null)
                     {
                         return new JsonResult(new ResultModel<string> { Code = -1, Msg = "上传的文件没有后缀" });
@@ -315,8 +315,9 @@ namespace Nzh.Master.Controllers
         /// <param name="ID"></param>
         /// <returns></returns>
         [HttpGet("TestDownLoadPicture")]
-        public IActionResult TestDownLoadPicture(Guid ID)
+        public JsonResult TestDownLoadPicture(Guid ID)
         {
+            var result = new ResultModel<bool>();
             try
             {
                 var webRootPath = @"D:\Github\Nzh.Master\Nzh.Master\";
@@ -324,12 +325,15 @@ namespace Nzh.Master.Controllers
                 picture = _pictureService.TestDownLoadPicture(ID);
                 var addrUrl = Path.Combine(Directory.GetCurrentDirectory(), $@"{webRootPath+picture.FilePath}");
                 FileStream fs = new FileStream(addrUrl, FileMode.Open);
-                return File(fs, "application/vnd.android.package-archive", picture.FilePath);
+                var info = File(fs, "application/vnd.android.package-archive", picture.FilePath);
             }
             catch (Exception ex)
             {
-                throw ex;
+                result.Code = -1;
+                result.Msg = ex.Message;
             }
+            Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            return Json(result);
         } 
     }
 }
