@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.StaticFiles;
 using Newtonsoft.Json;
 using Nzh.Frame.Common.Logger;
 using Nzh.Master.IService;
@@ -307,5 +308,28 @@ namespace Nzh.Master.Controllers
             }
             return Json(result);
         }
+
+        /// <summary>
+        /// 测试图片下载
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        [HttpGet("TestDownLoadPicture")]
+        public IActionResult TestDownLoadPicture(Guid ID)
+        {
+            try
+            {
+                var webRootPath = @"D:\Github\Nzh.Master\Nzh.Master\";
+                Picture picture=new Picture();
+                picture = _pictureService.TestDownLoadPicture(ID);
+                var addrUrl = Path.Combine(Directory.GetCurrentDirectory(), $@"{webRootPath+picture.FilePath}");
+                FileStream fs = new FileStream(addrUrl, FileMode.Open);
+                return File(fs, "application/vnd.android.package-archive", picture.FilePath);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        } 
     }
 }

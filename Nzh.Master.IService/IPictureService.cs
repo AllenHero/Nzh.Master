@@ -15,5 +15,12 @@ namespace Nzh.Master.IService
         /// <param name="model"></param>
         /// <returns></returns>
         ResultModel<bool> TestUpLoadPicture(Picture model);
+
+        /// <summary>
+        /// 测试图片下载
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        Picture TestDownLoadPicture(Guid ID);
     }
 }

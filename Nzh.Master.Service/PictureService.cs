@@ -38,5 +38,16 @@ namespace Nzh.Master.Service
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// 测试图片下载
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public Picture TestDownLoadPicture(Guid ID)
+        {
+            var demoModel = _pictureRepository.GetById(ID);
+            return demoModel;
+        }
     }
 }
