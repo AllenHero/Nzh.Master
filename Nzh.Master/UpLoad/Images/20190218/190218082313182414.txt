@@ -1,0 +1,20 @@
+in:name
+in:description
+in:readme
+stars:> Êý×Ö
+stars:10..20
+license:apache-2.0 spring cloud
+language:java
+user:joshlong
+org:spring-cloud
+
+SqlSugar :https://github.com/AllenHero/Nzh.Master.git 
+Dapper :https://github.com/AllenHero/Nzh.Admin.git
+EF: https://github.com/AllenHero/Nzh.Frame.git
+
+http://www.cnblogs.com/dunitian/p/4822808.html#skill ¼¼ÊõÕ»
+
+
+
+
+

@@ -64,5 +64,7 @@ namespace Nzh.Master.IService
         /// <param name="list"></param>
         /// <returns></returns>
         ResultModel<bool> TestImportExcel(List<Demo> list);
+
+       
     }
 }

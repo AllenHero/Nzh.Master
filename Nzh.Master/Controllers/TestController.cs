@@ -23,16 +23,20 @@ namespace Nzh.Master.Controllers
     public class TestController : Controller
     {
         ITestService _testService;
+        IPictureService _pictureService;
         private IHostingEnvironment _hostingEnvironment;
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="testService"></param>
-        public TestController(ITestService testService, IHostingEnvironment hostingEnvironment)
+        /// <param name="hostingEnvironment"></param> 
+        /// <param name="pictureService"></param> 
+        public TestController(ITestService testService, IHostingEnvironment hostingEnvironment, IPictureService pictureService)
         {
             _testService = testService;
             _hostingEnvironment = hostingEnvironment;
+            _pictureService = pictureService;
         }
 
         /// <summary>
@@ -232,6 +236,75 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            return Json(result);
+        }
+
+
+        /// <summary>
+        /// 测试图片上传
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("TestUpLoadPicture")]
+        public JsonResult TestUpLoadPicture(IFormFile uploadfile)
+        {
+            var result = new ResultModel<bool>();
+            try
+            {
+                uploadfile = Request.Form.Files[0];
+                var now = DateTime.Now;
+                //var webRootPath = _hostingEnvironment.WebRootPath;
+                var webRootPath = @"D:\Github\Nzh.Master\Nzh.Master\";
+                var filePath = string.Format("/UpLoad/Images/{0}/", now.ToString("yyyyMMdd"));
+                if (!Directory.Exists(webRootPath + filePath))
+                {
+                    Directory.CreateDirectory(webRootPath + filePath);
+                }
+                if (uploadfile != null)
+                {
+                    //文件后缀
+                    var fileExtension = Path.GetExtension(uploadfile.FileName);
+                    //判断后缀是否是图片
+                    //const string fileFilt = ".gif|.jpg|.php|.jsp|.jpeg|.png|......"; //图片
+                    const string fileFilt = ".doc|.xls|.ppt|.txt|.pdf|.html|......";   //附件
+                    if (fileExtension == null)
+                    {
+                        return new JsonResult(new ResultModel<string> { Code = -1, Msg = "上传的文件没有后缀" });
+                    }
+                    if (fileFilt.IndexOf(fileExtension.ToLower(), StringComparison.Ordinal) <= -1)
+                    {
+                        return new JsonResult(new ResultModel<string> { Code = -1, Msg = "上传的文件不是图片" });
+                    }
+                    //判断文件大小    
+                    long length = uploadfile.Length;
+                    if (length > 1024 * 1024 * 2) //2M
+                    {
+                        return new JsonResult(new ResultModel<string> { Code = -1, Msg = "上传的文件不能大于2M" });
+                    }
+                    var strDateTime = DateTime.Now.ToString("yyMMddhhmmssfff"); //取得时间字符串
+                    var strRan = Convert.ToString(new Random().Next(100, 999)); //生成三位随机数
+                    var saveName = strDateTime + strRan + fileExtension;
+                    //插入图片数据
+                    var picture = new Picture
+                    {
+                        ID = Guid.NewGuid(),
+                        FilePath = filePath + saveName,
+                    };
+                    using (FileStream fs = System.IO.File.Create(webRootPath + filePath + saveName))
+                    {
+                        uploadfile.CopyTo(fs);
+                        fs.Flush();
+                    }
+                    result= _pictureService.TestUpLoadPicture(picture);
+                    Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+                    return new JsonResult(new ResultModel<string> { Code = 0, Msg = "上传成功", });
+                }
+                return new JsonResult(new ResultModel<string> { Code = -1, Msg = "上传失败" });
+            }
+            catch (Exception ex)
+            {
+                result.Code = -1;
+                result.Msg = ex.Message;
+            }
             return Json(result);
         }
     }

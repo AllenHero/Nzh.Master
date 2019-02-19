@@ -15,6 +15,7 @@ using Nzh.Master.IRepository;
 using Nzh.Master.IService;
 using Nzh.Master.Service;
 using Nzh.Master.SwaggerHelp;
+using Nzh.Master.UpLoadFile;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Nzh.Master
@@ -52,6 +53,7 @@ namespace Nzh.Master
                     Description = ".NetCore WebAPI框架",
                     TermsOfService = "None",
                     Contact = new Swashbuckle.AspNetCore.Swagger.Contact { Name = "Nzh.Master", Email = "", Url = "" }
+
                 });
                 //添加注释服务
                 var basePath = PlatformServices.Default.Application.ApplicationBasePath;
@@ -66,6 +68,8 @@ namespace Nzh.Master
                 c.IncludeXmlComments(comonPath);
                 //添加对控制器的标签(描述)
                 c.DocumentFilter<SwaggerDocTag>();
+                //上传
+                c.OperationFilter<SwaggerFileUploadFilter>();
             });
 
             #endregion
