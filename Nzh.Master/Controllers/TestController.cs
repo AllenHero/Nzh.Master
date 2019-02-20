@@ -323,7 +323,7 @@ namespace Nzh.Master.Controllers
                 var webRootPath = @"D:\Github\Nzh.Master\Nzh.Master\";
                 Picture picture=new Picture();
                 picture = _pictureService.TestDownLoadPicture(ID);
-                var addrUrl = Path.Combine(Directory.GetCurrentDirectory(), $@"{webRootPath+picture.FilePath}");
+                var addrUrl = Path.Combine(Directory.GetCurrentDirectory(), $@"{webRootPath + picture.FilePath}");
                 FileStream fs = new FileStream(addrUrl, FileMode.Open);
                 var info = File(fs, "application/vnd.android.package-archive", picture.FilePath);
             }
