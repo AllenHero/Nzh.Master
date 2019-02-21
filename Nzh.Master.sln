@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Master.Repository", "Nz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Master.Service", "Nzh.Master.Service\Nzh.Master.Service.csproj", "{C48584D1-9692-477C-A9CF-791FEEB84E0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Master.Extension", "Nzh.Master.Extension\Nzh.Master.Extension.csproj", "{4ECB764A-3220-4103-9C69-9D980ACD5897}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Master.Extension", "Nzh.Master.Extension\Nzh.Master.Extension.csproj", "{4ECB764A-3220-4103-9C69-9D980ACD5897}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Master.Web", "Nzh.Master.Web\Nzh.Master.Web.csproj", "{BF72AFD6-00BB-4449-9907-7D375181E60E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{4ECB764A-3220-4103-9C69-9D980ACD5897}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ECB764A-3220-4103-9C69-9D980ACD5897}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ECB764A-3220-4103-9C69-9D980ACD5897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF72AFD6-00BB-4449-9907-7D375181E60E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF72AFD6-00BB-4449-9907-7D375181E60E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF72AFD6-00BB-4449-9907-7D375181E60E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF72AFD6-00BB-4449-9907-7D375181E60E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
