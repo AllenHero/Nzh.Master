@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Nzh.Master.Repository
 {
-    public class PictureRepository : BaseRepository<Picture>, IPictureRepository
+    public class EnclosureRepository : BaseRepository<Enclosure>, IEnclosureRepository
     {
     }
 }

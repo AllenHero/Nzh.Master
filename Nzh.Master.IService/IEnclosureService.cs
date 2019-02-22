@@ -7,20 +7,20 @@ using System.Text;
 
 namespace Nzh.Master.IService
 {
-    public interface IPictureService 
+    public interface IEnclosureService
     {
         /// <summary>
         /// 测试图片上传
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        ResultModel<bool> TestUpLoadPicture(Picture model);
+        ResultModel<bool> TestUpLoadPicture(Enclosure model);
 
         /// <summary>
         /// 测试图片下载
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
-        Picture TestDownLoadPicture(Guid ID);
+        Enclosure TestDownLoadPicture(Guid ID);
     }
 }

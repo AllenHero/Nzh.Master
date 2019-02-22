@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Nzh.Master.IRepository
 {
-    public interface IPictureRepository : IBaseRepository<Picture>
+    public interface IEnclosureRepository : IBaseRepository<Enclosure>
     {
     }
 }

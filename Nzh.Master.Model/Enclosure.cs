@@ -7,7 +7,7 @@ namespace Nzh.Master.Model
     /// <summary>
     /// 图片
     /// </summary>
-    public class Picture
+    public class Enclosure
     {
         /// <summary>
         /// ID

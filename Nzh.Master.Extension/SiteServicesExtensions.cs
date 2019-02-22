@@ -27,8 +27,8 @@ namespace Nzh.Master.Extension
             services.AddScoped<ITestRepository, TestRepository>();
             services.AddScoped<ITestService, TestService>();
 
-            services.AddScoped<IPictureRepository, PictureRepository>();
-            services.AddScoped<IPictureService, PictureService>();
+            services.AddScoped<IEnclosureRepository, EnclosureRepository>();
+            services.AddScoped<IEnclosureService, EnclosureService>();
 
             return services;
         }

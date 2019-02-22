@@ -8,13 +8,13 @@ using System.Text;
 
 namespace Nzh.Master.Service
 {
-    public class PictureService :  IPictureService
+    public class EnclosureService : IEnclosureService
     {
-        IPictureRepository _pictureRepository;
+        IEnclosureRepository _enclosureRepository;
 
-        public PictureService(IPictureRepository pictureRepository)
+        public EnclosureService(IEnclosureRepository enclosureRepository)
         {
-            _pictureRepository = pictureRepository;
+            _enclosureRepository = enclosureRepository;
         }
 
         /// <summary>
@@ -22,19 +22,19 @@ namespace Nzh.Master.Service
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public ResultModel<bool> TestUpLoadPicture(Picture model)
+        public ResultModel<bool> TestUpLoadPicture(Enclosure model)
         {
             var result = new ResultModel<bool>();
             try
             {
-                _pictureRepository.BeginTran();//开始事务
-                result.Data = _pictureRepository.Insert(model);
-                _pictureRepository.CommitTran();//提交事务
+                _enclosureRepository.BeginTran();//开始事务
+                result.Data = _enclosureRepository.Insert(model);
+                _enclosureRepository.CommitTran();//提交事务
                 return result;
             }
             catch (Exception ex)
             {
-                _pictureRepository.RollbackTran();//回滚事务
+                _enclosureRepository.RollbackTran();//回滚事务
                 throw ex;
             }
         }
@@ -44,9 +44,9 @@ namespace Nzh.Master.Service
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
-        public Picture TestDownLoadPicture(Guid ID)
+        public Enclosure TestDownLoadPicture(Guid ID)
         {
-            var demoModel = _pictureRepository.GetById(ID);
+            var demoModel = _enclosureRepository.GetById(ID);
             return demoModel;
         }
     }

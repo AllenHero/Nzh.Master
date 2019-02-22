@@ -24,7 +24,7 @@ namespace Nzh.Master.Controllers
     public class TestController : Controller
     {
         ITestService _testService;
-        IPictureService _pictureService;
+        IEnclosureService _enclosureService;
         private IHostingEnvironment _hostingEnvironment;
 
         /// <summary>
@@ -33,11 +33,11 @@ namespace Nzh.Master.Controllers
         /// <param name="testService"></param>
         /// <param name="hostingEnvironment"></param> 
         /// <param name="pictureService"></param> 
-        public TestController(ITestService testService, IHostingEnvironment hostingEnvironment, IPictureService pictureService)
+        public TestController(ITestService testService, IHostingEnvironment hostingEnvironment, IEnclosureService enclosureService)
         {
             _testService = testService;
             _hostingEnvironment = hostingEnvironment;
-            _pictureService = pictureService;
+            _enclosureService = enclosureService;
         }
 
         /// <summary>
@@ -285,7 +285,7 @@ namespace Nzh.Master.Controllers
                     var strRan = Convert.ToString(new Random().Next(100, 999)); //生成三位随机数
                     var saveName = strDateTime + strRan + fileExtension;
                     //插入图片数据
-                    var picture = new Picture
+                    var picture = new Enclosure
                     {
                         ID = Guid.NewGuid(),
                         FilePath = filePath + saveName,
@@ -295,7 +295,7 @@ namespace Nzh.Master.Controllers
                         uploadfile.CopyTo(fs);
                         fs.Flush();
                     }
-                    result= _pictureService.TestUpLoadPicture(picture);
+                    result= _enclosureService.TestUpLoadPicture(picture);
                     Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
                     return new JsonResult(new ResultModel<string> { Code = 0, Msg = "上传成功", });
                 }
@@ -321,8 +321,8 @@ namespace Nzh.Master.Controllers
             try
             {
                 var webRootPath = @"D:\Github\Nzh.Master\Nzh.Master\";
-                Picture picture=new Picture();
-                picture = _pictureService.TestDownLoadPicture(ID);
+                Enclosure picture =new Enclosure();
+                picture = _enclosureService.TestDownLoadPicture(ID);
                 var addrUrl = Path.Combine(Directory.GetCurrentDirectory(), $@"{webRootPath + picture.FilePath}");
                 FileStream fs = new FileStream(addrUrl, FileMode.Open);
                 var info = File(fs, "application/vnd.android.package-archive", picture.FilePath);
