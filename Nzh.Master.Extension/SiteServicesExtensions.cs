@@ -39,6 +39,9 @@ namespace Nzh.Master.Extension
             services.AddScoped<IMenuRepository, MenuRepository>();
             services.AddScoped<IMenuService, MenuService>();
 
+            services.AddScoped<IFunctionRepository, FunctionRepository>();
+            services.AddScoped<IFunctionService, FunctionService>();
+
             return services;
         }
     }
