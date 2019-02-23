@@ -27,7 +27,7 @@ namespace Nzh.Master.Service
         /// <param name="PageSize"></param>
         /// <param name="Name"></param>
         /// <returns></returns>
-        public ResultModel<Demo> GetDmeoPageList(int PageIndex, int PageSize, string Name)
+        public ResultModel<Demo> GetDemoPageList(int PageIndex, int PageSize, string Name)
         {
             PageModel pm = new PageModel() { PageIndex = PageIndex, PageSize = PageSize };
             Expression<Func<Demo, bool>> expression = ex => ex.Name == Name;

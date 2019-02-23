@@ -16,7 +16,7 @@ namespace Nzh.Master.IService
         /// <param name="PageSize"></param>
         /// <param name="Name"></param>
         /// <returns></returns>
-        ResultModel<Demo> GetDmeoPageList(int PageIndex, int PageSize, string Name);
+        ResultModel<Demo> GetDemoPageList(int PageIndex, int PageSize, string Name);
 
         /// <summary>
         /// 获取Demo

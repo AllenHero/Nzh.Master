@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nzh.Master.Model.Enum;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -47,6 +48,6 @@ namespace Nzh.Master.Model
         /// <summary>
         /// IsDelete
         /// </summary>
-        public int IsDelete { get; set; }
+        public IsDelete IsDelete { get; set; }
     }
 }

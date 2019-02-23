@@ -26,7 +26,7 @@ namespace Nzh.Master.Service
         /// <param name="PageSize"></param>
         /// <param name="Name"></param>
         /// <returns></returns>
-        public ResultModel<Demo> GetDmeoPageList(int PageIndex, int PageSize, string Name)
+        public ResultModel<Demo> GetDemoPageList(int PageIndex, int PageSize, string Name)
         {
             string sql = "SELECT * from  Demo";
             PageModel pm = new PageModel() { PageIndex = PageIndex, PageSize = PageSize };

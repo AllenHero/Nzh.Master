@@ -47,13 +47,13 @@ namespace Nzh.Master.Controllers
         /// <param name="PageSize"></param>
         /// <param name="Name"></param>
         /// <returns></returns>
-        [HttpGet("GetDmeoPageList")]
-        public JsonResult GetDmeoPageList(int PageIndex, int PageSize, string Name)
+        [HttpGet("GetDemoPageList")]
+        public JsonResult GetDemoPageList(int PageIndex, int PageSize, string Name)
         {
             var result = new ResultModel<Demo>();
             try
             {
-                result = _testService.GetDmeoPageList(PageIndex, PageSize, Name);
+                result = _testService.GetDemoPageList(PageIndex, PageSize, Name);
             }
             catch (Exception ex)
             {
