@@ -2,13 +2,14 @@
 using Nzh.Master.IService;
 using Nzh.Master.Model;
 using Nzh.Master.Model.Base;
+using Nzh.Master.Service.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Nzh.Master.Service
 {
-    public class EnclosureService : IEnclosureService
+    public class EnclosureService : BaseService, IEnclosureService
     {
         IEnclosureRepository _enclosureRepository;
 

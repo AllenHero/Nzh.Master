@@ -1,4 +1,5 @@
-﻿using Nzh.Master.Model;
+﻿using Nzh.Master.IService.Base;
+using Nzh.Master.Model;
 using Nzh.Master.Model.Base;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Nzh.Master.IService
 {
-    public interface IDemoService 
+    public interface IDemoService: IBaseService
     {
         /// <summary>
         ///  获取Demo分页

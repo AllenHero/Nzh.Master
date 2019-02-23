@@ -1,4 +1,5 @@
 ﻿using Nzh.Master.IRepository.Base;
+using Nzh.Master.IService.Base;
 using Nzh.Master.Model;
 using Nzh.Master.Model.Base;
 using System;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace Nzh.Master.IService
 {
-    public interface IRoleService
+    public interface IRoleService : IBaseService
     {
         
     }

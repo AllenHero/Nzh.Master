@@ -2,6 +2,7 @@
 using Nzh.Master.IService;
 using Nzh.Master.Model;
 using Nzh.Master.Model.Base;
+using Nzh.Master.Service.Base;
 using SqlSugar;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Nzh.Master.Service
 {
-    public class DemoService : IDemoService
+    public class DemoService : BaseService, IDemoService
     {
         IDemoRepository _demoRepository;
 

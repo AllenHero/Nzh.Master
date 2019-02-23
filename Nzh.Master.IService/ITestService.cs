@@ -1,4 +1,5 @@
-﻿using Nzh.Master.Model;
+﻿using Nzh.Master.IService.Base;
+using Nzh.Master.Model;
 using Nzh.Master.Model.Base;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Nzh.Master.IService
 {
-    public interface ITestService
+    public interface ITestService : IBaseService
     {
         /// <summary>
         /// 获取Demo分页
