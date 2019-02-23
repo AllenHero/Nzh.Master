@@ -9,7 +9,7 @@ namespace Nzh.Master.Common.Helper
     /// <summary>
     /// Encryption辅助类
     /// </summary>
-    class EncryptionHelper
+    public  class EncryptionHelper
     {
         /// <summary>
         ///  AES 加密
@@ -47,7 +47,7 @@ namespace Nzh.Master.Common.Helper
         /// </summary>
         /// <param name="normalTxt"></param>
         /// <returns></returns>
-        public string DesEncrypt(string normalTxt)
+        public static string DesEncrypt(string normalTxt)
         {
             //byte[] byKey = System.Text.ASCIIEncoding.ASCII.GetBytes(_KEY);
             //byte[] byIV = System.Text.ASCIIEncoding.ASCII.GetBytes(_IV);

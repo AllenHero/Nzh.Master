@@ -1,4 +1,5 @@
-﻿using Nzh.Master.IRepository;
+﻿using Nzh.Master.Common.Helper;
+using Nzh.Master.IRepository;
 using Nzh.Master.IService;
 using Nzh.Master.Model;
 using Nzh.Master.Model.Base;
@@ -54,7 +55,7 @@ namespace Nzh.Master.Service
                 User User = new User();
                 User.UserID = Guid.NewGuid();
                 User.UserName = model.UserName;
-                User.UserPwd = model.UserPwd;
+                User.UserPwd = EncryptionHelper.DesEncrypt(model.UserPwd); //DES加密操作
                 User.UserEmail = model.UserEmail;
                 User.UserPhone = model.UserPhone;
                 User.CreateTime = GetSystemCurrentTime();
@@ -86,10 +87,10 @@ namespace Nzh.Master.Service
                 if (User!=null)
                 {
                     User.UserName = model.UserName;
-                    User.UserPwd = model.UserPwd;
+                    User.UserPwd = EncryptionHelper.DesEncrypt(model.UserPwd); //DES加密操作
                     User.UserEmail = model.UserEmail;
                     User.UserPhone = model.UserPhone;
-                    result.Data = _userRepository.Insert(User);
+                    result.Data = _userRepository.Update(User);
                     _userRepository.CommitTran();//提交事务
                 }
                 return result;
