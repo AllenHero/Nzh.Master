@@ -1,4 +1,5 @@
-﻿using Nzh.Master.Model.Enum;
+﻿using Nzh.Master.Model.BaseModel;
+using Nzh.Master.Model.Enum;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,7 @@ namespace Nzh.Master.Model
     /// <summary>
     /// UserRole
     /// </summary>
-    public class UserRole
+    public class UserRole : BaseEntity
     {
         /// <summary>
         /// UserRoleID
@@ -25,19 +26,5 @@ namespace Nzh.Master.Model
         /// </summary>
         public Guid RoleID { get; set; }
 
-        /// <summary>
-        /// CreateTime
-        /// </summary>
-        public DateTime CreateTime { get; set; }
-
-        /// <summary>
-        /// CreateUserID
-        /// </summary>
-        public Guid CreateUserID { get; set; }
-
-        /// <summary>
-        /// IsDelete
-        /// </summary>
-        public IsDelete IsDelete { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Nzh.Master.Model.Enum;
+﻿using Nzh.Master.Model.BaseModel;
+using Nzh.Master.Model.Enum;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,7 @@ namespace Nzh.Master.Model
     /// <summary>
     /// User
     /// </summary>
-    public class User
+    public class User : BaseEntity
     {
         /// <summary>
         /// UserID
@@ -36,16 +37,6 @@ namespace Nzh.Master.Model
         public string UserPhone { get; set; }
 
         /// <summary>
-        /// CreateTime 
-        /// </summary>
-        public DateTime CreateTime { get; set; }
-
-        /// <summary>
-        /// CreateUserID
-        /// </summary>
-        public Guid CreateUserID { get; set; }
-
-        /// <summary>
         /// LastLoginTime
         /// </summary>
         public DateTime LastLoginTime { get; set; }
@@ -55,9 +46,5 @@ namespace Nzh.Master.Model
         /// </summary>
         public int LoginCount { get; set; }
 
-        /// <summary>
-        /// IsDelete
-        /// </summary>
-        public IsDelete IsDelete { get; set; }
     }
 }
