@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Nzh.Master.Controllers
 {
+    /// <summary>
+    /// 角色
+    /// </summary>
     [Produces("application/json")]
     [Route("api/Role")]
     public class RoleController : Controller

@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Nzh.Master.Controllers
 {
+    /// <summary>
+    /// 菜单
+    /// </summary>
     [Produces("application/json")]
     [Route("api/Menu")]
     public class MenuController : Controller
