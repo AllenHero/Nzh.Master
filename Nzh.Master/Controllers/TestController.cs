@@ -32,7 +32,7 @@ namespace Nzh.Master.Controllers
         /// </summary>
         /// <param name="testService"></param>
         /// <param name="hostingEnvironment"></param> 
-        /// <param name="pictureService"></param> 
+        /// <param name="enclosureService"></param> 
         public TestController(ITestService testService, IHostingEnvironment hostingEnvironment, IEnclosureService enclosureService)
         {
             _testService = testService;

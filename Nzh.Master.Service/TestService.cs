@@ -163,7 +163,7 @@ namespace Nzh.Master.Service
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
-        public ResultModel<bool> TestImportExcel(List<Demo>  list)
+        public ResultModel<bool> TestImportExcel(List<Demo> list)
         {
             var result = new ResultModel<bool>();
             try
