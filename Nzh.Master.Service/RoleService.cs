@@ -55,7 +55,7 @@ namespace Nzh.Master.Service
                 Role.RoleName = model.RoleName;
                 Role.RoleRemark = model.RoleRemark; 
                 Role.CreateTime = GetSystemCurrentTime();
-                Role.CreateUserID = GetSystemCurrentUser();
+                Role.CreateUserID = GetSystemCurrentUserID();
                 Role.IsDelete = IsDelete.No;
                 result.Data = _roleRepository.Insert(Role);
                 _roleRepository.CommitTran();//提交事务

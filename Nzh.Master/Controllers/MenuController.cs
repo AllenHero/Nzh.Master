@@ -9,6 +9,7 @@ using Nzh.Frame.Common.Logger;
 using Nzh.Master.IService;
 using Nzh.Master.Model;
 using Nzh.Master.Model.Base;
+using Nzh.Master.Model.Enum;
 
 namespace Nzh.Master.Controllers
 {
@@ -21,14 +22,17 @@ namespace Nzh.Master.Controllers
     {
 
         IMenuService _menuService;
+        ILogService _logService;
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="menuService"></param>
-        public MenuController(IMenuService menuService)
+        ///  <param name="logService"></param>
+        public MenuController(IMenuService menuService, ILogService logService)
         {
             _menuService = menuService;
+            _logService = logService;
         }
 
         /// <summary>
@@ -52,6 +56,7 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result));//此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Search, "获取菜单分页");
             return Json(result);
         }
 
@@ -74,6 +79,7 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Add, "添加菜单");
             return Json(result);
         }
 
@@ -96,6 +102,7 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Edit, "修改菜单");
             return Json(result);
         }
 
@@ -118,6 +125,7 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Delete, "删除菜单");
             return Json(result);
         }
     }

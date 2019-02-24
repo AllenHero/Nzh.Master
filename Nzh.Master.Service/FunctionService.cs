@@ -55,7 +55,7 @@ namespace Nzh.Master.Service
                 Function.FunctionCode = model.FunctionCode;
                 Function.FunctionName = model.FunctionName; 
                 Function.CreateTime = GetSystemCurrentTime();
-                Function.CreateUserID = GetSystemCurrentUser();
+                Function.CreateUserID = GetSystemCurrentUserID();
                 Function.IsDelete = IsDelete.No;
                 result.Data = _functionRepository.Insert(Function);
                 _functionRepository.CommitTran();//提交事务

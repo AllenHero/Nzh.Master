@@ -59,7 +59,7 @@ namespace Nzh.Master.Service
                 User.UserEmail = model.UserEmail;
                 User.UserPhone = model.UserPhone;
                 User.CreateTime = GetSystemCurrentTime();
-                User.CreateUserID = GetSystemCurrentUser();
+                User.CreateUserID = GetSystemCurrentUserID();
                 User.IsDelete = IsDelete.No;
                 result.Data = _userRepository.Insert(User);
                 _userRepository.CommitTran();//提交事务

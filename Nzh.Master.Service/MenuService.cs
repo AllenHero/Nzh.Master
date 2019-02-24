@@ -58,7 +58,7 @@ namespace Nzh.Master.Service
                 Menu.MenuUrl = model.MenuUrl;
                 Menu.MenuParentID = model.MenuParentID;
                 Menu.CreateTime = GetSystemCurrentTime();
-                Menu.CreateUserID = GetSystemCurrentUser();
+                Menu.CreateUserID = GetSystemCurrentUserID();
                 Menu.IsDelete = IsDelete.No;
                 result.Data = _menuRepository.Insert(Menu);
                 _menuRepository.CommitTran();//提交事务

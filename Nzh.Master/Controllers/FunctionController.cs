@@ -9,6 +9,7 @@ using Nzh.Frame.Common.Logger;
 using Nzh.Master.IService;
 using Nzh.Master.Model;
 using Nzh.Master.Model.Base;
+using Nzh.Master.Model.Enum;
 
 namespace Nzh.Master.Controllers
 {
@@ -20,14 +21,17 @@ namespace Nzh.Master.Controllers
     public class FunctionController : Controller
     {
         IFunctionService _functionService;
+        ILogService _logService;
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="functionService"></param>
-        public FunctionController(IFunctionService functionService)
+        ///<param name="logService"></param> 
+        public FunctionController(IFunctionService functionService, ILogService logService)
         {
             _functionService = functionService;
+            _logService = logService;
         }
 
          /// <summary>
@@ -51,6 +55,7 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result));//此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Search, "获取功能分页");
             return Json(result);
         }
 
@@ -73,6 +78,7 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Add, "添加功能");
             return Json(result);
         }
 
@@ -95,6 +101,7 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Edit, "修改功能");
             return Json(result);
         }
 
@@ -117,6 +124,7 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Delete, "删除功能");
             return Json(result);
         }
     }

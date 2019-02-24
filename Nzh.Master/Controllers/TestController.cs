@@ -12,6 +12,7 @@ using Nzh.Frame.Common.Logger;
 using Nzh.Master.IService;
 using Nzh.Master.Model;
 using Nzh.Master.Model.Base;
+using Nzh.Master.Model.Enum;
 using OfficeOpenXml;
 
 namespace Nzh.Master.Controllers
@@ -26,6 +27,7 @@ namespace Nzh.Master.Controllers
         ITestService _testService;
         IEnclosureService _enclosureService;
         private IHostingEnvironment _hostingEnvironment;
+        ILogService _logService;
 
         /// <summary>
         /// 构造函数
@@ -33,11 +35,13 @@ namespace Nzh.Master.Controllers
         /// <param name="testService"></param>
         /// <param name="hostingEnvironment"></param> 
         /// <param name="enclosureService"></param> 
-        public TestController(ITestService testService, IHostingEnvironment hostingEnvironment, IEnclosureService enclosureService)
+        /// <param name="logService"></param> 
+        public TestController(ITestService testService, IHostingEnvironment hostingEnvironment, IEnclosureService enclosureService, ILogService logService)
         {
             _testService = testService;
             _hostingEnvironment = hostingEnvironment;
             _enclosureService = enclosureService;
+            _logService = logService;
         }
 
         /// <summary>
@@ -61,6 +65,7 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result));//此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Search, "获取Demo分页");
             return Json(result);
         }
 
@@ -83,6 +88,7 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result));//此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Search, "获取Demo");
             return Json(result);
         }
 
@@ -108,6 +114,7 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Add, "添加Demo");
             return Json(result);
         }
 
@@ -134,6 +141,7 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Edit, "修改Demo");
             return Json(result);
         }
 
@@ -156,6 +164,7 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Delete, "删除Demo");
             return Json(result);
         }
 
@@ -194,6 +203,7 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Other, "测试导出");
             return Json(result);
         }
 
@@ -237,6 +247,7 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Other, "测试导入");
             return Json(result);
         }
 
@@ -297,6 +308,7 @@ namespace Nzh.Master.Controllers
                     }
                     result= _enclosureService.TestUpLoadPicture(picture);
                     Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+                    _logService.WriteLog(LogType.Other, "测试图片上传");
                     return new JsonResult(new ResultModel<string> { Code = 0, Msg = "上传成功", });
                 }
                 return new JsonResult(new ResultModel<string> { Code = -1, Msg = "上传失败" });
@@ -333,6 +345,7 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Other, "测试图片下载");
             return Json(result);
         } 
     }
