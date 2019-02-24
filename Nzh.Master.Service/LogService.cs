@@ -37,7 +37,7 @@ namespace Nzh.Master.Service
                 Log.UserName = GetSystemCurrentUserName();
                 Log.LogTime = GetSystemCurrentTime();
                 Log.LogIP = GetSystemCurrentIP();
-                Log.LogType = logtype.ToString().ToLower();
+                Log.LogType = logtype;
                 Log.LogMsg = logmsg;
                 result.Data = _logRepository.Insert(Log);
                 _logRepository.CommitTran();//提交事务

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nzh.Master.Model.Enum;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -37,7 +38,7 @@ namespace Nzh.Master.Model
         /// <summary>
         ///LogType 
         /// </summary>
-        public string LogType { get; set; }
+        public LogType LogType { get; set; }
 
         /// <summary>
         /// LogMsg
