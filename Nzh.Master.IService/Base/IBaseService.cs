@@ -31,7 +31,5 @@ namespace Nzh.Master.IService.Base
         /// </summary>
         /// <returns></returns>
         string GetSystemCurrentIP();
-
-        
     }
 }

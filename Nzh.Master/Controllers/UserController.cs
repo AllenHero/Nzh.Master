@@ -27,6 +27,7 @@ namespace Nzh.Master.Controllers
         /// 构造函数
         /// </summary>
         /// <param name="userService"></param>
+        /// <param name="logService"></param>
         public UserController(IUserService userService, ILogService logService)
         {
             _userService = userService;
