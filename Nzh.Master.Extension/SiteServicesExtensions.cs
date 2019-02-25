@@ -45,6 +45,12 @@ namespace Nzh.Master.Extension
             services.AddScoped<ILogRepository, LogRepository>();
             services.AddScoped<ILogService, LogService>();
 
+            services.AddScoped<IUserRoleRepository, UserRoleRepository>();
+
+            services.AddScoped<IMenuFunctionRepository, MenuFunctionRepository>();
+
+            services.AddScoped<IRoleMenuFunctionRepository, RoleMenuFunctionRepository>();
+
             return services;
         }
     }
