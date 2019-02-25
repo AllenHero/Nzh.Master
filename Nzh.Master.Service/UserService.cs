@@ -54,6 +54,7 @@ namespace Nzh.Master.Service
                 _userRepository.BeginTran();//开始事务
                 User User = new User();
                 User.UserID = Guid.NewGuid();
+                User.UserCode = model.UserCode;
                 User.UserName = model.UserName;
                 User.UserPwd = EncryptionHelper.DesEncrypt(model.UserPwd); //DES加密操作
                 User.UserEmail = model.UserEmail;
@@ -86,6 +87,7 @@ namespace Nzh.Master.Service
                 var User = _userRepository.GetById(model.UserID);
                 if (User!=null)
                 {
+                    User.UserCode = model.UserCode;
                     User.UserName = model.UserName;
                     User.UserPwd = EncryptionHelper.DesEncrypt(model.UserPwd); //DES加密操作
                     User.UserEmail = model.UserEmail;

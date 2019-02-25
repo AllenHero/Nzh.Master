@@ -17,6 +17,11 @@ namespace Nzh.Master.Model
         public Guid RoleID { get; set; }
 
         /// <summary>
+        /// 角色编号
+        /// </summary>
+        public string RoleCode { get; set; }
+
+        /// <summary>
         ///角色名称 
         /// </summary>
         public string RoleName { get; set; }

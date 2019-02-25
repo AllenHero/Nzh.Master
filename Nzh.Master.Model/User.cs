@@ -17,6 +17,11 @@ namespace Nzh.Master.Model
         public Guid UserID { get; set; }
 
         /// <summary>
+        /// 用户编号
+        /// </summary>
+        public string UserCode { get; set; }
+
+        /// <summary>
         /// 用户名称
         /// </summary>
         public string UserName { get; set; }

@@ -52,6 +52,7 @@ namespace Nzh.Master.Service
                 _roleRepository.BeginTran();//开始事务
                 Role Role = new Role();
                 Role.RoleID = Guid.NewGuid();
+                Role.RoleCode = model.RoleCode;
                 Role.RoleName = model.RoleName;
                 Role.RoleRemark = model.RoleRemark; 
                 Role.CreateTime = GetSystemCurrentTime();
@@ -82,6 +83,7 @@ namespace Nzh.Master.Service
                 var Role = _roleRepository.GetById(model.RoleID);
                 if (Role != null)
                 {
+                    Role.RoleCode = model.RoleCode;
                     Role.RoleName = model.RoleName;
                     Role.RoleRemark = model.RoleRemark; 
                     result.Data = _roleRepository.Update(Role);
