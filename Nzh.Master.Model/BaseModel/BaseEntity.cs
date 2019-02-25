@@ -6,22 +6,22 @@ using System.Text;
 namespace Nzh.Master.Model.BaseModel
 {
     /// <summary>
-    /// BaseEntity
+    /// 基础实体类
     /// </summary>
     public class BaseEntity
     {
         /// <summary>
-        /// CreateTime
+        /// 创建时间
         /// </summary>
         public DateTime CreateTime { get; set; }
 
         /// <summary>
-        /// CreateUserID
+        /// 创建人ID
         /// </summary>
         public Guid CreateUserID { get; set; }
 
         /// <summary>
-        ///  IsDelete
+        ///  是否删除
         /// </summary>
         public IsDelete IsDelete { get; set; }
     }

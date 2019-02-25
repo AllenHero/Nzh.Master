@@ -7,22 +7,22 @@ using System.Text;
 namespace Nzh.Master.Model
 {
     /// <summary>
-    /// Function
+    /// 功能
     /// </summary>
     public class Function: BaseEntity
     {
         /// <summary>
-        /// FunctionID
+        /// 主键ID
         /// </summary>
         public Guid FunctionID { get; set; }
 
         /// <summary>
-        /// FunctionCode
+        /// 功能代码
         /// </summary>
         public string FunctionCode { get; set; }
 
         /// <summary>
-        /// FunctionName
+        /// 功能名称
         /// </summary>
         public string FunctionName { get; set; }
 

@@ -5,17 +5,17 @@ using System.Text;
 namespace Nzh.Master.Model
 {
     /// <summary>
-    /// 图片
+    /// 附件
     /// </summary>
     public class Enclosure
     {
         /// <summary>
-        /// ID
+        /// 主键ID 
         /// </summary>
         public Guid ID { get; set; }
 
         /// <summary>
-        /// FilePath
+        /// 附件地址
         /// </summary>
         public string FilePath { get; set; }
     }

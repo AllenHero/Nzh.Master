@@ -7,22 +7,22 @@ using System.Text;
 namespace Nzh.Master.Model
 {
     /// <summary>
-    /// RoleMenuFunction
+    /// 橘色功能菜单映射表
     /// </summary>
     public class RoleMenuFunction : BaseEntity
     {
         /// <summary>
-        /// MenuFunctionID
+        /// 主键ID
         /// </summary>
         public Guid MenuFunctionID { get; set; }
 
         /// <summary>
-        /// FunctionID
+        /// 功能ID
         /// </summary>
         public Guid FunctionID { get; set; }
 
         /// <summary>
-        /// MenuID
+        /// 菜单ID
         /// </summary>
         public Guid MenuID { get; set; }
 

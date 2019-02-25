@@ -10,27 +10,27 @@ namespace Nzh.Master.Model
     public class Demo
     {
         /// <summary>
-        /// ID
+        /// 主键ID
         /// </summary>
         public Guid ID { get; set; }
 
         /// <summary>
-        ///Name 
+        ///名称 
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        ///Sex
+        ///性别
         /// </summary>
         public string Sex { get; set; }
 
         /// <summary>
-        /// Age
+        /// 年龄
         /// </summary>
         public int Age { get; set; }
 
         /// <summary>
-        /// Remark
+        /// 备注
         /// </summary>
         public string Remark { get; set; }
     }

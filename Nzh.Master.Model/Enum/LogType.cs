@@ -20,12 +20,12 @@ namespace Nzh.Master.Model.Enum
         LoginFail,
 
         /// <summary>
-        /// 添加操作
+        /// 添加
         /// </summary>
         Add,
 
         /// <summary>
-        /// 修改操作
+        /// 修改
         /// </summary>
         Edit,
 

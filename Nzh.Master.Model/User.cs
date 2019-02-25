@@ -7,42 +7,42 @@ using System.Text;
 namespace Nzh.Master.Model
 {
     /// <summary>
-    /// User
+    /// 用户
     /// </summary>
     public class User : BaseEntity
     {
         /// <summary>
-        /// UserID
+        /// 用户ID
         /// </summary>
         public Guid UserID { get; set; }
 
         /// <summary>
-        /// UserName
+        /// 用户名称
         /// </summary>
         public string UserName { get; set; }
 
         /// <summary>
-        /// UserPwd
+        /// 用户密码
         /// </summary>
         public string UserPwd { get; set; }
 
         /// <summary>
-        /// UserEmail
+        /// 用户邮件
         /// </summary>
         public string UserEmail { get; set; }
 
         /// <summary>
-        /// UserPhone 
+        /// 用户电话 
         /// </summary>
         public string UserPhone { get; set; }
 
         /// <summary>
-        /// LastLoginTime
+        /// 上次登录时间
         /// </summary>
         public DateTime LastLoginTime { get; set; }
 
         /// <summary>
-        /// LoginCount
+        /// 登录次数
         /// </summary>
         public int LoginCount { get; set; }
 

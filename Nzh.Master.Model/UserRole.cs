@@ -7,22 +7,22 @@ using System.Text;
 namespace Nzh.Master.Model
 {
     /// <summary>
-    /// UserRole
+    /// 用户角色映射表
     /// </summary>
     public class UserRole : BaseEntity
     {
         /// <summary>
-        /// UserRoleID
+        /// 主键ID
         /// </summary>
         public Guid UserRoleID { get; set; }
 
         /// <summary>
-        /// UserID
+        /// 用户ID
         /// </summary>
         public Guid UserID { get; set; }
 
         /// <summary>
-        /// RoleID
+        /// 角色ID
         /// </summary>
         public Guid RoleID { get; set; }
 
