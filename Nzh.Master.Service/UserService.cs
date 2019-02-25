@@ -17,10 +17,12 @@ namespace Nzh.Master.Service
     {
 
         IUserRepository _userRepository;
+        IUserRoleRepository _useroleRepository;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, IUserRoleRepository useroleRepository)
         {
             _userRepository = userRepository;
+            _useroleRepository = useroleRepository;
         }
 
         /// <summary>
@@ -130,5 +132,35 @@ namespace Nzh.Master.Service
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// 用户分配角色权限
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public ResultModel<bool> RoleAuthority(UserRole model)
+        {
+            var result = new ResultModel<bool>();
+            try
+            {
+                _useroleRepository.BeginTran();//开始事务
+                UserRole UserRole = new UserRole();
+                UserRole.UserRoleID = Guid.NewGuid();
+                UserRole.UserID = model.UserID;
+                UserRole.RoleID = model.RoleID;
+                UserRole.CreateTime = GetSystemCurrentTime();
+                UserRole.CreateUserID = GetSystemCurrentUserID();
+                UserRole.IsDelete = IsDelete.No;
+                result.Data = _useroleRepository.Insert(UserRole);
+                _useroleRepository.CommitTran();//提交事务
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _useroleRepository.RollbackTran();//回滚事务
+                throw ex;
+            }
+        }
+
     }
 }

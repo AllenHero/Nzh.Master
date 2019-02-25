@@ -129,5 +129,28 @@ namespace Nzh.Master.Controllers
             _logService.WriteLog(LogType.Delete, "删除用户");
             return Json(result);
         }
+
+        /// <summary>
+        /// 用户分配角色权限
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpGet("RoleAuthority")]
+        public JsonResult RoleAuthority(UserRole model)
+        {
+            var result = new ResultModel<bool>();
+            try
+            {
+                result = _userService.RoleAuthority(model);
+            }
+            catch (Exception ex)
+            {
+                result.Code = -1;
+                result.Msg = ex.Message;
+            }
+            Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Add, "用户分配角色权限");
+            return Json(result);
+        }
     }
 }

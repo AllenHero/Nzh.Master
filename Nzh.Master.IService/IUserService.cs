@@ -39,5 +39,12 @@ namespace Nzh.Master.IService
         /// <param name="UserID"></param>
         /// <returns></returns>
         ResultModel<bool> DeleteUser(Guid UserID);
+
+        /// <summary>
+        /// 用户分配角色权限
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        ResultModel<bool> RoleAuthority(UserRole model);
     }
 }
