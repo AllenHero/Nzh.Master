@@ -128,5 +128,28 @@ namespace Nzh.Master.Controllers
             _logService.WriteLog(LogType.Delete, "删除菜单");
             return Json(result);
         }
+
+        /// <summary>
+        /// 菜单分配功能权限
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpGet("MenuAuthority")]
+        public JsonResult MenuAuthority(MenuFunction model)
+        {
+            var result = new ResultModel<bool>();
+            try
+            {
+                result = _menuService.MenuAuthority(model);
+            }
+            catch (Exception ex)
+            {
+                result.Code = -1;
+                result.Msg = ex.Message;
+            }
+            Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
+            _logService.WriteLog(LogType.Add, "菜单分配功能权限");
+            return Json(result);
+        }
     }
 }

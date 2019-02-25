@@ -38,5 +38,12 @@ namespace Nzh.Master.IService
         /// <param name="MenuID"></param>
         /// <returns></returns>
         ResultModel<bool> DeleteMenu(Guid MenuID);
+
+        /// <summary>
+        /// 菜单分配功能权限
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        ResultModel<bool> MenuAuthority(MenuFunction model);
     }
 }

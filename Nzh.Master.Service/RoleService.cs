@@ -15,10 +15,12 @@ namespace Nzh.Master.Service
     public class RoleService : BaseService, IRoleService
     {
         IRoleRepository _roleRepository;
+        IRoleMenuFunctionRepository _rolemenufunctionRepository;
 
-        public RoleService(IRoleRepository roleRepository)
+        public RoleService(IRoleRepository roleRepository, IRoleMenuFunctionRepository rolemenufunctionRepository)
         {
             _roleRepository = roleRepository;
+            _rolemenufunctionRepository = rolemenufunctionRepository;
         }
 
         /// <summary>
@@ -121,6 +123,36 @@ namespace Nzh.Master.Service
             catch (Exception ex)
             {
                 _roleRepository.RollbackTran();//回滚事务
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// 角色分配菜单功能权限
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public ResultModel<bool> RoleAuthority(RoleMenuFunction model)
+        {
+            var result = new ResultModel<bool>();
+            try
+            {
+                _rolemenufunctionRepository.BeginTran();//开始事务
+                RoleMenuFunction RoleMenuFunction = new RoleMenuFunction();
+                RoleMenuFunction.MenuFunctionID = Guid.NewGuid();
+                RoleMenuFunction.RoleID = model.RoleID;
+                RoleMenuFunction.FunctionID = model.FunctionID;
+                RoleMenuFunction.MenuID = model.MenuID;
+                RoleMenuFunction.CreateTime = GetSystemCurrentTime();
+                RoleMenuFunction.CreateUserID = GetSystemCurrentUserID();
+                RoleMenuFunction.IsDelete = IsDelete.No;
+                result.Data = _rolemenufunctionRepository.Insert(RoleMenuFunction);
+                _rolemenufunctionRepository.CommitTran();//提交事务
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _rolemenufunctionRepository.RollbackTran();//回滚事务
                 throw ex;
             }
         }

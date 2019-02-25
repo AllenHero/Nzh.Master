@@ -16,10 +16,12 @@ namespace Nzh.Master.Service
     {
 
         IMenuRepository _menuRepository;
+        IMenuFunctionRepository _menufunctionRepository;
 
-        public MenuService(IMenuRepository menuRepository)
+        public MenuService(IMenuRepository menuRepository, IMenuFunctionRepository menufunctionRepository)
         {
             _menuRepository = menuRepository;
+            _menufunctionRepository = menufunctionRepository;
         }
 
         /// <summary>
@@ -124,6 +126,35 @@ namespace Nzh.Master.Service
             catch (Exception ex)
             {
                 _menuRepository.RollbackTran();//回滚事务
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// 菜单分配功能权限
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public ResultModel<bool> MenuAuthority(MenuFunction model)
+        {
+            var result = new ResultModel<bool>();
+            try
+            {
+                _menufunctionRepository.BeginTran();//开始事务
+                MenuFunction MenuFunction = new MenuFunction();
+                MenuFunction.MenuFunctionID = Guid.NewGuid();
+                MenuFunction.FunctionID = model.FunctionID;
+                MenuFunction.MenuID = model.MenuID;
+                MenuFunction.CreateTime = GetSystemCurrentTime();
+                MenuFunction.CreateUserID = GetSystemCurrentUserID();
+                MenuFunction.IsDelete = IsDelete.No;
+                result.Data = _menufunctionRepository.Insert(MenuFunction);
+                _menufunctionRepository.CommitTran();//提交事务
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _menufunctionRepository.RollbackTran();//回滚事务
                 throw ex;
             }
         }

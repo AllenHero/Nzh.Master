@@ -135,13 +135,13 @@ namespace Nzh.Master.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpGet("RoleAuthority")]
-        public JsonResult RoleAuthority(UserRole model)
+        [HttpGet("UserAuthority")]
+        public JsonResult UserAuthority(UserRole model)
         {
             var result = new ResultModel<bool>();
             try
             {
-                result = _userService.RoleAuthority(model);
+                result = _userService.UserAuthority(model);
             }
             catch (Exception ex)
             {

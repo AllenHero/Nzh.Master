@@ -39,5 +39,12 @@ namespace Nzh.Master.IService
         /// <param name="RoleID"></param>
         /// <returns></returns>
         ResultModel<bool> DeleteRole(Guid RoleID);
+
+        /// <summary>
+        /// 角色分配菜单功能权限
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        ResultModel<bool> RoleAuthority(RoleMenuFunction model);
     }
 }

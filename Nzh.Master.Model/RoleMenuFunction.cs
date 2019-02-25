@@ -17,6 +17,11 @@ namespace Nzh.Master.Model
         public Guid MenuFunctionID { get; set; }
 
         /// <summary>
+        /// 角色ID
+        /// </summary>
+        public Guid RoleID { get; set; }
+
+        /// <summary>
         /// 功能ID
         /// </summary>
         public Guid FunctionID { get; set; }

@@ -45,6 +45,6 @@ namespace Nzh.Master.IService
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        ResultModel<bool> RoleAuthority(UserRole model);
+        ResultModel<bool> UserAuthority(UserRole model);
     }
 }

@@ -138,7 +138,7 @@ namespace Nzh.Master.Service
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public ResultModel<bool> RoleAuthority(UserRole model)
+        public ResultModel<bool> UserAuthority(UserRole model)
         {
             var result = new ResultModel<bool>();
             try
