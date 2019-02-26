@@ -7,7 +7,7 @@ using System.Text;
 namespace Nzh.Master.Model
 {
     /// <summary>
-    /// 橘色功能菜单映射表
+    /// 角色功能菜单映射表
     /// </summary>
     public class RoleMenuFunction : BaseEntity
     {
