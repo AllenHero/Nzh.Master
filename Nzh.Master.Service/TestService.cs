@@ -66,7 +66,7 @@ namespace Nzh.Master.Service
             try
             {
                 _demoRepository.BeginTran(); //开始事务
-                Guid ID = new Guid();
+                Guid ID = Guid.NewGuid();
                 string sql = "insert into Demo(ID,Name,Sex,Age,Remark) values(@ID,@Name,@Sex,@Age,@Remark)";
                 SugarParameter[] Parameter = new SugarParameter[]
                 {
