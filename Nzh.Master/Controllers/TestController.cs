@@ -26,7 +26,7 @@ namespace Nzh.Master.Controllers
     {
         ITestService _testService;
         IEnclosureService _enclosureService;
-        private IHostingEnvironment _hostingEnvironment;
+        IHostingEnvironment _hostingEnvironment;
         ILogService _logService;
 
         /// <summary>
