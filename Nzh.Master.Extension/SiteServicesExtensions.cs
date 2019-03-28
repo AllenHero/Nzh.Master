@@ -30,26 +30,8 @@ namespace Nzh.Master.Extension
             services.AddScoped<IEnclosureRepository, EnclosureRepository>();
             services.AddScoped<IEnclosureService, EnclosureService>();
 
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IUserService, UserService>();
-
-            services.AddScoped<IRoleRepository, RoleRepository>();
-            services.AddScoped<IRoleService, RoleService>();
-
-            services.AddScoped<IMenuRepository, MenuRepository>();
-            services.AddScoped<IMenuService, MenuService>();
-
-            services.AddScoped<IFunctionRepository, FunctionRepository>();
-            services.AddScoped<IFunctionService, FunctionService>();
-
             services.AddScoped<ILogRepository, LogRepository>();
             services.AddScoped<ILogService, LogService>();
-
-            services.AddScoped<IUserRoleRepository, UserRoleRepository>();
-
-            services.AddScoped<IMenuFunctionRepository, MenuFunctionRepository>();
-
-            services.AddScoped<IRoleMenuFunctionRepository, RoleMenuFunctionRepository>();
 
             return services;
         }

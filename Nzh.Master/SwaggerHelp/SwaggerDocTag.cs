@@ -26,10 +26,10 @@ namespace Nzh.Master.SwaggerHelp
                 new Tag { Name = "Demo", Description = "Demo模块" },
                 // new Tag { Name = "Entity", Description = "Entity生成实体类" },
                 new Tag { Name = "Test", Description = "Sql语句操作" },
-                new Tag { Name = "User", Description = "用户模块" },
-                new Tag { Name = "Role", Description = "角色模块" },
-                new Tag { Name = "Menu", Description = "菜单模块" },
-                new Tag { Name = "Function", Description = "功能模块" },
+                //new Tag { Name = "User", Description = "用户模块" },
+                //new Tag { Name = "Role", Description = "角色模块" },
+                //new Tag { Name = "Menu", Description = "菜单模块" },
+                //new Tag { Name = "Function", Description = "功能模块" },
             };
         }
     }
