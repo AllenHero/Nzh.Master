@@ -12,7 +12,7 @@ namespace Nzh.Master.Service
 {
     public class LogService :BaseService, ILogService
     {
-        ILogRepository _logRepository;
+        private readonly ILogRepository _logRepository;
 
         public LogService(ILogRepository logRepository)
         {

@@ -14,7 +14,7 @@ namespace Nzh.Master.Service
 {
     public class DemoService : BaseService, IDemoService
     {
-        IDemoRepository _demoRepository;
+        private readonly IDemoRepository _demoRepository;
 
         public DemoService(IDemoRepository demoRepository)
         {

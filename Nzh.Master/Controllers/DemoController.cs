@@ -20,8 +20,8 @@ namespace Nzh.Master.Controllers
     [Route("api/Demo")]
     public class DemoController : Controller
     {
-        IDemoService _demoService;
-        ILogService _logService;
+        private readonly IDemoService _demoService;
+        private readonly ILogService _logService;
 
         /// <summary>
         /// 构造函数

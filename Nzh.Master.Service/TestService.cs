@@ -13,7 +13,7 @@ namespace Nzh.Master.Service
 {
     public class TestService : BaseService,ITestService
     {
-        IDemoRepository _demoRepository;
+        private readonly IDemoRepository _demoRepository;
 
         public TestService(IDemoRepository demoRepository)
         {

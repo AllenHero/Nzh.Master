@@ -24,10 +24,10 @@ namespace Nzh.Master.Controllers
     [Route("api/Test")]
     public class TestController : Controller
     {
-        ITestService _testService;
-        IEnclosureService _enclosureService;
-        IHostingEnvironment _hostingEnvironment;
-        ILogService _logService;
+        private readonly ITestService _testService;
+        private readonly IEnclosureService _enclosureService;
+        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly ILogService _logService;
 
         /// <summary>
         /// 构造函数

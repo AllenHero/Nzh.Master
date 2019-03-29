@@ -11,7 +11,7 @@ namespace Nzh.Master.Service
 {
     public class EnclosureService : BaseService, IEnclosureService
     {
-        IEnclosureRepository _enclosureRepository;
+        private readonly IEnclosureRepository _enclosureRepository;
 
         public EnclosureService(IEnclosureRepository enclosureRepository)
         {
