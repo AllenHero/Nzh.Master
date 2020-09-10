@@ -106,7 +106,7 @@ namespace Nzh.Master.Controllers
             var result = new ResultModel<bool>();
             try
             {
-                 result = _testService.AddDemo(Name, Sex, Age, Sex);
+                 result = _testService.AddDemo(Name, Sex, Age, Remark);
             }
             catch (Exception ex)
             {
@@ -133,7 +133,7 @@ namespace Nzh.Master.Controllers
             var result = new ResultModel<bool>();
             try
             {
-                 result = _testService.UpdateDemo(ID, Name, Sex, Age, Sex);
+                 result = _testService.UpdateDemo(ID, Name, Sex, Age, Remark);
             }
             catch (Exception ex)
             {
