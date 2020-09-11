@@ -347,6 +347,15 @@ namespace Nzh.Master.Controllers
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
             _logService.WriteLog(LogType.Other, "测试图片下载");
             return Json(result);
-        } 
+        }
+
+        /// <summary>
+        /// 测试
+        /// </summary>
+        /// <returns></returns>
+        public dynamic Test()
+        {
+            return null;
+        }
     }
 }
