@@ -13,6 +13,7 @@ using Microsoft.Extensions.PlatformAbstractions;
 using Nzh.Master.Extension;
 using Nzh.Master.IRepository;
 using Nzh.Master.IService;
+using Nzh.Master.Repository.SqlSugar;
 using Nzh.Master.Service;
 using Nzh.Master.SwaggerHelp;
 using Nzh.Master.UpLoadFile;
@@ -71,6 +72,8 @@ namespace Nzh.Master
                 //上传
                 c.OperationFilter<SwaggerFileUploadFilter>();
             });
+
+            BaseDBConfig.ConnectionString = this.Configuration.GetSection("Db:MySql").Value;
 
             #endregion
         }
