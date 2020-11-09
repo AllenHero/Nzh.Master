@@ -12,8 +12,4 @@
     <ProjectReference Include="..\Nzh.Master.Model\Nzh.Master.Model.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Sys\" />
-  </ItemGroup>
-
 </Project>

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -14,10 +14,6 @@
     <ProjectReference Include="..\Nzh.Master.IRepository\Nzh.Master.IRepository.csproj" />
     <ProjectReference Include="..\Nzh.Master.IService\Nzh.Master.IService.csproj" />
     <ProjectReference Include="..\Nzh.Master.Service\Nzh.Master.Service.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Sys\" />
   </ItemGroup>
 
 </Project>

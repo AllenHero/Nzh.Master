@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Nzh.Master.Repository.SqlSugar;
 
 namespace Nzh.Master.Web
 {
@@ -24,6 +25,8 @@ namespace Nzh.Master.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            BaseDBConfig.ConnectionString = this.Configuration.GetSection("Db:MySql").Value;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
