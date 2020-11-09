@@ -5,9 +5,9 @@ using System.Text;
 namespace Nzh.Master.Model.Enum
 {
     /// <summary>
-    /// 是否删除
+    /// 是否是系统用户
     /// </summary>
-    public enum IsDeleted : int
+    public enum IsSystem : int
     {
         /// <summary>
         /// 是

@@ -9,8 +9,4 @@
     <OutputPath>C:\Users\64450\Desktop\Nzh.Master\Nzh.Master\bin\Debug\netcoreapp2.1\</OutputPath>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Sys\" />
-  </ItemGroup>
-
 </Project>

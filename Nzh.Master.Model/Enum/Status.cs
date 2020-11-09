@@ -5,18 +5,18 @@ using System.Text;
 namespace Nzh.Master.Model.Enum
 {
     /// <summary>
-    /// 是否删除
+    /// 状态
     /// </summary>
-    public enum IsDeleted : int
+    public enum Status : int
     {
         /// <summary>
-        /// 是
+        /// 启用
         /// </summary>
-        Yes = 1,
+        Enable = 1,
 
         /// <summary>
-        ///否
+        ///禁用
         /// </summary>
-        No = 0
+        Disable = 0
     }
 }

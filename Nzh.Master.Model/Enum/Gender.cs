@@ -5,18 +5,18 @@ using System.Text;
 namespace Nzh.Master.Model.Enum
 {
     /// <summary>
-    /// 是否删除
+    /// 性别
     /// </summary>
-    public enum IsDeleted : int
+    public enum Gender : int
     {
         /// <summary>
-        /// 是
+        /// 男
         /// </summary>
-        Yes = 1,
+        Male = 1,
 
         /// <summary>
-        ///否
+        ///女
         /// </summary>
-        No = 0
+        Female = 0
     }
 }

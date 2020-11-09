@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Nzh.Master.Model.Enum
+namespace Nzh.Master.Model.Sys
 {
     /// <summary>
-    /// 是否删除
+    /// 角色菜单映射
     /// </summary>
-    public enum IsDeleted : int
+    public class Sys_RoleMenuMap
     {
         /// <summary>
-        /// 是
+        /// 角色Id
         /// </summary>
-        Yes = 1,
+        public long RoleId { get; set; }
 
         /// <summary>
-        ///否
+        /// 菜单Id
         /// </summary>
-        No = 0
+        public long MenuId { get; set; }
     }
 }

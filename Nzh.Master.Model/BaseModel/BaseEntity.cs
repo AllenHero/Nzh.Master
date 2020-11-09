@@ -11,6 +11,11 @@ namespace Nzh.Master.Model.BaseModel
     public class BaseEntity
     {
         /// <summary>
+        /// 主键
+        /// </summary>
+        public long Id { get; set; }
+
+        /// <summary>
         /// 创建时间
         /// </summary>
         public DateTime CreateTime { get; set; }
@@ -21,8 +26,18 @@ namespace Nzh.Master.Model.BaseModel
         public long CreateUserId { get; set; }
 
         /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime ModifyTime { get; set; }
+
+        /// <summary>
+        /// 修改人Id
+        /// </summary>
+        public long ModifyUserId { get; set; }
+
+        /// <summary>
         ///  是否删除
         /// </summary>
-        public IsDelete IsDelete { get; set; }
+        public IsDeleted IsDeleted { get; set; }
     }
 }
