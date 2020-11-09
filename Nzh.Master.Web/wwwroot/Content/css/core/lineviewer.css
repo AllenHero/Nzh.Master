@@ -1,0 +1,144 @@
+﻿/*头部*/
+body, html {
+    background: url(images/dl_bg.png) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+#home_header {
+    background-color: rgba(255,255,255,0.2);
+    width: 100%;
+    height: 68px;
+    display: block;
+    margin: 0 auto;
+    line-height: 68px;
+}
+
+    #home_header ul li {
+        float: left;
+    }
+
+    #home_header .left_logo img {
+        margin: 18px 30px;
+        width: 75px;
+        height: 30px;
+    }
+
+    #home_header .right_time {
+        font-size: 24px;
+        float: right;
+        padding-right: 30px;
+        color: #fff;
+    }
+
+.home_content {
+    width: 100%;
+    height: auto;
+    float: left;
+    padding: 3% 0%;
+}
+
+.login_center {
+    width: 400px;
+    height: 360px;
+    margin: 0 auto;
+    margin-top: 3%;
+    /*border: solid 1px #ccc;*/
+    /*background-color: #fefefe;*/
+    /*box-shadow: 2px 2px 2px rgba(0,0,0,0.3);*/
+    padding: 8px;
+}
+
+    .login_center h1 {
+        font-weight: normal;
+        color:#FFF;
+    }
+
+    .login_center ul li {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+.loginInput {
+    width: 100%;
+    height: 60px;
+    padding-left: 20px;
+    font-size: 22px;
+    /*color: #FFF !important;*/
+    /* border: solid 1px #73D775; */
+    border-radius: 30px;
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.2);
+    /*background-color: rgba(255,255,255,0.7);*/
+}
+
+.login_center ul li .login {
+    background-color: #6b8bf7;
+    color: #fff;
+    width: 100%;
+    height: 60px;
+    /*padding-left: 20px;*/
+    font-size: 22px;
+    /*color: #FFF !important;*/
+    /* border: solid 1px #73D775; */
+    border-radius: 30px;
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.2);
+    /*background-color: rgba(255,255,255,0.7);*/
+}
+
+    /*.login_center ul li .login:hover {
+        background-color: #6b8bf7;
+        color: #fff;
+    }*/
+
+        .login_center ul li dl dt {
+            float: left;
+            color: #999;
+            font-size: 16px;
+        }
+
+        .login_center ul li .forgetpw {
+            float: right
+        }
+
+footer {
+    width: 100%;
+    height: 40px;
+    float: left;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.2);
+}
+
+    footer ul li {
+        float: left;
+        color: #275A1F;
+        font-size: 18px;
+        padding-left: 30px;
+        line-height: 40px;
+    }
+
+@media (min-width:1366px) and (max-width:1920px) {
+}
+
+@media (min-width:799px) and (max-width:1281px) {
+    .login_center {
+        margin-top: 8%
+    }
+
+    .home_centbox ul li {
+        width: 160px;
+        height: 160px;
+        margin: 5%;
+        float: left;
+    }
+}
+
+@media (min-width:768px) and (max-width:798px) {
+}
+
+@media (min-width:480px) and (max-width:767px) {
+}
+
+@media (max-width:480px) {
+}

@@ -1,0 +1,22 @@
+﻿.headertop {
+    height:50px;
+    background-color:#2095EF;
+}
+.headerleft {
+     float:left;
+     padding: 5px 20px;
+     color:#FEFFFF;
+     font-size:26px;
+     font-weight:400;
+     font-family:'Microsoft YaHei';
+}
+
+.headerright {
+     float:right;
+     padding-right: 20px;
+     padding-top:11px;
+     color:#FEFFFF;
+     font-size:16px;
+     font-weight:400;
+     font-family:'Microsoft YaHei';
+}

@@ -1,0 +1,138 @@
+﻿body, html {
+    /*background: url(images/%E5%9B%BE%E5%B1%82-8.png) no-repeat;*/
+    background-image: url('../../images/StationKanban/home-blg.png');
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.rowleft .headnav {
+    margin-bottom: 10px;
+    border-radius: 0px;
+}
+
+.headnav h4 {
+    line-height: 68px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.text-left img {
+    width: 160px;
+    height: 30px;
+    margin: 20px;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    background: url(images/bg.png);
+}
+
+    html .container {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        margin: 0px;
+        padding: 0px;
+    }
+
+#home_header ul .right_time span p {
+    float: left;
+    font-size: 20px;
+}
+
+.right_time img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    float: right;
+    border: solid 1px #060
+}
+
+.right_time span p {
+    line-height: 24px;
+    margin: 6px 15px 0px 0px;
+}
+
+#home_header {
+    background-color: rgba(255,255,255,0.2);
+    width: 100%;
+    height: 68px;
+    display: block;
+    margin: 0 auto;
+    line-height: 68px;
+}
+
+    #home_header ul li {
+        float: left;
+    }
+
+    #home_header .left_logo img {
+        margin: 18px 30px;
+        width: 75px;
+        height: 30px;
+    }
+
+    #home_header .right_time {
+        font-size: 24px;
+        float: right;
+        padding-right: 30px;
+        color: #fff;
+    }
+.container .rowbox {
+    height: 180px;
+    width: 100%;
+    position: absolute;
+    top: 20%;
+    margin-top: -90px;
+    display: block;
+}
+
+.container .row .imgbox img {
+    margin: 0 auto;
+    width: 180px;
+    height: 180px;
+}
+
+footer {
+    width: 100%;
+    height: 40px;
+    float: left;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.2);
+}
+
+    footer ul li {
+        float: left;
+        color: rgba(255,255,255,0.8);
+        font-size: 18px;
+        padding-left: 30px;
+        line-height: 40px;
+    }
+
+@media (min-width:1366px) and (max-width:1920px) {
+}
+
+@media (min-width:799px) and (max-width:1281px) {
+    .home_centbox {
+        padding-top: 2%
+    }
+
+        .home_centbox ul li {
+            width: 160px;
+            height: 160px;
+            margin: 5%;
+            float: left;
+        }
+}
+
+@media (min-width:768px) and (max-width:798px) {
+}
+
+@media (min-width:480px) and (max-width:767px) {
+}
+
+@media (max-width:480px) {
+}

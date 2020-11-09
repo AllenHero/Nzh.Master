@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<style>
+nav{ background-color:#131418;color:#999999;}
+footer{background-color:#131418;font-size:14px;}
+.navbar1{line-height:36px;width:100%;padding:0px 10px;position:absolute;bottom:0;left:0;margin:0;}
+.navbar1 .text-left,.navbar1 .text-right{color:#999;}
+*{color:#FBFCFE;font-family:"微软正黑";font-weight:300}
+.rowleft .headnav{margin-bottom:0px; background: url(images/bg.png) no-repeat; background-size: 100% 100%; border-radius:0px;padding:5px 15px;color:#bfc9f4;}
+.headnav h4{line-height:48px;font-size:22px; text-align: center;display:block;}
+.headnav .lfimg img,.headnav .rtimg img{margin-top:1%;width:45%;}
+.headnav .lfimg img{height:30%}
+html,body{padding:0;margin:0;}
+html .container{width:100%;height:100%;overflow:hidden;margin:0px;padding:0px;}
+
+.container .rowbox1{height:100%;width:100%;padding:0;margin:0;}
+.container .rowbox1 .rowleft{width:100%;overflow: hidden;height:100%;padding:0;}
+.outslide{height:100%;top:38px;}
+.outslide .centerslide{height:100%;}
+.outslide .centerslide .innerslide{width:100%;height:calc(100% - 80px);position:absolute;overflow-y:auto;}
+.innerslide .rowbox {overflow: hidden;padding:0px 20px 0px 20px}
+.rbox .table tr .red{color:#FF5416;font-weight:400;margin:8px;padding:0;display:block;background-color: #000; text-align: center;}
+.rbox .table tr .green{color:#6BFC47;font-weight:400;margin:8px;padding:0;display:block;background-color: #000; text-align: center;}
+.rbox .table tr .whitle{color:#FBFCFE;font-weight:400;margin:8px;padding:0;display:block;background-color: #000;text-align: center;}
+.toptag {font-size:16px;font-family: "微软正黑";padding-bottom:15px;}
+.toptag .red,.toptag .red span{color:#FF5416;}
+.toptag .green,.toptag .green span{color:#6BFC47;}
+.toptag .whitle,.toptag .whitle span{color:#FBFCFE;}
+.toptag .red span,.toptag .whitle span,.toptag .green span{font-family:"agency fb";font-weight:400;padding-left:10px;font-size:28px}
+
+.rbox .table{ box-shadow:0px 3px 18px rgba(0,0,0,0.1);}
+.rbox .table tr td,.rbox .table tr th{padding-left:20px;font-size:16px; border:none;}
+.rbox .table tr td{line-height:36px;color:#FBFCFE }
+.rbox .table tr th{ background:#1A3666;font-weight:normal;color:#999999;line-height:22px !important;}
+table tr:nth-child(odd){background: #131418;}
+/*设置偶数行颜色*/
+table tr:nth-child(even){background: #172135;}
+
+
+
+
+/*小屏幕(平板,大于等于768px)*/
+@media (max-width:768px){    
+	
+   
+    }	
+/*小屏幕(桌面显示,大于等于992px)*/
+@media(min-width:992px){
+	
+	}	
+	
+/*小屏幕(大桌面显示器,大于等于1200px)*/
+@media(min-width:1366px){
+nav{line-height:60px;}
+footer{font-size:16px;}
+.navbar1{line-height:48px;}
+.toptag {font-size:22px;font-weight:normal}
+.headnav h4{line-height:48px;font-size:24px;}
+.wenzi{font-size:28px;}
+.rbox .table tr td,.rbox .table tr th{height:42px;line-height:42px;font-size:20px;}
+}
+
+@media(min-width:1400px){
+nav{line-height:80px;}
+footer{font-size:22px;}
+.navbar1{line-height:60px;}
+.toptag {font-size:22px;font-weight:normal}
+.headnav h4{line-height:80px;font-size:28px;}
+
+.rbox .table tr td,.rbox .table tr th{height:64px;line-height:64px;font-size:24px;}
+.rbox .table tr th{line-height:38px !important;}
+	}
+@media(min-width:1440px){
+nav{line-height:68px;}
+footer{font-size:22px;}
+.navbar1{line-height:60px;}
+.toptag {font-size:22px;font-weight:normal}
+.headnav h4{line-height:68px;font-size:28px;}
+.wenzi{font-size:28px;}
+.rbox .table tr td,.rbox .table tr th{height:52px;line-height:52px;font-size:24px;}
+.rbox .table tr th{line-height:42px !important;}
+	}
+@media(min-width:1600px){
+nav{line-height:68px;}
+footer{font-size:22px;}
+.navbar1{line-height:60px;}
+.toptag {font-size:22px;font-weight:normal}
+.headnav h4{line-height:68px;font-size:28px;}
+.wenzi{font-size:28px;}
+.rbox .table tr td,.rbox .table tr th{height:52px;line-height:52px;font-size:24px;}
+.rbox .table tr th{line-height:42px !important;}
+	}	
+@media(min-width:1680px){
+nav{line-height:80px;}
+footer{font-size:22px;}
+.navbar1{line-height:60px;}
+.toptag {font-size:22px;font-weight:normal}
+.headnav h4{line-height:80px;font-size:32px;}
+.wenzi{font-size:32px;}
+.rbox .table tr td,.rbox .table tr th{height:64px;line-height:64px;font-size:28px;}
+.rbox .table tr th{line-height:48px !important;}
+	}
+@media(min-width:1920px){
+nav{line-height:68px;}
+footer{font-size:24px;}
+.navbar1{line-height:60px;}
+.toptag {font-size:24px;font-weight:normal}
+.headnav h4{line-height:80px;font-size:32px;}
+.wenzi{font-size:32px;}
+.rbox .table tr td,.rbox .table tr th{height:64px;line-height:64px;font-size:28px;}
+.rbox .table tr th{line-height:48px !important;}
+}	
+</style>
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>项目实战</title>
+<!--<link rel="stylesheet" href="css/about.css">-->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<link href="css/conmmentcss.css" rel="stylesheet">
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/echarts-all.js"></script>
+<script src="js/echarts.common.min.js"></script>
+
+<script type="text/javascript" src="js/selectUi.js"></script>
+<link href="css/lq.datetimepick.css" rel="stylesheet">
+<script type="text/javascript" src="js/lq.datetimepick.js"></script>
+
+</head>
+<body style="background-color:#131418;padding:0;margin:0;">
+   <div class="container">
+	<div class="rowbox1">
+		<div class="rowleft col-md-12 col-lg-12">
+			<nav class="headnav navbar">
+				<div class="row">
+					<div class="lfimg col-md-4 col-lg-4">
+						<img src="images/286961624374362682.png">
+					</div>
+					<div class="col-md-4 col-lg-4">
+						<h4>[ 注塑车间 ]信息化看板</h4>
+					</div>
+					<div class="rtimg col-md-4 col-lg-4">
+						
+						<!--<img src="images/rightimg.png">-->
+					</div>
+					
+				</div>
+				
+			</nav>
+			<div class="outslide">
+				<div class="centerslide">
+					<div class="innerslide">
+                         <div class="rowbox" >
+                      	 <div class="rbox col-md-12 col-lg-12" style="padding:0">
+                      	 	 <div class="row">
+									<div class="col-md-4 col-lg-4">
+									</div>
+									<div class="toptag row col-md-4 col-lg-4">
+										<div class="red col-md-4 col-lg-4">停机中:<span>3</span></div>
+										<div class="green col-md-4 col-lg-4">生产中:<span>16</span></div>
+										<div class="whitle col-md-4 col-lg-4">已完成:<span>30</span></div>
+									</div>
+									<div class="col-md-4 col-lg-4">
+									</div>
+				              </div>
+                      	 	<table class="table">
+								
+								<thead>
+									<tr>
+										<th>线体</th>
+										<th>任务单</th>
+										<th>产品编码</th>
+										<th>产量</th>
+										<th>计划量</th>
+										<th>计划达成率</th>
+										<th>状态</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>逆变线</td>
+										<td>19.05.08-JQWS20190339-13941</td>
+										<td>02.006.512-004</td>
+										<td>600</td>
+										<td>600</td>
+										<td>100%</td>
+										<td class="red">停机中</td>
+									</tr>
+									<tr>
+										<td>插件线</td>
+										<td>19.05.08-JQWS20190339-13941</td>
+										<td>02.006.512-004</td>
+										<td>600</td>
+										<td>600</td>
+										<td>100%</td>
+										<td class="red">停机中</td>
+									</tr>
+									<tr>
+										<td>装配线</td>
+										<td>19.05.08-JQWS20190339-13941</td>
+										<td>02.006.512-004</td>
+										<td>600</td>
+										<td>600</td>
+										<td>100%</td>
+										<td class="green">生产中</td>
+									</tr>
+									<tr>
+										<td>包装线</td>
+										<td>19.05.08-JQWS20190339-13941</td>
+										<td>02.006.512-004</td>
+										<td>600</td>
+										<td>600</td>
+										<td>100%</td>
+										<td class="green">生产中</td>
+									</tr>
+									<tr>
+										<td>补焊线</td>
+										<td>19.05.08-JQWS20190339-13941</td>
+										<td>02.006.512-004</td>
+										<td>600</td>
+										<td>600</td>
+										<td>100%</td>
+										<td class="green">生产中</td>
+									</tr>
+									<tr>
+										<td>逆变线</td>
+										<td>19.05.08-JQWS20190339-13941</td>
+										<td>02.006.512-004</td>
+										<td>600</td>
+										<td>600</td>
+										<td>100%</td>
+										<td class="whitle">已完成</td>
+									</tr>
+									<tr>
+										<td>逆变线</td>
+										<td>19.05.08-JQWS20190339-13941</td>
+										<td>02.006.512-004</td>
+										<td>600</td>
+										<td>600</td>
+										<td>100%</td>
+										<td class="whitle">已完成</td>
+									</tr>
+									<tr>
+										<td>逆变线</td>
+										<td>19.05.08-JQWS20190339-13941</td>
+										<td>02.006.512-004</td>
+										<td>600</td>
+										<td>600</td>
+										<td>100%</td>
+										<td class="whitle">已完成</td>
+									</tr>
+									<tr>
+										<td>逆变线</td>
+										<td>19.05.08-JQWS20190339-13941</td>
+										<td>02.006.512-004</td>
+										<td>600</td>
+										<td>600</td>
+										<td>100%</td>
+										<td class="whitle">已完成</td>
+									</tr>
+									<tr>
+										<td>逆变线</td>
+										<td>19.05.08-JQWS20190339-13941</td>
+										<td>02.006.512-004</td>
+										<td>600</td>
+										<td>600</td>
+										<td>100%</td>
+										<td class="whitle">已完成</td>
+									</tr>
+
+								</tbody>
+							</table>
+                      	 </div>
+                       </div>
+					</div>
+				</div>
+			</div>
+			<footer class="navbar1">
+				<div class="row" style="padding:0;margin:0">
+					<div class="col-lg-6 text-left">博罗威特胜科技有限公司</div>
+					<div class="col-lg-6 text-right">2019年10月 20:09 星期三</div>
+				</div>
+			</footer>
+		</div>
+	
+	</div>			
+</div>
+
+<script type="text/javascript" src="js/jquery.nicescroll.js"></script>
+    <script type="text/javascript">
+        $('.innerslide').niceScroll({
+            cursorcolor: "#2E7DC2",//#CC0071 光标颜色
+            cursoropacitymax:"0", //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+            touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+            cursorwidth: "5px", //像素光标的宽度
+            cursorborder: "1", // 游标边框css定义
+            cursorborderradius: "8px",//以像素为光标边界半径
+            autohidemode: false //是否隐藏滚动条
+        });
+</script>
+
+</body>
+</html>

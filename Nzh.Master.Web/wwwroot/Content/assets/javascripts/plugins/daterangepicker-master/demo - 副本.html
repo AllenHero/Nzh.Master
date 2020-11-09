@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+   <head>
+      <meta charset="UTF-8" />
+      <title>A date range picker for Bootstrap</title>
+
+      <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />-->
+
+      <link rel="stylesheet" type="text/css" media="all" href="daterangepicker.css" />
+
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+
+      <script type="text/javascript" src="daterangepicker.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+   </head>
+   <body style="margin: 60px 0">
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-md-4 col-md-offset-2 demo">
+            <h4>Your Date Range Picker</h4>
+            <center>
+              <input type="text" name="datePicker"  id="datePicker"  class="form-control">
+            </center>
+          </div>
+
+        </div>
+
+      </div>
+
+      <style type="text/css">
+      .demo { position: relative; }
+      .demo i {
+        position: absolute; bottom: 10px; right: 24px; top: auto; cursor: pointer;
+      }
+      </style>
+
+      <script type="text/javascript">
+      $(document).ready(function() {       
+		 $('input[name="datePicker"]').daterangepicker({
+                "autoApply": false, //选择日期后自动提交;只有在不显示时间的时候起作用timePicker:false
+                singleDatePicker: false, //单日历
+                showDropdowns: true, //年月份下拉框
+                timePicker: false, //显示时间
+                timePicker24Hour: false, //时间制
+                timePickerSeconds: false, //时间显示到秒
+                startDate: moment().hours(-24).minutes(0).seconds(0), //设置开始日期
+                maxDate: moment(new Date()), //设置最大日期
+                "opens": "center",
+                showWeekNumbers: true,
+                locale: {
+                    format: "YYYY-MM-DD HH:mm:ss", //设置显示格式
+                    applyLabel: '确定', //确定按钮文本
+                    cancelLabel: '取消', //取消按钮文本
+                    daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+                    monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
+                        '七月', '八月', '九月', '十月', '十一月', '十二月'
+                    ],
+                    firstDay: 1
+                },
+            }, function (start,end) {
+                console.log(start.format('YYYY-MM-DD HH:mm:ss'));
+            });
+      });
+      </script>
+
+   </body>
+</html>

@@ -1,0 +1,37 @@
+.hw-overlay,.hw-overlay2,hw-overlay3,hw-overlay4,.dj_hw-overlay{display:none; position: fixed; top:0;left:0;width:100%;height:100%; background-color: rgba(0,0,0,0.3);z-index:9999;}
+.hw-layer-wrap{box-sizing:border-box; width:570px; position:absolute;left:50%;top:20%; margin-left:-285px; border-radius:3px; background-color:#fff; box-shadow:1px 4px 8px 0 rgba(0,0,0,0.3); padding:20px 20px;}
+.hwLayer-close,.hwLayer-close2,.hwLayer-close3,.hwLayer-close4{position:absolute; right:20px; top:20px; width:30px; height:30px; cursor:pointer; font-size:20px; color:#ccc; background: url(images/tpm_image/popwrong.png) no-repeat center;width:20px;height:20px;}
+.hwLayer-close:hover{ background: url(images/tpm_image/popwrongclick.png) no-repeat center;}
+.hw-layer-wrap .hw-icon{color:#b4d8f3;font-size:86px;text-align:center;}
+.hw-layer-wrap h4{margin:5px 0 30px; font-size:24px; color:#383c3e;text-align: center;}
+.hw-layer-wrap p{margin:30px 0; line-height:22px;font-size:24px; color:#595d60; text-align: center;}
+.hw-layer-title{height: 32px;line-height: 32px; font-size: 16px; position: absolute; left: 20px; top: 10px; font-weight: bold;}
+
+@media (max-width:768px){
+	.hw-layer-wrap{width:350px; margin-left:-175px; margin-top:-200px; padding:45px 50px; text-align:center;}
+}
+@media (max-width:400px){
+	.hw-layer-wrap{width:250px; margin-left:-125px;padding:25px 30px;}
+}
+
+.hwLayer-ok,.hwLayer-cancel,.hwLayer-ok2,.hwLayer-cancel2,.hwLayer-ok3,.hwLayer-cancel3,.hwLayer-ok4,.hwLayer-cancel4,.hwLayer-ok6,.hwLayer-cancel6{width:48%;float:left;margin:1%; text-align:center;height:60px; border:none; border:1px solid #FF8431; background-color:#f9f9f9;color:999;font-size:24px; outline-style:none;}
+
+.hwLayer-ok:hover,.hwLayer-cancel:hover,.hwLayer-ok2:hover,.hwLayer-cancel2:hover,.hwLayer-ok3:hover,.hwLayer-cancel3:hover,.hwLayer-ok4:hover,.hwLayer-cancel4:hover,.hwLayer-ok6:hover,.hwLayer-cancel6:hover{ background-color:#FF8431;color:#fff;}
+.dj_box ul li{clear:both;width:100%;padding:20px;}
+.dj_box ul li  p{padding:0;margin:0;line-height:40px;color:#666;}
+.dj_box ul li p b{color:#000;}
+.dj_box ul li .hwLayer-ok5,.by_hwLayer-ok{width:300px;height:50px; background-color:#FF8431;
+ box-shadow:inset 0px 0px 2px rgba(255,255,255,0.9); border:solid 1px #EA5E00; left:30%;clear:both;margin-left:20%;font-size:24px;}
+.dj_box ul li .hwLayer-ok5:hover,.by_hwLayer-ok:hover{background-color: rgba(247,151,100,1);box-shadow:inset 0px 0px 2px rgba(255,255,255,0.9); border:solid 1px #EA5E00;}
+.dj_box ul .dj_img p{color:#FF8431;}
+.dj_box ul .dj_img img{width:300px;height:100px;margin:0 auto;}
+
+
+
+
+
+
+
+
+
+

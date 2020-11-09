@@ -1,0 +1,1175 @@
+﻿@*@using iLean.Web*@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #main-nav::-webkit-scrollbar-track-piece {
+            /*//滚动条凹槽的颜色，还可以设置边框属性 background-color:#f8f8f8;*/
+            background-color: #000;
+        }
+
+        #main-nav::-webkit-scrollbar {
+            /*//滚动条的宽度 width:5px;*/
+            width: 5px;
+        }
+
+        #main-nav::-webkit-scrollbar-thumb {
+            /*//滚动条的设置 background-color:#dddddd;*/
+            background-clip: padding-box;
+            min-height: 28px;
+        }
+
+        #main-nav:hover::-webkit-scrollbar-thumb {
+            background-color: rgba(255,255,255,0.5);
+            -webkit-border-radius: 2em;
+            -moz-border-radius: 2em;
+        }
+
+        .modal-backdrop {
+            position: relative;
+            height: 100vh !important;
+        }
+
+            .modal-backdrop .modal.fade {
+                height: 1000px !important;
+                position: absolute
+            }
+
+        .modal.fade {
+            position: absolute !important;
+            overflow: auto !important;
+            /*  margin-bottom: 200px !important;*/
+            margin-top: -20px !important;
+        }
+
+        .box-contentinnerX {
+            padding: 10px;
+        }
+
+        .tabs-left .nav-tabs {
+            border-bottom: none !important
+        }
+
+        .custom-form table.dataTable tbody tr td .btn.btn-hover:hover {
+            background: none !important
+        }
+    </style>
+    <title>@ViewBag.Title</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport' />
+    <!--[if lt IE 9]>
+    <script src='/Content/assets/javascripts/html5shiv.js' type='text/javascript'></script>
+    <![endif]-->
+    <link rel="stylesheet" href="~/Content/assets/stylesheets/gridstack/gridstack.min.css" />
+    <link href='/Content/assets/stylesheets/customize_css.css' media='all' rel='stylesheet' type='text/css' />
+    <link href='/Content/assets/font_ilean/iconfont.css' media='all' rel='stylesheet' type='text/css' />
+    <link href='/Content/assets/stylesheets/bootstrap/bootstrap.css' media='all' rel='stylesheet' type='text/css' />
+    <link href='/Content/assets/stylesheets/bootstrap/bootstrap-responsive.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / jquery ui -->
+    <link href='/Content/assets/stylesheets/jquery_ui/jquery-ui-1.10.0.custom.css' media='all' rel='stylesheet' type='text/css' />
+    <link href='/Content/assets/stylesheets/jquery_ui/jquery.ui.1.10.0.ie.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / switch buttons -->
+    <link href='/Content/assets/stylesheets/plugins/bootstrap_switch/bootstrap-switch.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / xeditable -->
+    <link href='/Content/assets/stylesheets/plugins/xeditable/bootstrap-editable.css' media='all' rel='stylesheet' type='text/css' />
+    <link href='/Content/assets/stylesheets/plugins/common/bootstrap-wysihtml5.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / wysihtml5 (wysywig) -->
+    <link href='/Content/assets/stylesheets/plugins/common/bootstrap-wysihtml5.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / jquery file upload -->
+    <link href='/Content/assets/stylesheets/plugins/jquery_fileupload/jquery.fileupload-ui.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / full calendar -->
+
+    <link href='/Content/assets/stylesheets/plugins/fullcalendar/fullcalendar.css' media='all' rel='stylesheet' type='text/css' />
+
+    <!-- / select2 -->
+
+    <link href='/Content/assets/stylesheets/plugins/select2/select2.css' media='all' rel='stylesheet' type='text/css' />
+
+    <!-- / mention -->
+
+    <link href='/Content/assets/stylesheets/plugins/mention/mention.css' media='all' rel='stylesheet' type='text/css' />
+
+    <!-- / tabdrop (responsive tabs) -->
+
+    <link href='/Content/assets/stylesheets/plugins/tabdrop/tabdrop.css' media='all' rel='stylesheet' type='text/css' />
+
+    <!-- / jgrowl notifications -->
+
+    <link href='/Content/assets/stylesheets/plugins/jgrowl/jquery.jgrowl.min.css' media='all' rel='stylesheet' type='text/css' />
+
+    <!-- / datatables -->
+
+    <link href='/Content/assets/stylesheets/plugins/datatables/bootstrap-datatable.css' media='all' rel='stylesheet' type='text/css' />
+
+    <!-- / dynatrees (file trees) -->
+
+    <link href='/Content/assets/stylesheets/plugins/dynatree/ui.dynatree.css' media='all' rel='stylesheet' type='text/css' />
+
+    <!-- / color picker -->
+
+    <link href='/Content/assets/stylesheets/plugins/bootstrap_colorpicker/bootstrap-colorpicker.css' media='all' rel='stylesheet' type='text/css' />
+
+    <!-- / datetime picker -->
+
+    <link href='/Content/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css' media='all' rel='stylesheet' type='text/css' />
+
+    <!-- / daterange picker) -->
+
+    <link href='/Content/assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css' media='all' rel='stylesheet' type='text/css' />
+
+    <!-- / flags (country flags) -->
+
+    <link href='/Content/assets/stylesheets/plugins/flags/flags.css' media='all' rel='stylesheet' type='text/css' />
+
+    <!-- / slider nav (address book) -->
+
+    <link href='/Content/assets/stylesheets/plugins/slider_nav/slidernav.css' media='all' rel='stylesheet' type='text/css' />
+
+    <!-- / fuelux (wizard) -->
+
+    <link href='/Content/assets/stylesheets/plugins/fuelux/wizard.css' media='all' rel='stylesheet' type='text/css' />
+
+    <!-- / flatty theme -->
+
+    <link href='/Content/assets/stylesheets/light-theme.css' id='color-settings-body-color' media='all' rel='stylesheet' type='text/css' />
+    <link href="/Content/js/toastr/toastr.css" rel="stylesheet" />
+    <link href="/Content/js/Loading/loading.css" rel="stylesheet" />
+    <link href="~/Content/js/jquery-plugin/showloading/showLoading.css" rel="stylesheet" />
+
+    <!-- / demo -->
+
+    <link href='/Content/assets/stylesheets/demo.css' media='all' rel='stylesheet' type='text/css' />
+    <link href="~/Content/assets/stylesheets/guanzhu-index.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/Content/assets/stylesheets/plugins/Redio_btn/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/Content/assets/stylesheets/plugins/Redio_btn/build.css">
+    <link href="/Content/assets/font_ilean/iconfont.css" rel="stylesheet" />
+
+    <!-----头像裁剪------>
+    <link href="~/Content/assets/stylesheets/cropper/cropper.min.css" rel="stylesheet">
+    <link href="~/Content/assets/stylesheets/cropper/sitelogo.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/stylesheets/cropper/font-awesome.4.6.0.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    @RenderSection("head", required: false)
+    <style>
+        .required {
+            border-color: #ef8c8c !important;
+            background-color: #f2d1d1 !important;
+            border-radius: 3px;
+        }
+
+        .oDiv {
+            height: 200px;
+            width: 205px;
+            border: 1px solid #dcdfe6;
+            border-radius: 4px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .oInput {
+            border: solid 1px #dcdfe6;
+            line-height: 34px;
+        }
+        /*a  upload */
+        .a-upload {
+            padding: 0px 15px;
+            height: 34px;
+            line-height: 34px;
+            position: relative;
+            cursor: pointer;
+            background: #ffffff !important;
+            border: 1px solid #dcdfe6 !important;
+            box-shadow: none !important;
+            overflow: hidden;
+            display: inline-block;
+            border-radius: 4px;
+            *display: inline;
+            *zoom: 1
+        }
+
+            .a-upload input {
+                position: absolute;
+                font-size: 100px;
+                right: 0;
+                top: 0;
+                opacity: 0;
+                filter: alpha(opacity=0);
+                cursor: pointer
+            }
+
+            .a-upload:hover {
+                text-decoration: none;
+                background: #ddecfc !important;
+                border: 1px solid #409eff !important;
+                color: #208af7;
+                -webkit-transition: background-color 0.7s !important;
+                transition: background-color 0.7s !important;
+                transition-property: background-color !important;
+                transition-duration: 0.7s !important;
+                transition-timing-function: ease !important;
+                transition-delay: 0s !important;
+            }
+        /*密码验证*/
+        .contact ul li input:focus {
+            border-color: #c00;
+        }
+
+        .tips_true {
+            color: green;
+        }
+
+        .tips_false {
+            color: red;
+        }
+
+        /*logo*/
+        #auto_image img {
+            max-width: 40px;
+            autoimg: expression(onload=function(){this.style.width=(this.offsetWidth > 40)?"40px":"auto"});
+        }
+
+        #nav_auto_image {
+            display: table-cell;
+            vertical-align: middle;
+            line-height: 40px;
+            padding: 0px 20px;
+        }
+
+            #nav_auto_image img {
+                max-width: 30px;
+                autoimg: expression(onload=function(){this.style.width=(this.offsetWidth > 30)?"30px":"auto"});
+            }
+
+        .required {
+            border-color: #ef8c8c !important;
+            background-color: #f2d1d1 !important;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body style="padding:0">
+    @RenderBody()
+
+    <div class='modal hide fade' id='modal-guanzhu' role='dialog' tabindex='1'>
+        <div class='modal-header'>
+            <button class='close' data-dismiss='modal' type='button'>&times;</button>
+            <h3>重点关注配置</h3>
+        </div>
+        <div class='modal-body' style="z-index:1">
+            <div class="selection-container">
+                <div class="select-box left">
+                    <div class="select-box-title">
+                        <input type="checkbox" class="checkbox-all" id="checkbox-all1" />
+                        <label for="checkbox-all1"></label>
+                        <span>待关注项</span>
+                    </div>
+
+
+                    <div class="select-content">
+                        <ul class="unselect-ul" id="NoGuanZhuList">
+                        </ul>
+                    </div>
+                </div>
+                <div class="arrows-box">
+                    <div class="arrow-btns">
+                        <button class="arrow-btn right">
+                            &#8250;
+                        </button>
+                        <button class="arrow-btn left">
+                            &#8249;
+                        </button>
+                    </div>
+                </div>
+                <div class="select-box right">
+                    <div class="select-box-title">
+                        <input type="checkbox" class="checkbox-all" id="checkbox-all2" />
+                        <label for="checkbox-all2"></label>
+                        <span>已关注项</span>
+                    </div>
+                    <div class="select-content">
+                        <ul class="selected-ul" id="guanzhuList">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class='modal-footer top_rightbtn' style="text-align:center;">
+            <button class='btn btn-primary' id="btnGuanZhuSubmit">提交</button>&nbsp;&nbsp;
+            <button class='btn line-btn' data-dismiss='modal'>关闭</button>
+        </div>
+    </div>
+    <script id="template-message" type="text/x-jsrender">
+        <li class="row-fluid" id="{{>Id}}" name="{{>Type}}">
+            {{if Photo}}
+            <div class='span2 avatar pull-left'>
+                <img alt='Avatar' src='{{>Photo}}' />
+            </div>
+            {{/if }}
+            <div class='span1 text-right' style="color:#5b9dff">
+                ●
+            </div>
+            <div class='span9 body action pull-left'>
+                <a href="#" class="text-contrast">  {{>Message}}</a>
+            </div>
+            <small class='date pull-right muted'>
+                <span class='timeago fade has-tooltip' data-placement='top' title='{{>SendTime}}'>{{>SendTime}}</span>
+            </small>
+        </li>
+    </script>
+    <!--个人信息---->
+    <div class='modal hide fade' id='modal_grxx' role='dialog' tabindex='-1' style="width:45%;margin-left:46%;left:-20%">
+        <div class='row-fluid' style="background:#fff;height:100%;">
+            <div class='box-content box box-no-padding'>
+                <div class='tabbable'>
+                    <ul class='nav nav-tabs nav-tabs-simple' style="margin:0;">
+                        <button style="padding:10px;margin:0px 10px;" class='close' data-dismiss='modal' type='button'>&times;</button>
+                        <li class='active'>
+                            <a data-toggle='tab' href='#tabsimplet_grxx1' style="line-height:30px;">
+                                个人信息
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle='tab' href='#tabsimplet_grxx2' style="line-height:30px;">
+                                修改密码
+                            </a>
+                        </li>
+                    </ul>
+                    <div class='tab-content  scrollable' data-scrollable-height="50.5vh" style="padding:0px 10px !important">
+                        <div class='tab-pane fade in active' id='tabsimplet_grxx1'>
+                            <div class='box-contentinner'>
+                                <div class='row-fluid'>
+                                    <div class='form-group row-fluid'>
+                                        <label class='span3 text-right' for="name">图像</label>
+                                        <div class="span5">
+                                            <div class="all">
+                                                <div class="oDiv">
+                                                    <img name="self-photo" src="~/Content/assets/images/avatar.jpg" style="height:200px;width:200px;" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='span4 top_rightbtn'>
+                                            <!--<div class="a-upload" style="width:80px; text-align:center">
+                                             <input class="btn" type="file" accept="<image/*>" id="oInput" style="width:100px !important; text-align:center" />上传头像
+                                            </div>-->
+                                            <button type="button" name="EditSelfPhoto" class="btn btn-primary" @*data-toggle="modal" data-target="#avatar-modal"*@ style="margin: 10px;">
+                                                修改头像
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='row-fluid'>
+                                    <div class='control-group'>
+                                        <label class='span3 text-right' id="phone">手机号码</label>
+                                        <div class='span5' style="border-radius:3px">
+                                            <div class='controls' method="post">
+                                                <input group="self" type="text" class='input-block-level'
+                                                       name="userphone" id="userphone" disabled
+                                                       placeholder="请输入手机号" maxlength="11"
+                                                       @*value="@SysHelper.GetPhoneNumber()"*@
+                                                       onkeyup="value=value.replace(/[^\d]/g,'')" />
+                                                <span class="spa spa2"></span>
+                                            </div>
+                                        </div>
+                                        <div class='span4 top_rightbtn'>
+                                            <button type="button" name="editphone" class='btn  btn-primary' style="width:90px;">编辑</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class='control-group'>
+                                        <label class='span3 text-right' for="phone">当前部门:</label>
+                                        <div class='span5' style="border-radius:3px">
+                                            <div class='controls' method="post">
+                                                <select id="userCurrentOrganize">
+                                                    <option>==请选择==</option>
+                                                </select>
+                                                <span class="spa spa2"></span>
+                                            </div>
+                                        </div>
+                                        <div class="span4 controls">
+                                            <button class="btn  btn-primary" name="userOrganize" style="width:90px;">保存</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='tab-pane' id='tabsimplet_grxx2'>
+                            <div class='box-contentinner'>
+                                <div class='row-fluid'>
+                                    <div class='span2'></div>
+                                    <div class='span8'>
+                                        <div class='row-fluid' style="padding:15px 0px;">
+                                            <div class='control-group'>
+                                                <label class='span4 text-right' for='validation_password'>输入原密码</label>
+                                                <div class='span8' style="border-radius:3px">
+                                                    <div class='controls'>
+                                                        <input group="self" class='input-block-level' data-rule-minlength='6' data-rule-password='true'
+                                                               data-rule-required='true' id='validation_password1'
+                                                               name='validation_password' placeholder='请输入原密码' type='password' />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='row-fluid' style="padding:15px 0px;">
+                                            <div class='control-group'>
+                                                <label class='span4 text-right' for="">输入新密码</label>
+                                                <div class='span8 controls' style="border-radius:3px">
+                                                    <input type="password" group="self" name="yourpass" id="divpassword1" placeholder="请输入你的密码" required /><span class="tips"><br>密码必须由字母和数字组成</span>
+                                                    <!--<input class='input-block-level' data-rule-minlength='6' data-rule-password='true' data-rule-required='true' id='validation_password' name='validation_password' placeholder='请输入新密码' type='password'  />-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='row-fluid' style="padding:15px 0px;">
+                                            <div class='control-group'>
+                                                <label class='span4 text-right' for=''>确认新密码</label>
+                                                <div class='span8 controls' style="border-radius:3px">
+                                                    <input type="password" group="self" name="yourpass2" id="divpassword2" placeholder="请再次输入你的密码" required /><span class="tips"><br>两次密码需要相同</span>
+                                                    <!--<input class='input-block-level' data-rule-equalto='#validation_password' data-rule-required='true' id='validation_password_confirmation' name='validation_password_confirmation' placeholder='确认新密码' type='password'/>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='span2'></div>
+
+                                <div class="row-fluid">
+                                    <div class='modal-footer top_rightbtn'>
+                                        <button data-dismiss='modal' name="selfCancel" class='btn line-btn'>取消</button>
+                                        <button class='btn btn-primary' name="selfSubmit" type='submit'>保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---头像裁剪--------->
+    <div class="modal hide fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1" style="width:60%;margin-left:40%;left:-20%">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!--<form class="avatar-form" action="upload-logo.php" enctype="multipart/form-data" method="post">-->
+                <form class="avatar-form">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal" type="button">&times;</button>
+                        <h4 class="modal-title" id="avatar-modal-label">上传头像</h4>
+                    </div>
+
+                    <div class="avatar-body">
+                        <div class="scrollable" data-scrollable-height="56vh">
+                            <div class="avatar-upload">
+                                <input class="avatar-src" name="avatar_src" type="hidden">
+                                <input class="avatar-data" name="avatar_data" type="hidden">
+                                <label for="avatarInput" style="line-height: 35px;">头像上传</label>
+                                <button class="btn btn-primary" type="button" style="height: 35px;" onclick="$('input[id=avatarInput]').click();">请选择本地头像</button>
+                                <span id="avatar-name"></span>
+                                <input class="avatar-input hide" style="display:none" id="avatarInput" name="avatar_file" type="file">
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span9">
+                                    <div class="avatar-wrapper"></div>
+                                </div>
+                                <div class="span3">
+                                    <div class="avatar-preview preview-lg" id="imageHead"></div>
+                                    <!--<div class="avatar-preview preview-md"></div>
+                                    <div class="avatar-preview preview-sm"></div>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid avatar-btns">
+                            <div class="span4">
+                                <div class="btn-group">
+                                    <button class="btn btn-primary fa fa-undo" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"> 向左旋转</button>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn  btn-primary fa fa-repeat" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"> 向右旋转</button>
+                                </div>
+                            </div>
+                            <div class="span5" style="text-align: right;">
+                                <button class="btn btn-primary fa fa-arrows" data-method="setDragMode" data-option="move" type="button" title="移动">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;setDragMode&quot;, &quot;move&quot;)">
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary fa fa-search-plus" data-method="zoom" data-option="0.1" title="放大">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;zoom&quot;, 0.1)">
+                                        <!--<span class="fa fa-search-plus"></span>-->
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary fa fa-search-minus" data-method="zoom" data-option="-0.1" title="缩小">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;zoom&quot;, -0.1)">
+                                        <!--<span class="fa fa-search-minus"></span>-->
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary fa fa-refresh" data-method="reset" title="重置">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;reset&quot;)" aria-describedby="tooltip866214"></span>
+                                </button>
+                            </div>
+                            <div class="span3">
+                                <button class="btn btn-primary btn-block avatar-save fa fa-save" type="button" data-dismiss="modal"> 保存</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+
+    <!--任务弹框---->
+    <div class='modal hide fade' id='modal_tx' role='dialog' tabindex='-1' style="width:50%;left:45%;margin-left:-20%">
+        <div class='modal-header'>
+            <button class='close' data-dismiss='modal' type='button'>&times;</button>
+            <h3>任务提醒</h3>
+        </div>
+        <div class='row-fluid' style="width:100%;background:#fff;height:100%;">
+
+            <div class='box-content box box-no-padding'>
+                <div class='tabbable'>
+                    <div class='tab-content  scrollable' data-scrollable-height="42.5vh" style="padding:0px 10px !important">
+                        <div class='tixi-list tab-pane fade in active'>
+                            <ul class='unstyled users list-hover' id="TaskList">
+                            </ul>
+                            <div class='row-fluid load-more'>
+                                <a href="#" name="addMoreTask" style="width:95.8%;background:none;display:none;" class="btn" data-loading-text="&lt;i class=&#x27;icon-spinner icon-spin&#x27;&gt;&lt;/i&gt; Loading more..." id="users-more-activity">
+                                    <i class='icon-circle-arrow-down'></i>
+                                    加载更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='modal-footer top_rightbtn'>
+            <button class='btn btn-primary' name="AllTaskReaded">全部标记为已读</button>
+        </div>
+    </div>
+    <!--消息弹框---->
+    <div class='modal hide fade' id='modal_ms' role='dialog' tabindex='-1' style="width:50%;left:45%;margin-left:-20%">
+        <div class='modal-header'>
+            <button class='close' data-dismiss='modal' type='button'>&times;</button>
+            <h3>消息提醒</h3>
+        </div>
+        <div class='row-fluid' style="width:100%;background:#fff;height:100%;">
+
+            <div class='box-content box box-no-padding'>
+                <div class='tabbable'>
+                    <ul class='nav nav-tabs nav-tabs-simple' style="margin:0">
+                        <li class='active'>
+                            <a data-toggle='tab' href='#tabsimple9'>
+                                未读<span name="MessageCount" class="badge badge-red">0</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle='tab' href='#tabsimple10'>
+                                已读
+                            </a>
+                        </li>
+                    </ul>
+                    <div class='tab-content scrollable' data-scrollable-height="42.5vh" style="padding:0px 10px !important">
+                        <div class='tixi-list tab-pane fade in active' id='tabsimple9'>
+                            <ul class='unstyled users list-hover' id="MessageList">
+                            </ul>
+                            <div class='row-fluid load-more'>
+                                <a href="#" name="addMessageMore" style="width:95.8%;background:none" class="btn" data-loading-text="&lt;i class=&#x27;icon-spinner icon-spin&#x27;&gt;&lt;/i&gt; Loading more..." id="users-more-activity">
+                                    <i class='icon-circle-arrow-down'></i>
+                                    加载更多
+                                </a>
+                            </div>
+                        </div>
+                        <div class='tab-pane tixi-list' id='tabsimple10'>
+                            <ul class='unstyled users list-hover' id="MessageReadedList">
+                            </ul>
+                            <div class='row-fluid load-more'>
+                                <a href="#" name="addMessageReadedMore" style="width:95.8%;background:none;display:none;" class="btn" data-loading-text="&lt;i class=&#x27;icon-spinner icon-spin&#x27;&gt;&lt;/i&gt; Loading more..." id="users-more-activity">
+                                    <i class='icon-circle-arrow-down'></i>
+                                    加载更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='modal-footer top_rightbtn'>
+            <button class='btn btn-primary' name="AllMessageReaded">全部标记为已读</button>
+        </div>
+    </div>
+
+    <!-- / jquery -->
+    <script src="~/Content/assets/javascripts/gridstack/gridstack.all.js"></script>
+    <script src='/Content/assets/javascripts/jquery/jquery.min.js' type='text/javascript'></script>
+    <script src="/Content/js/toastr/toastr.js"></script>
+    <script src="/Content/js/Loading/loading.js"></script>
+    <script src="/Content/js/Loading/loadinglocation.js"></script>
+    <!-- / jquery mobile events (for touch and slide) -->
+    @*<script src="/Content/assets/javascripts/echartes/Echarts3.js"></script>*@
+    <script src="/Content/assets/javascripts/echartes/echarts-all.js"></script>
+    <script src='/Content/assets/javascripts/plugins/mobile_events/jquery.mobile-events.min.js' type='text/javascript'></script>
+    <!-- / jquery migrate (for compatibility with new jquery) -->
+    <script src='/Content/assets/javascripts/jquery/jquery-migrate.min.js' type='text/javascript'></script>
+    <!-- / jquery ui -->
+    <script src='/Content/assets/javascripts/jquery_ui/jquery-ui.min.js' type='text/javascript'></script>
+    <!-- / bootstrap -->
+    <script src='/Content/assets/javascripts/bootstrap/bootstrap.min.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/plugins/flot/excanvas.js' type='text/javascript'></script>
+    <!-- / sparklines -->
+    <script src='/Content/assets/javascripts/plugins/sparklines/jquery.sparkline.min.js' type='text/javascript'></script>
+    <!-- / flot charts -->
+    <script src='/Content/assets/javascripts/plugins/flot/flot.min.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/plugins/flot/flot.resize.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/plugins/flot/flot.pie.js' type='text/javascript'></script>
+    <!-- / bootstrap switch -->
+    <script src='/Content/assets/javascripts/plugins/bootstrap_switch/bootstrapSwitch.min.js' type='text/javascript'></script>
+    <!-- / fullcalendar -->
+    <script src='/Content/assets/javascripts/plugins/fullcalendar/fullcalendar.min.js' type='text/javascript'></script>
+    <!-- / datatables -->
+    <script src='/Content/assets/javascripts/plugins/datatables/jquery.dataTables.min.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/plugins/datatables/jquery.dataTables.columnFilter.js' type='text/javascript'></script>
+    <!-- / wysihtml5 -->
+    <script src='/Content/assets/javascripts/plugins/common/wysihtml5.min.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/plugins/common/bootstrap-wysihtml5.js' type='text/javascript'></script>
+    <!-- / select2 -->
+    <script src='/Content/assets/javascripts/plugins/select2/select2.js' type='text/javascript'></script>
+    <!-- / color picker -->
+    <script src='/Content/assets/javascripts/plugins/bootstrap_colorpicker/bootstrap-colorpicker.min.js' type='text/javascript'></script>
+    <!-- / mention -->
+    <script src='/Content/assets/javascripts/plugins/mention/mention.min.js' type='text/javascript'></script>
+    <!-- / input mask -->
+    <script src='/Content/assets/javascripts/plugins/input_mask/bootstrap-inputmask.min.js' type='text/javascript'></script>
+    <!-- / fileinput -->
+    @*<script src='/Content/assets/javascripts/plugins/fileinput/bootstrap-fileinput.js' type='text/javascript'></script>*@
+    <!-- / modernizr -->
+    <script src='/Content/assets/javascripts/plugins/modernizr/modernizr.min.js' type='text/javascript'></script>
+    <!-- / retina -->
+    @*<script src='/Content/assets/javascripts/plugins/retina/retina.js' type='text/javascript'></script>*@
+    <!-- / fileupload -->
+    <script src='/Content/assets/javascripts/plugins/fileupload/tmpl.min.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/plugins/fileupload/load-image.min.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/plugins/fileupload/canvas-to-blob.min.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/plugins/fileupload/jquery.iframe-transport.min.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/plugins/fileupload/jquery.fileupload.min.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/plugins/fileupload/jquery.fileupload-fp.min.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/plugins/fileupload/jquery.fileupload-ui.min.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/plugins/fileupload/jquery.fileupload-init.js' type='text/javascript'></script>
+    <!-- / timeago -->
+    <script src='/Content/assets/javascripts/plugins/timeago/jquery.timeago.js' type='text/javascript'></script>
+    <!-- / slimscroll -->
+    <script src='/Content/assets/javascripts/plugins/slimscroll/jquery.slimscroll.min.js' type='text/javascript'></script>
+    <!-- / autosize (for textareas) -->
+    <script src='/Content/assets/javascripts/plugins/autosize/jquery.autosize-min.js' type='text/javascript'></script>
+    <!-- / charCount -->
+    <script src='/Content/assets/javascripts/plugins/charCount/charCount.js' type='text/javascript'></script>
+    <!-- / validate -->
+    <script src='/Content/assets/javascripts/plugins/validate/jquery.validate.min.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/plugins/validate/additional-methods.js' type='text/javascript'></script>
+    <!-- / naked password -->
+    <script src='/Content/assets/javascripts/plugins/naked_password/naked_password-0.2.4.min.js' type='text/javascript'></script>
+    <!-- / nestable -->
+    <script src='/Content/assets/javascripts/plugins/nestable/jquery.nestable.js' type='text/javascript'></script>
+    <!-- / tabdrop -->
+    <script src='/Content/assets/javascripts/plugins/tabdrop/bootstrap-tabdrop.js' type='text/javascript'></script>
+    <!-- / jgrowl -->
+    <script src='/Content/assets/javascripts/plugins/jgrowl/jquery.jgrowl.min.js' type='text/javascript'></script>
+    <!-- / bootbox -->
+    <script src='/Content/assets/javascripts/plugins/bootbox/bootbox.min.js' type='text/javascript'></script>
+    <!-- / inplace editing -->
+    <script src='/Content/assets/javascripts/plugins/xeditable/bootstrap-editable.min.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/plugins/xeditable/wysihtml5.js' type='text/javascript'></script>
+    <!-- / ckeditor -->
+    <script src='/Content/assets/javascripts/plugins/ckeditor/ckeditor.js' type='text/javascript'></script>
+    <!-- / filetrees -->
+    <script src='/Content/assets/javascripts/plugins/dynatree/jquery.dynatree.min.js' type='text/javascript'></script>
+    <!-- / datetime picker -->
+    <script src='/Content/assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js' type='text/javascript'></script>
+    <!-- / daterange picker -->
+    <script src='/Content/assets/javascripts/plugins/bootstrap_daterangepicker/moment.min.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.js' type='text/javascript'></script>
+    <!-- / max length -->
+    <script src='/Content/assets/javascripts/plugins/bootstrap_maxlength/bootstrap-maxlength.min.js' type='text/javascript'></script>
+    <!-- / dropdown hover -->
+    <script src='/Content/assets/javascripts/plugins/bootstrap_hover_dropdown/twitter-bootstrap-hover-dropdown.min.js' type='text/javascript'></script>
+    <!-- / slider nav (address book) -->
+    <script src='/Content/assets/javascripts/plugins/slider_nav/slidernav-min.js' type='text/javascript'></script>
+    <!-- / fuelux -->
+    <script src='/Content/assets/javascripts/plugins/fuelux/wizard.js' type='text/javascript'></script>
+    <!-- / flatty theme -->
+    <script src='/Content/assets/javascripts/nav.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/tables.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/theme.js' type='text/javascript'></script>
+    <!-- / demo -->
+    <script src='/Content/assets/javascripts/demo/jquery.mockjax.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/demo/inplace_editing.js' type='text/javascript'></script>
+    <script src='/Content/assets/javascripts/demo/charts.js' type='text/javascript'></script>
+    <script src="/Content/assets/javascripts/echartes/echarts.common.min.js"></script>
+    <script src='/Content/assets/javascripts/demo/demo.js' type='text/javascript'></script>
+
+    @*<div style="display:none">
+            <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+        </div>*@
+    <script src="~/Content/js/core/utils.js"></script>
+    <script src="~/Content/js/core/cookie.js"></script>
+    <script src="~/Content/js/Andon/jsrender.min.js"></script>
+    @*<script src="/Content/js/iLean/index.js"></script>*@
+    <script src="~/Content/assets/javascripts/guanzhuJS.js"></script>
+    <script src="~/Content/js/jquery-plugin/showloading/jquery.showLoading.min.js"></script>
+    <script src="~/Scripts/moment.min-self.js"></script>
+    <!--剪裁头像-->
+    @*<script src="~/Content/assets/javascripts/cropper/jquery-1.10.2.js"></script>*@
+    <!--<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>-->
+    <script src="~/Content/assets/javascripts/cropper/cropper.js"></script>
+    <script src="~/Content/assets/javascripts/cropper/sitelogo.js"></script>
+    <script type="text/javascript">
+        var workplace = {};
+        @*var TenantId = '@SysHelper.GetTenantId()';
+        var UserCode = '@SysHelper.GetUserCode()';
+        var UserId = '@SysHelper.GetUserId()';
+        var UserName = '@SysHelper.GetUserName()';*@
+        var currentUser = JSON.stringify(getCookie("localuser"));
+        var locationurl = window.location.pathname;
+        var locatsearch = window.location.search;
+
+        $(function () {
+            if (UserCode == "") window.location.href = "/iLean/Login";
+            $("#btnExit").click(function () {
+                $.ajax({
+                    url: '/login/Logout',
+                    type: 'get',
+                    success: function (d) {
+                        console.log("exit");
+                        window.location.href = "/iLean/Login";
+                    }
+                });
+            });
+            
+            //关注的菜单
+            function SetNoGuanzhuMenu(MenuId,MenuName) {
+                var NoGuanZhuHtml = "";
+                NoGuanZhuHtml += "<li>";
+                NoGuanZhuHtml += "<input type=\"checkbox\" class=\"checkboxs\" id=\"" + MenuId + "\" />";
+                NoGuanZhuHtml += "<label class=\"checkboxs-label\" for=\"" + MenuId + "\"></label>";
+                NoGuanZhuHtml += "<span>" + MenuName + "</span>";
+                NoGuanZhuHtml += "</li>";
+                return NoGuanZhuHtml;
+            }
+        });
+        function jQueryShowLoading() {
+            jQuery('body').showLoading();
+            jQuery('#loading-indicator-undefined').css("top", 200);
+        }
+    </script>
+
+    <!--获取消息-->
+    <script>
+        $(function () {
+            //设置我的消息已读
+            $("button[name=AllMessageReaded]").click(function () {
+                MyMessageReaded();
+            });
+            //设置我的任务已读
+            $("button[name=AllTaskReaded]").click(function () {
+                MyTaskReaded();
+            });
+           
+            //获取默认部门
+            GetUserOrganize();
+            //设置当前登录用户默认部门
+            $("button[name=userOrganize]").click(function () {
+                //var data = $("#userCurrentOrganize").attr("data");
+                //if (data) {
+                //    data = JSON.parse(data);
+                //    data.SettingValue = $("#userCurrentOrganize").val();
+                //}
+                //else
+                //    data = {
+                //    UserCode: UserCode, TenantId: TenantId, SettingCode: 'DefaultOrganize', SettingName: '默认组织'
+                //    , SettingValue: $("#userCurrentOrganize").val(), Description: ''
+                //};
+                var data = {
+                    UserCode: UserCode, TenantId: TenantId, SettingCode: 'DefaultOrganize', SettingName: '默认组织'
+                    , SettingValue: $("#userCurrentOrganize").val(), Description: ''
+                };
+                $.ajax({
+                    url: '/api/sys/user/EditUserDefaultOrganize',
+                    type: 'Post',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function (value) {
+                        if (value.status) {
+                            $("#modal_grxx").modal("hide");
+                        } else {
+                            toastr.warning(value.message);
+                        }
+                    }
+                })
+            });
+        });
+        //任务已经读
+        function TaskReaded(id, self) {
+            $.ajax({
+                url: '/api/self/my/EditTaskReaded/' + id,
+                type: 'Post',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (value) {
+                    if (value.status) {
+                        $(self).remove();
+                        if ($("li[name=task]").length <= 0) {
+                            $("span[name=TaskCount]").html(0);
+                            $("span[name=TaskCount]").hide();
+                        } else {
+                            $("span[name=TaskCount]").html($("li[name=task]").length);
+                        }
+                    }
+                }
+            });
+        }
+        //我的任务已经
+        function MyTaskReaded() {
+            $.ajax({
+                url: '/api/self/my/EditTaskReadedByReceiver/' + UserId,
+                type: 'Post',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (value) {
+                    if (value.status) {
+                        $("li[name=task]").remove();
+                        $("span[name=TaskCount]").html(0);
+                        $("span[name=TaskCount]").hide();
+                    }
+                }
+            });
+        }
+        //消息已读
+        function MessageReaded(id, self) {
+            $.ajax({
+                url: '/api/self/my/EditMessageReaded/' + id,
+                type: 'Post',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (value) {
+                    if (value.status) {
+                        $("#MessageReadedList").unshift(self);
+                        $(self).remove();
+                        if ($("li[name=message]").length <= 0) {
+                            $("span[name=MessageCount]").html(0);
+                            $("span[name=MessageCount]").hide();
+                        } else {
+                            $("span[name=MessageCount]").html($("li[name=message]").length);
+                        }
+                    }
+                }
+            });
+        }
+        //我的消息已读
+        function MyMessageReaded() {
+            $.ajax({
+                url: '/api/self/my/EditMessageReadedByReceiver/' + UserId,
+                type: 'Post',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (value) {
+                    if (value.status) {
+                        $("li[name=task]").remove();
+                        $("span[name=MessageCount]").html(0);
+                        $("span[name=MessageCount]").hide();
+                    }
+                }
+            });
+        }
+        //获取员工部门
+        function GetUserOrganize() {
+            $.ajax({
+                url: '/api/sys/user/GetUserDefaultOrganize/' + UserId,
+                success: function (value) {
+                    $("#userCurrentOrganize").html("");
+                    if (value.total > 0) {
+                        $("#userCurrentOrganize").attr("data", JSON.stringify(value.rows[0]))
+                        var options = "";
+                        $.each(value.rows, function (index, item) {
+                            options += "<option value='" + item.OrganizeId + "' code='" + item.OrganizeCode + "'>" + item.OrganizeName + "</option>";
+                        })
+                        $("#userCurrentOrganize").html(options);
+                    }
+                }
+            });
+        }
+    </script>
+
+    <!------密码验证-------->
+    <script type="text/javascript">
+        $(function () {
+            $("button[name=EditSelfPhoto]").click(function () {
+                $("#modal_grxx").modal("hide");
+                $("#avatar-modal").modal("show");
+            });
+            //手机号
+            $("#userphone").change(function () {
+                var phone = document.getElementById('userphone').value;
+                if (!(/^1[3456789]\d{9}$/.test(phone))) {
+                    $(this).next().html('<br><font class="tips_false">手机号格式不正确</font>');
+                } else {
+                    $(this).next().html('<br><font class="tips_true">输入正确</font>');
+                }
+            });
+            $("button[name=editphone]").click(function () {
+                if ($("#userphone").attr("disabled")) {
+                    $("#userphone").removeAttr("disabled");
+                    $(this).html("保存");
+                } else {
+                    var data = { UserId: UserId, TenantId: TenantId, PhoneNumber: '' };
+                    if ((/^1[3456789]\d{9}$/.test($("#userphone").val()))) {
+                        data.PhoneNumber = $("#userphone").val();
+                        saveSelfInfoMation(data);
+                    } else {
+                        status = false;
+                        toastr.warning("手机号格式不正确");
+                        $("#userphone").next().html('<br><font class="tips_false">手机号格式不正确</font>');
+                    }
+                }
+            });
+            //第一次输入密码
+            $("#divpassword1").change(function () {
+                checkpsd1(this);
+                if ($("#divpassword1").val() == $("#validation_password1").val()) {
+                    $("#divpassword1").next().html('<br><font class="tips_false">新密码和原密码不能相同</font>');
+                }
+                if ($("#divpassword2").val()) {
+                    if ($("#divpassword2").val() != $("#divpassword1").val())
+                        $("#divpassword2").next().html('<br><font class="tips_false">两次密码不相同</font>');
+                    else
+                        $("#divpassword2").next().html('<br><font class="tips_true">输入正确</font>');
+                }
+            });
+            //第二次输入密码
+            $("#divpassword2").change(function () {
+                checkpsd1(this);
+                var a = $("#divpassword1").val();
+                var b = $("#divpassword2").val();
+                var c = $("#validation_password1").val();
+                if (a != b) {
+                    $("#divpassword2").next().html('<br><font class="tips_false">两次密码不相同</font>');
+                } else if (a == c) {
+                    $("#divpassword1").next().html('<br><font class="tips_false">新密码和原密码不能相同</font>');
+                }
+                else {
+                    $("#divpassword2").next().html('<br><font class="tips_true">输入正确</font>');
+                }
+            });
+
+            $("button[name=selfCancel]").click(function () {
+                clearSelf();
+            });
+
+            $("button[name=selfSubmit]").click(function () {
+                var data = checkValue();
+                if (data) {
+                    saveSelfInfoMation(data);
+                }
+            })
+        });
+
+        //验证密码 
+        function checkpsd1(obj) {
+
+            psd1 = $(obj).val();
+
+            var flagZM = false;
+
+            var flagSZ = false;
+
+            var flagQT = false;
+
+            if (psd1.length < 6 || psd1.length > 12) {
+
+                $(obj).next().html('<br><font class="tips_false">长度错误</font>');
+
+            } else {
+                for (i = 0; i < psd1.length; i++) {
+                    if ((psd1.charAt(i) >= 'A' && psd1.charAt(i) <= 'Z') || (psd1.charAt(i) >= 'a' && psd1.charAt(i) <= 'z')) {
+                        flagZM = true;
+                    }
+
+                    else if (psd1.charAt(i) >= '0' && psd1.charAt(i) <= '9') {
+
+                        flagSZ = true;
+
+                    } else {
+                        flagQT = true;
+
+                    }
+                }
+                if (!flagZM || !flagSZ || flagQT) {
+
+                    $(obj).next().html('<br><font class="tips_false">密码必须是字母数字的组合</font>');
+
+                } else {
+                    $(obj).next().html('<br><font class="tips_true">输入正确</font>');
+                }
+            }
+        }
+
+        //验证邮箱
+        function checkmail() {
+            apos = form1.youremail.value.indexOf("@@");
+            dotpos = form1.youremail.value.lastIndexOf(".");
+            if (apos < 1 || dotpos - apos < 2) {
+                divmail.innerHTML = '<br><font class="tips_false">输入错误</font>';
+            }
+            else {
+                divmail.innerHTML = '<br><font class="tips_true">输入正确</font>';
+            }
+        }
+
+        // 判断是否为手机号
+        function isPoneAvailable(pone) {
+            var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+            if (!myreg.test(pone)) {
+                return false;
+            } else {
+                return true;
+            }
+        };
+        // 判断是否为电话号码
+        function isTelAvailable(tel) {
+            var myreg = /^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/;
+            if (!myreg.test(tel)) {
+                return false;
+            } else {
+                return true;
+            }
+        };
+
+        //检查录入数据
+        function checkValue() {
+            var status = true;
+            var data = { UserId: UserId, TenantId: TenantId, OldPwd: '', NewPwd: '' };
+
+            if ($("#validation_password1").val()) {
+                data.OldPwd = $("#validation_password1").val();
+            } else {
+                status = false;
+                $("#validation_password1").next().html('<br><font class="tips_false">请输入旧密码</font>');
+                toastr.warning("请输入旧密码");
+            }
+            if ($("#divpassword1").val() == $("#divpassword2").val() && $("#divpassword2").val()) {
+                data.NewPwd = $("#divpassword2").val();
+            } else {
+                status = false;
+                $("#divpassword2").next().html('<br><font class="tips_false">请重新输入新密码</font>');
+                $("#divpassword1").next().html('<br><font class="tips_false">请重新输入新密码</font>');
+                toastr.warning("请重新输入新密码");
+            }
+
+            if (status) {
+                return data;
+            } else {
+                return '';
+            }
+        }
+        //清除表单内容
+        function clearSelf() {
+            $("#userphone").next().html("");
+            $("#divpassword2").next().html('<br><font>两次密码需要相同</font>');
+            $("#divpassword1").next().html('<br><font>密码必须由字母和数字组成</font>');
+            $("input[group=self]").val("");
+        }
+
+        function saveSelfInfoMation(data) {
+            $.ajax({
+                url: '/api/sys/user/EditSelfInfomation',
+                type: 'Post',
+                dataType: 'json',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function (value) {
+                    if (value.status) {
+                        var phone = $("#userphone").val();
+                        $("#modal_grxx").modal("hide");
+                        //清除表单内容
+                        clearSelf();
+                        $("#userphone").attr("disabled");
+                        $("#userphone").val(phone);
+                        $("button[name=editphone]").html("编辑");
+                    } else {
+                        toastr.warning(value.message);
+                    }
+                }
+            });
+        }
+    </script>
+    <!-----------图片上传---------------->
+    <script src="~/Content/assets/javascripts/cropper/html2canvas.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        //做个下简易的验证  大小 格式
+        $('#avatarInput').on('change', function (e) {
+            var filemaxsize = 1024 * 5;//5M
+            var target = $(e.target);
+            var Size = target[0].files[0].size / 1024;
+            if (Size > filemaxsize) {
+                alert('图片过大，请重新选择!');
+                $(".avatar-wrapper").childre().remove;
+                return false;
+            }
+            if (!this.files[0].type.match(/image.*/)) {
+                alert('请选择正确的图片!')
+            } else {
+                var filename = document.querySelector("#avatar-name");
+                var texts = document.querySelector("#avatarInput").value;
+                var teststr = texts; //你这里的路径写错了
+                testend = teststr.match(/[^\\]+\.[^\(]+/i); //直接完整文件名的
+                filename.innerHTML = testend;
+            }
+        });
+
+        $(".avatar-save").on("click", function () {
+            var img_lg = document.getElementById('imageHead');
+            // 截图小的显示框内的内容
+            html2canvas(img_lg, {
+                allowTaint: true,
+                taintTest: false,
+                onrendered: function (canvas) {
+                    canvas.id = "mycanvas";
+                    //生成base64图片数据
+                    var dataUrl = canvas.toDataURL("image/jpeg");
+                    var newImg = document.createElement("img");
+                    newImg.src = dataUrl;
+                    imagesAjax(dataUrl)
+                }
+            });
+        })
+
+        function imagesAjax(src) {
+            var data = {};
+            data.Image = src;
+            data.TenantId = TenantId;
+            data.UserId = UserId;
+            $.ajax({
+                url: "/api/sys/user/EditSelfPhoto",
+                type: "POST",
+                data: JSON.stringify(data),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (re) {
+                    if (re.status) {
+                        $('img[name=self-photo]').attr('src', re.message);
+
+                        $("#userImage").attr("src", re.message);
+                    }
+                }
+            });
+        }
+    </script>
+
+    <script>
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

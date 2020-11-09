@@ -1,0 +1,69 @@
+﻿
+<header id="headed">
+    <div class='navbar'>
+        <div class='navbar-inner'>
+            <div class='container-fluid'>
+                <a class='sidebar-toggle btn pull-left' href='#'>
+                    <i class='icon-reorder'></i>
+                </a>
+                <div id="nav_auto_image" class="pull-left">
+                    <img src="/Content/assets/images/logo.png">
+                </div>
+                <span class="tophead-title">智慧精益管理系统</span>&nbsp;&nbsp;
+                <a id="headworkplace" style="visibility:hidden;"></a>
+                <ul class='nav pull-right'>
+                    <li class=''>
+                        <a class='badge-box' data-toggle='modal' href='#modal_tx'>
+                            <i class='font_ilean iconfont icon-daibanrenwu1'></i>
+                            <span name="TaskCount" class='badge badge-red'>0</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a class='badge-box' data-toggle='modal' href='#modal_ms'>
+                            <i class='font_ilean iconfont icon-tixing'></i>
+                            <span name="MessageCount" class='badge badge-red'>0</span>
+                        </a>
+                    </li>
+                    <li class='dropdown dark user-menu'>
+                        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+                            <img id="userImage" alt='' height='23' width='23' src="~/Content/assets/images/selflogo.png" />
+                            <span class='user-name hidden-phone' id="txtUserName"></span>
+                            <b class='caret'></b>
+                        </a>
+
+                        <ul class='dropdown-menu' style="padding-bottom:10px;border-radius:6px;border:none">
+                            <li style="padding:10px 0px 0px  0px;">
+                                <a data-toggle='modal' href='#modal_grxx'>
+                                    <i class='font_ilean iconfont icon-gerenxinxi'></i>&nbsp&nbsp个人信息
+                                </a>
+                            </li>
+                            <li style="padding:15px 0px 0px 0px;">
+                                <a href='#' id="btnSetGuanZhu">
+                                    <i class='font_ilean iconfont icon-guanzhu3'></i>&nbsp&nbsp设置关注
+                                </a>
+                            </li>
+                            <li class='divider'></li>
+                            <li>
+                                <a href='/Home/Index'>
+                                    <i class='font_ilean iconfont icon-guanlihoutai'></i>&nbsp&nbsp进入企业管理后台
+                                </a>
+                            </li>
+                            <li class='divider'></li>
+                            <li>
+                                <a href='#'>
+                                    <i class='font_ilean iconfont icon-banben'></i>&nbsp&nbsp版本<span id="txtVersion"></span>
+                                </a>
+                            </li>
+                            <li class='divider'></li>
+                            <li>
+                                <a href='#' id="btnExit">
+                                    <i class='font_ilean iconfont icon-tuichudenglu'></i>&nbsp退出登入
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
