@@ -861,7 +861,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        ///根据ID获取单个实体
+        ///根据Id获取单个实体
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -1074,7 +1074,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 新增返回ID
+        /// 新增返回Id
         /// </summary>
         /// <param name="insertObj"></param>
         /// <returns></returns>
@@ -1084,7 +1084,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 新增返回ID
+        /// 新增返回Id
         /// </summary>
         /// <param name="insertObj"></param>
         /// <returns></returns>

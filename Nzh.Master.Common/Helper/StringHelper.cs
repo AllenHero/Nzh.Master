@@ -314,7 +314,7 @@ namespace Nzh.Master.Common.Helper
         /// 获取正确的Id，如果不是正整数，返回0
         /// </summary>
         /// <param name="_value"></param>
-        /// <returns>返回正确的整数ID，失败返回0</returns>
+        /// <returns>返回正确的整数Id，失败返回0</returns>
         public static int StrToId(string _value)
         {
             if (IsNumberId(_value))
