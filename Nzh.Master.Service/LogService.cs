@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Nzh.Master.Model;
+using Nzh.Master.Common.Helper;
 
 namespace Nzh.Master.Service
 {
@@ -32,11 +33,11 @@ namespace Nzh.Master.Service
             {
                 _logRepository.BeginTran();//开始事务
                 Log Log = new Log();
-                Log.LogId = Guid.NewGuid();
-                Log.UserId = GetSystemCurrentUserId();
-                Log.UserName = GetSystemCurrentUserName();
-                Log.LogTime = GetSystemCurrentTime();
-                Log.LogIP = GetSystemCurrentIP();
+                Log.LogId = IdWorkerHelper.NewId();
+                Log.UserId = IdWorkerHelper.NewId();
+                Log.UserName = "";
+                Log.LogTime = DateTime.Now;
+                Log.LogIP = "";
                 Log.LogType = logtype;
                 Log.LogMsg = logmsg;
                 result.Data = _logRepository.Insert(Log);

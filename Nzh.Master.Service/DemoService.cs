@@ -1,4 +1,5 @@
-﻿using Nzh.Master.IRepository;
+﻿using Nzh.Master.Common.Helper;
+using Nzh.Master.IRepository;
 using Nzh.Master.IService;
 using Nzh.Master.Model;
 using Nzh.Master.Model.Base;
@@ -65,7 +66,7 @@ namespace Nzh.Master.Service
             {
                 _demoRepository.BeginTran();//开始事务
                 Demo Demo = new Demo();
-                Demo.Id = Guid.NewGuid();
+                Demo.Id = IdWorkerHelper.NewId();
                 Demo.Name = Name;
                 Demo.Sex = Sex;
                 Demo.Age = Age;

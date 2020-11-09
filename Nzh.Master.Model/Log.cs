@@ -13,12 +13,12 @@ namespace Nzh.Master.Model
         /// <summary>
         /// 主键Id
         /// </summary>
-        public Guid LogId { get; set; }
+        public long LogId { get; set; }
 
         /// <summary>
         /// 用户Id
         /// </summary>
-        public Guid UserId { get; set; }
+        public long UserId { get; set; }
 
         /// <summary>
         /// 用户名称

@@ -12,7 +12,7 @@ namespace Nzh.Master.Model
         /// <summary>
         /// 主键Id
         /// </summary>
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         ///名称 

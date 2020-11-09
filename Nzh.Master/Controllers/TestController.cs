@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
 using Newtonsoft.Json;
 using Nzh.Frame.Common.Logger;
+using Nzh.Master.Common.Helper;
 using Nzh.Master.IService;
 using Nzh.Master.Model;
 using Nzh.Master.Model.Base;
@@ -230,7 +231,7 @@ namespace Nzh.Master.Controllers
                         for (int row = 2; row <= rowCount; row++)
                         {
                             Demo demo = new Demo();
-                            demo.Id = Guid.Parse(worksheet.Cells[row, 1].Value.ToString());
+                            demo.Id = Convert.ToInt64(worksheet.Cells[row, 1].Value.ToString());
                             demo.Name = worksheet.Cells[row, 2].Value.ToString();
                             demo.Sex = worksheet.Cells[row, 3].Value.ToString();
                             demo.Age =int.Parse( worksheet.Cells[row, 4].Value.ToString());
@@ -298,7 +299,7 @@ namespace Nzh.Master.Controllers
                     //插入图片数据
                     var picture = new Enclosure
                     {
-                        Id = Guid.NewGuid(),
+                        Id = IdWorkerHelper.NewId(),
                         FilePath = filePath + saveName,
                     };
                     using (FileStream fs = System.IO.File.Create(webRootPath + filePath + saveName))

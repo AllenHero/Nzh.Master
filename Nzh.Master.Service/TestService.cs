@@ -1,4 +1,5 @@
-﻿using Nzh.Master.IRepository;
+﻿using Nzh.Master.Common.Helper;
+using Nzh.Master.IRepository;
 using Nzh.Master.IService;
 using Nzh.Master.Model;
 using Nzh.Master.Model.Base;
@@ -66,7 +67,7 @@ namespace Nzh.Master.Service
             try
             {
                 _demoRepository.BeginTran(); //开始事务
-                Guid Id = Guid.NewGuid();
+                long Id = IdWorkerHelper.NewId();
                 string sql = "insert into Demo(Id,Name,Sex,Age,Remark) values(@Id,@Name,@Sex,@Age,@Remark)";
                 SugarParameter[] Parameter = new SugarParameter[]
                 {

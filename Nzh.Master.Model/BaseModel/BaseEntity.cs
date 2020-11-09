@@ -18,7 +18,7 @@ namespace Nzh.Master.Model.BaseModel
         /// <summary>
         /// 创建人Id
         /// </summary>
-        public Guid CreateUserId { get; set; }
+        public long CreateUserId { get; set; }
 
         /// <summary>
         ///  是否删除
