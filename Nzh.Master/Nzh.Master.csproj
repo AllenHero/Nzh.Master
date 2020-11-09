@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\Sys\" />
     <Folder Include="UpLoad\" />
     <Folder Include="wwwroot\" />
     <Folder Include="Log\" />

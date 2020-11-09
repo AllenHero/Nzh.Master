@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Nzh.Master.Service\Nzh.Master.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Sys\" />
+  </ItemGroup>
+
 </Project>

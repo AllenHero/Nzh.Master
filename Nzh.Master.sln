@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2003
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Master", "Nzh.Master\Nzh.Master.csproj", "{0A94592C-43DE-4720-B4A4-D510A9B15DE0}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Master.Service", "Nzh.Master.Service\Nzh.Master.Service.csproj", "{C48584D1-9692-477C-A9CF-791FEEB84E0F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nzh.Master.Extension", "Nzh.Master.Extension\Nzh.Master.Extension.csproj", "{4ECB764A-3220-4103-9C69-9D980ACD5897}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nzh.Master.Dto", "Nzh.Master.Dto\Nzh.Master.Dto.csproj", "{4F8A392B-CF18-4D41-B42D-006497EE5E6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{4ECB764A-3220-4103-9C69-9D980ACD5897}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ECB764A-3220-4103-9C69-9D980ACD5897}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ECB764A-3220-4103-9C69-9D980ACD5897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F8A392B-CF18-4D41-B42D-006497EE5E6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F8A392B-CF18-4D41-B42D-006497EE5E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F8A392B-CF18-4D41-B42D-006497EE5E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F8A392B-CF18-4D41-B42D-006497EE5E6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
