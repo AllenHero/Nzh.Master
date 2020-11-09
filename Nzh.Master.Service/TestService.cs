@@ -43,12 +43,12 @@ namespace Nzh.Master.Service
         /// <summary>
         /// 获取Demo
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
-        public Demo GetDemoById(Guid ID)
+        public Demo GetDemoById(Guid Id)
         {
-            string sql = "SELECT * from  Demo where ID=@ID";
-            var demoModel = _demoRepository.Get(sql, new { ID = ID });
+            string sql = "SELECT * from  Demo where Id=@Id";
+            var demoModel = _demoRepository.Get(sql, new { Id = Id });
             return demoModel;
         }
 
@@ -66,11 +66,11 @@ namespace Nzh.Master.Service
             try
             {
                 _demoRepository.BeginTran(); //开始事务
-                Guid ID = Guid.NewGuid();
-                string sql = "insert into Demo(ID,Name,Sex,Age,Remark) values(@ID,@Name,@Sex,@Age,@Remark)";
+                Guid Id = Guid.NewGuid();
+                string sql = "insert into Demo(Id,Name,Sex,Age,Remark) values(@Id,@Name,@Sex,@Age,@Remark)";
                 SugarParameter[] Parameter = new SugarParameter[]
                 {
-               new SugarParameter("@ID",ID),
+               new SugarParameter("@Id",Id),
                new SugarParameter("@Name", Name),
                new SugarParameter("@Sex",  Sex),
                new SugarParameter("@Age", Age),
@@ -90,22 +90,22 @@ namespace Nzh.Master.Service
         /// <summary>
         ///  修改Demo
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <param name="Name"></param>
         /// <param name="Sex"></param>
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public ResultModel<bool> UpdateDemo(Guid ID, string Name, string Sex, int Age, string Remark)
+        public ResultModel<bool> UpdateDemo(Guid Id, string Name, string Sex, int Age, string Remark)
         {
             var result = new ResultModel<bool>();
             try
             {
                 _demoRepository.BeginTran(); //开始事务
-                string sql = "update Demo set Name=@Name,Sex=@Sex,Age=@Age,Remark=@Remark WHERE ID=@ID";
+                string sql = "update Demo set Name=@Name,Sex=@Sex,Age=@Age,Remark=@Remark WHERE Id=@Id";
                 SugarParameter[] Parameter = new SugarParameter[]
                 {
-               new SugarParameter("@ID",ID),
+               new SugarParameter("@Id",Id),
                new SugarParameter("@Name", Name),
                new SugarParameter("@Sex",  Sex),
                new SugarParameter("@Age", Age),
@@ -125,18 +125,18 @@ namespace Nzh.Master.Service
         /// <summary>
         /// 删除Demo
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
-        public ResultModel<bool> DeleteDemo(Guid ID)
+        public ResultModel<bool> DeleteDemo(Guid Id)
         {
             var result = new ResultModel<bool>();
             try
             {
                 _demoRepository.BeginTran(); //开始事务
-                string sql = "delete from  Demo where ID=@ID";
+                string sql = "delete from  Demo where Id=@Id";
                 SugarParameter[] Parameter = new SugarParameter[]
                 {
-               new SugarParameter("@ID",ID)
+               new SugarParameter("@Id",Id)
                 };
                 result.Data = _demoRepository.ExecuteSql(sql, Parameter);
                 _demoRepository.CommitTran();//提交事务

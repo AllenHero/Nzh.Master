@@ -72,15 +72,15 @@ namespace Nzh.Master.Controllers
         /// <summary>
         /// 获取Demo
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("GetDemoById")]
-        public JsonResult GetDemoById(Guid ID)
+        public JsonResult GetDemoById(Guid Id)
         {
             var result = new ResultModel<Demo>();
             try
             {
-                 result.Data = _testService.GetDemoById(ID);
+                 result.Data = _testService.GetDemoById(Id);
             }
             catch (Exception ex)
             {
@@ -121,19 +121,19 @@ namespace Nzh.Master.Controllers
         /// <summary>
         ///  修改Demo
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <param name="Name"></param>
         /// <param name="Sex"></param>
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
         [HttpPut("UpdateDemo")]
-        public JsonResult UpdateDemo(Guid ID, string Name, string Sex, int Age, string Remark)
+        public JsonResult UpdateDemo(Guid Id, string Name, string Sex, int Age, string Remark)
         {
             var result = new ResultModel<bool>();
             try
             {
-                 result = _testService.UpdateDemo(ID, Name, Sex, Age, Remark);
+                 result = _testService.UpdateDemo(Id, Name, Sex, Age, Remark);
             }
             catch (Exception ex)
             {
@@ -148,15 +148,15 @@ namespace Nzh.Master.Controllers
         /// <summary>
         /// 删除Demo
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
         [HttpDelete("DeleteDemo")]
-        public JsonResult DeleteDemo(Guid ID)
+        public JsonResult DeleteDemo(Guid Id)
         {
             var result = new ResultModel<bool>();
             try
             {
-                 result = _testService.DeleteDemo(ID);
+                 result = _testService.DeleteDemo(Id);
             }
             catch (Exception ex)
             {
@@ -230,7 +230,7 @@ namespace Nzh.Master.Controllers
                         for (int row = 2; row <= rowCount; row++)
                         {
                             Demo demo = new Demo();
-                            demo.ID = Guid.Parse(worksheet.Cells[row, 1].Value.ToString());
+                            demo.Id = Guid.Parse(worksheet.Cells[row, 1].Value.ToString());
                             demo.Name = worksheet.Cells[row, 2].Value.ToString();
                             demo.Sex = worksheet.Cells[row, 3].Value.ToString();
                             demo.Age =int.Parse( worksheet.Cells[row, 4].Value.ToString());
@@ -298,7 +298,7 @@ namespace Nzh.Master.Controllers
                     //插入图片数据
                     var picture = new Enclosure
                     {
-                        ID = Guid.NewGuid(),
+                        Id = Guid.NewGuid(),
                         FilePath = filePath + saveName,
                     };
                     using (FileStream fs = System.IO.File.Create(webRootPath + filePath + saveName))
@@ -324,17 +324,17 @@ namespace Nzh.Master.Controllers
         /// <summary>
         /// 测试图片下载
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("TestDownLoadPicture")]
-        public JsonResult TestDownLoadPicture(Guid ID)
+        public JsonResult TestDownLoadPicture(Guid Id)
         {
             var result = new ResultModel<bool>();
             try
             {
                 var webRootPath = @"D:\Github\Nzh.Master\Nzh.Master\";
                 Enclosure picture =new Enclosure();
-                picture = _enclosureService.TestDownLoadPicture(ID);
+                picture = _enclosureService.TestDownLoadPicture(Id);
                 var addrUrl = Path.Combine(Directory.GetCurrentDirectory(), $@"{webRootPath + picture.FilePath}");
                 FileStream fs = new FileStream(addrUrl, FileMode.Open);
                 var info = File(fs, "application/vnd.android.package-archive", picture.FilePath);

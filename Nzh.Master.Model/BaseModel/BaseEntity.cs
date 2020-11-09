@@ -16,9 +16,9 @@ namespace Nzh.Master.Model.BaseModel
         public DateTime CreateTime { get; set; }
 
         /// <summary>
-        /// 创建人ID
+        /// 创建人Id
         /// </summary>
-        public Guid CreateUserID { get; set; }
+        public Guid CreateUserId { get; set; }
 
         /// <summary>
         ///  是否删除

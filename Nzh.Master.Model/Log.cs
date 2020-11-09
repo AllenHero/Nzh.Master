@@ -11,14 +11,14 @@ namespace Nzh.Master.Model
     public class Log
     {
         /// <summary>
-        /// 主键ID
+        /// 主键Id
         /// </summary>
-        public Guid LogID { get; set; }
+        public Guid LogId { get; set; }
 
         /// <summary>
-        /// 用户ID
+        /// 用户Id
         /// </summary>
-        public Guid UserID { get; set; }
+        public Guid UserId { get; set; }
 
         /// <summary>
         /// 用户名称

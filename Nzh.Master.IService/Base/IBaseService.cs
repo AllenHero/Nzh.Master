@@ -9,10 +9,10 @@ namespace Nzh.Master.IService.Base
     public interface IBaseService
     {
         /// <summary>
-        /// 获取系统当前用户ID
+        /// 获取系统当前用户Id
         /// </summary>
         /// <returns></returns>
-        Guid GetSystemCurrentUserID();
+        Guid GetSystemCurrentUserId();
 
         /// <summary>
         /// 获取系统当前用户名

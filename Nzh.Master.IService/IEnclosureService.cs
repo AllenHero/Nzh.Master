@@ -20,8 +20,8 @@ namespace Nzh.Master.IService
         /// <summary>
         /// 测试图片下载
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
-        Enclosure TestDownLoadPicture(Guid ID);
+        Enclosure TestDownLoadPicture(Guid Id);
     }
 }

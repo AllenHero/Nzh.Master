@@ -32,8 +32,8 @@ namespace Nzh.Master.Service
             {
                 _logRepository.BeginTran();//开始事务
                 Log Log = new Log();
-                Log.LogID = Guid.NewGuid();
-                Log.UserID = GetSystemCurrentUserID();
+                Log.LogId = Guid.NewGuid();
+                Log.UserId = GetSystemCurrentUserId();
                 Log.UserName = GetSystemCurrentUserName();
                 Log.LogTime = GetSystemCurrentTime();
                 Log.LogIP = GetSystemCurrentIP();

@@ -43,11 +43,11 @@ namespace Nzh.Master.Service
         /// <summary>
         /// 测试图片下载
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
-        public Enclosure TestDownLoadPicture(Guid ID)
+        public Enclosure TestDownLoadPicture(Guid Id)
         {
-            var demoModel = _enclosureRepository.GetById(ID);
+            var demoModel = _enclosureRepository.GetById(Id);
             return demoModel;
         }
     }

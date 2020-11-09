@@ -42,11 +42,11 @@ namespace Nzh.Master.Service
         /// <summary>
         /// 获取Demo
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
-        public Demo GetDemoById(Guid ID)
+        public Demo GetDemoById(Guid Id)
         {
-            var demoModel = _demoRepository.GetById(ID);
+            var demoModel = _demoRepository.GetById(Id);
             return demoModel;
         }
 
@@ -65,7 +65,7 @@ namespace Nzh.Master.Service
             {
                 _demoRepository.BeginTran();//开始事务
                 Demo Demo = new Demo();
-                Demo.ID = Guid.NewGuid();
+                Demo.Id = Guid.NewGuid();
                 Demo.Name = Name;
                 Demo.Sex = Sex;
                 Demo.Age = Age;
@@ -84,19 +84,19 @@ namespace Nzh.Master.Service
         /// <summary>
         /// 修改Demo
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <param name="Name"></param>
         /// <param name="Sex"></param>
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public ResultModel<bool> UpdateDemo(Guid ID, string Name, string Sex, int Age, string Remark)
+        public ResultModel<bool> UpdateDemo(Guid Id, string Name, string Sex, int Age, string Remark)
         {
             var result = new ResultModel<bool>();
             try
             {
                 _demoRepository.BeginTran();//开始事务
-                var Demo = _demoRepository.GetById(ID);
+                var Demo = _demoRepository.GetById(Id);
                 if (Demo != null)
                 {
                     Demo.Name = Name;
@@ -118,18 +118,18 @@ namespace Nzh.Master.Service
         /// <summary>
         /// 删除Demo
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
-        public ResultModel<bool> DeleteDemo(Guid ID)
+        public ResultModel<bool> DeleteDemo(Guid Id)
         {
             var result = new ResultModel<bool>();
             try
             {
                 _demoRepository.BeginTran();//开始事务
-                var Demo = _demoRepository.GetById(ID);
+                var Demo = _demoRepository.GetById(Id);
                 if (Demo != null)
                 {
-                    result.Data = _demoRepository.DeleteById(ID);
+                    result.Data = _demoRepository.DeleteById(Id);
                     _demoRepository.CommitTran();//提交事务
                 }
                 return result;

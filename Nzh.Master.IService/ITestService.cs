@@ -19,11 +19,11 @@ namespace Nzh.Master.IService
         ResultModel<Demo> GetDemoPageList(int PageIndex, int PageSize, string Name);
 
         /// <summary>
-        /// 根据ID获取Demo
+        /// 根据Id获取Demo
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
-        Demo GetDemoById(Guid ID);
+        Demo GetDemoById(Guid Id);
 
         /// <summary>
         /// 添加Demo
@@ -38,20 +38,20 @@ namespace Nzh.Master.IService
         /// <summary>
         ///  修改Demo
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <param name="Name"></param>
         /// <param name="Sex"></param>
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        ResultModel<bool> UpdateDemo(Guid ID, string Name, string Sex, int Age, string Remark);
+        ResultModel<bool> UpdateDemo(Guid Id, string Name, string Sex, int Age, string Remark);
 
         /// <summary>
         /// 删除Demo
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
-        ResultModel<bool> DeleteDemo(Guid ID);
+        ResultModel<bool> DeleteDemo(Guid Id);
 
         /// <summary>
         /// 测试导出

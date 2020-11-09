@@ -10,9 +10,9 @@ namespace Nzh.Master.Model
     public class Enclosure
     {
         /// <summary>
-        /// 主键ID 
+        /// 主键Id
         /// </summary>
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// 附件地址

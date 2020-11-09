@@ -11,10 +11,10 @@ namespace Nzh.Master.Service.Base
     public class BaseService
     {
         /// <summary>
-        /// 获取系统当前用户ID
+        /// 获取系统当前用户Id
         /// </summary>
         /// <returns></returns>
-        public Guid GetSystemCurrentUserID()
+        public Guid GetSystemCurrentUserId()
         {
             return Guid.Parse("4ca60473-373f-11e9-a104-8c164533fc3b");
         }

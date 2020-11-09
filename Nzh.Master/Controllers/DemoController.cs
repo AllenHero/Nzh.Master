@@ -62,15 +62,15 @@ namespace Nzh.Master.Controllers
         /// <summary>
         /// 获取Demo
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("GetDemoById")]
-        public  JsonResult GetDemoById(Guid ID)
+        public  JsonResult GetDemoById(Guid Id)
         {
             var result = new ResultModel<Demo>();
             try
             {
-                result.Data = _demoService.GetDemoById(ID);
+                result.Data = _demoService.GetDemoById(Id);
             }
             catch (Exception ex)
             {
@@ -111,19 +111,19 @@ namespace Nzh.Master.Controllers
         /// <summary>
         /// 修改Demo
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <param name="Name"></param>
         /// <param name="Sex"></param>
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
         [HttpGet("UpdateDemo")]
-        public  JsonResult UpdateDemo(Guid ID, string Name, string Sex, int Age, string Remark)
+        public  JsonResult UpdateDemo(Guid Id, string Name, string Sex, int Age, string Remark)
         {
             var result = new ResultModel<bool>();
             try
             {
-                 result = _demoService.UpdateDemo(ID, Name, Sex, Age, Remark);
+                 result = _demoService.UpdateDemo(Id, Name, Sex, Age, Remark);
             }
             catch (Exception ex)
             {
@@ -138,15 +138,15 @@ namespace Nzh.Master.Controllers
         /// <summary>
         /// 删除Demo
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("DeleteDemo")]
-        public JsonResult DeleteDemo(Guid ID)
+        public JsonResult DeleteDemo(Guid Id)
         {
             var result = new ResultModel<bool>();
             try
             {
-                 result = _demoService.DeleteDemo(ID);
+                 result = _demoService.DeleteDemo(Id);
             }
             catch (Exception ex)
             {
