@@ -348,14 +348,5 @@ namespace Nzh.Master.Controllers
             _logService.WriteLog(LogType.Other, "测试图片下载");
             return Json(result);
         }
-
-        /// <summary>
-        /// 测试
-        /// </summary>
-        /// <returns></returns>
-        public dynamic Test()
-        {
-            return null;
-        }
     }
 }
