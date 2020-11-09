@@ -11,19 +11,9 @@ namespace Nzh.Master.Repository.SqlSugar
     /// </summary>
     public class BaseDBConfig
     {
-        //public static string ConnectionString = "server=.;uid=sa;pwd=123;database=STD_DB";
-        //public static string ConnectionString = "server=localhost;uid=root;pwd=123456;database=std_db";
+        //public static string ConnectionString = "server=.;uid=sa;pwd=123456;database=STD_DB";//SqlServer
+        //public static string ConnectionString = "server=localhost;uid=root;pwd=123456;database=std_db";//MySql
 
         public static string ConnectionString { get; set; }
-
-        //public IConfiguration configuration { set; get; }
-
-        //public System.Data.IDbConnection ConnectionString()
-        //{
-        //    string connectionString = configuration.GetValue<string>("Db:ConnectionString");
-        //    var connection = new MySqlConnection(connectionString);
-        //    connection.Open();
-        //    return connection;
-        //}
     }
 }
