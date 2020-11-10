@@ -50,54 +50,44 @@ function SetUserInfo() {
 }
 
 function UserLogin() {
-    alert(123)
-    //if (!$("#account").val() || !$("#password").val() || !$("#tenantid").val()) {
-    //    toastr.warning("请输入用户名和密码!");
-    //} else {
-    //    var value = JSON.stringify({
-    //        remember: $("#remember_me").is(":checked"),
-    //        usercode: $("#account").val(),
-    //        password: $("#password").val(),
-    //        tenantid: $("#tenantid").val()
-    //    });
-
-    //    //保存用户信息
-    //    if ($("#remember_me").is(":checked")) {
-    //        SetUserInfo();
-    //    } else {
-    //        delCookie($("#account").val().toUpperCase());
-    //    }
-
-    //    $.ajax({
-    //        url: '/login/doAction',
-    //        type: 'post',
-    //        data: value,
-    //        dataType: "json",
-    //        async: false,
-    //        contentType: "application/json",
-    //        success: function (d) {
-    //            if (d.status == 'success') {
-    //                setCookie("localuser", JSON.stringify(d));
-    //                window.location.href = '/iLean';
-    //                //hideLoading();
-    //            } else {
-    //                hideLoading();
-    //                toastr.error(d.message);
-    //            }
-    //        },
-    //        error: function (xhr, type, error) {
-    //            hideLoading();
-    //            console.log(error);
-    //        },
-    //        beforeSend: function () {
-    //            showLoading();
-    //        },
-    //        complete: function () {
-    //            //hideLoading();
-    //        },
-    //    });
-    //}
-    window.location.href = '/Home/index';
+    if (!$("#account").val() || !$("#password").val()) {
+        toastr.warning("请输入用户名和密码!");
+    } else {
+        //var data = JSON.stringify({
+        //    UserName: $("#account").val(),
+        //    Password: $("#password").val(),
+        //});
+        $.ajax({
+            url: '/Login/LoginIn',
+            type: 'Get',
+            data: {
+                "UserName": $("#account").val(),
+                "Password": $("#password").val()
+            },
+            dataType: "json",
+            contentType: "application/json",
+            async: false,
+            success: function (value) {
+                if (value.Code == '1') {
+                    window.location.href = '/iLean';
+                    //hideLoading();
+                } else {
+                    hideLoading();
+                    toastr.error(value.Msg);
+                }
+            },
+            error: function (xhr, type, error) {
+                hideLoading();
+                console.log(error);
+            },
+            beforeSend: function () {
+                showLoading();
+            },
+            complete: function () {
+                //hideLoading();
+            },
+        });
+    }
 }
 
 function UserRole() {

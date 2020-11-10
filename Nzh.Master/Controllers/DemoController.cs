@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Nzh.Frame.Common.Logger;
+using Nzh.Master.Common.Helper;
 using Nzh.Master.IService;
 using Nzh.Master.Model;
 using Nzh.Master.Model.Base;
@@ -148,6 +149,30 @@ namespace Nzh.Master.Controllers
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
             return Json(result);
+        }
+
+        /// <summary>
+        /// 加密
+        /// </summary>
+        /// <param name="Text"></param>
+        /// <returns></returns>
+        [HttpGet("GetDesEncrypt")]
+        public dynamic GetDesEncrypt(string Text)
+        {
+            dynamic result = EncryptionHelper.DesEncrypt(Text);
+            return result;
+        }
+
+        /// <summary>
+        /// 解密
+        /// </summary>
+        /// <param name="Text"></param>
+        /// <returns></returns>
+        [HttpGet("GetDesDecrypt")]
+        public dynamic GetDesDecrypt(string Text)
+        {
+            dynamic result = DecryptionHelper.DesDecrypt(Text);
+            return result;
         }
     }
 }

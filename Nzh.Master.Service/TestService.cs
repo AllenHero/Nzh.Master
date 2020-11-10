@@ -185,5 +185,17 @@ namespace Nzh.Master.Service
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// 获取demo
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
+        public dynamic GetByName(string Name)
+        {
+            string sql = "SELECT * from  Demo where Name=@Name";
+            Demo demoModel = _demoRepository.Get(sql, new { Name = Name });
+            return demoModel;
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace Nzh.Master.Model.Sys
     /// <summary>
     /// 用户
     /// </summary>
-    public class Sys_User: BaseEntity
+    public class Sys_User
     {
         /// <summary>
         /// 用户名
@@ -29,7 +29,7 @@ namespace Nzh.Master.Model.Sys
         /// <summary>
         /// 性别
         /// </summary>
-        public Gender? Gender { get; set; }
+        public int? Gender { get; set; }
 
         /// <summary>
         /// 部门Id
@@ -64,12 +64,12 @@ namespace Nzh.Master.Model.Sys
         /// <summary>
         /// 状态
         /// </summary>
-        public Status? UserStatus { get; set; }
+        public int? UserStatus { get; set; }
 
         /// <summary>
         /// 是否是系统用户
         /// </summary>
-        public IsSystem? IsSystem { get; set; }
+        public int? IsSystem { get; set; }
 
         /// <summary>
         /// 登录次数
@@ -90,5 +90,35 @@ namespace Nzh.Master.Model.Sys
         /// 备注
         /// </summary>
         public string Remark { get; set; }
+
+        /// <summary>
+        /// 主键
+        /// </summary>
+        public long Id { get; set; }
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreateTime { get; set; }
+
+        /// <summary>
+        /// 创建人Id
+        /// </summary>
+        public long CreateUserId { get; set; }
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime ModifyTime { get; set; }
+
+        /// <summary>
+        /// 修改人Id
+        /// </summary>
+        public long ModifyUserId { get; set; }
+
+        /// <summary>
+        ///  是否删除
+        /// </summary>
+        public int? IsDeleted { get; set; }
     }
 }

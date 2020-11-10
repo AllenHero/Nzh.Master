@@ -337,5 +337,27 @@ namespace Nzh.Master.Controllers
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
             return Json(result);
         }
+
+        /// <summary>
+        /// 获取demo
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
+        [HttpGet("GetByName")]
+        public JsonResult GetByName(string Name)
+        {
+            var result = new ResultModel<Demo>();
+            try
+            {
+                result.Data = _testService.GetByName(Name);
+            }
+            catch (Exception ex)
+            {
+                result.Code = -1;
+                result.Msg = ex.Message;
+            }
+            Logger.Info(JsonConvert.SerializeObject(result));//此处调用日志记录函数记录日志
+            return Json(result);
+        }
     }
 }

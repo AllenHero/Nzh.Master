@@ -66,6 +66,11 @@ namespace Nzh.Master.IService
         /// <returns></returns>
         ResultModel<bool> TestImportExcel(List<Demo> list);
 
-       
+        /// <summary>
+        /// 获取demo
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
+        dynamic GetByName(string Name);
     }
 }

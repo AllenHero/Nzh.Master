@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 using Nzh.Master.Common.Helper;
+using Nzh.Master.IService;
 using Nzh.Master.IService.Sys;
 using Nzh.Master.Model.Base;
 using Nzh.Master.Model.Enum;
@@ -22,11 +25,14 @@ namespace Nzh.Master.Web.Controllers
 
         private readonly ILogService _logService;
 
-        public LoginController(ILogger<HomeController> logger, IUserService userService, ILogService logService)
+        private readonly ITestService _testService;
+
+        public LoginController(ILogger<HomeController> logger, IUserService userService, ILogService logService, ITestService testService)
         {
             _logger = logger;
             _userService = userService;
             _logService = logService;
+            _testService = testService;
         }
 
         public IActionResult Index()
@@ -50,24 +56,31 @@ namespace Nzh.Master.Web.Controllers
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public dynamic Login(dynamic data) 
+        [HttpGet]
+        public JsonResult LoginIn(string UserName,string Password)
         {
             var result = new ResultModel<bool>();
-            if (string.IsNullOrEmpty(data.UserName))
+            //var UserName = request.Value<string>("UserName");
+            //string Password = request.Value<string>("Password");
+            //var UserName = "";
+            //string Password = "";
+            if (string.IsNullOrEmpty(UserName))
             {
                 result.Msg = "用户名不能为空。";
                 result.Code = -1;
                 result.Data = false;
                 return Json(result);
             }
-            if (string.IsNullOrEmpty(data.Password))
+            if (string.IsNullOrEmpty(Password))
             {
                 result.Msg = "密码不能为空。";
                 result.Code = -1;
                 result.Data = false;
                 return Json(result);
             }
-            result = _userService.CheckLogin(data.UserName, data.Password);
+            result = _testService.GetByName(UserName);
+            result = _userService.CheckLogin(UserName, Password);
+
             if (result.Code == 1)
             {
                 _userService.UpDateUser(result.Data);
@@ -79,7 +92,7 @@ namespace Nzh.Master.Web.Controllers
                 LogType = LogType.LoginSucess,
                 Remark = result.Msg,
                 IpAddress = IpAddress,
-                CreateUserId= result.Data.Id
+                CreateUserId = result.Data.Id
             };
             _logService.WriteLog(log);
             return Json(result);

@@ -26,7 +26,7 @@ namespace Nzh.Master.Service.Sys
             Sys_User user = GetUserByUserName(UserName);
             if (user!=null)
             {
-                if (user.UserStatus == Status.Enable)
+                if (user.UserStatus == (int)Status.Enable)
                 {
                     if (user.Password == EncryptionHelper.DesEncrypt(Password))
                     {
@@ -36,7 +36,7 @@ namespace Nzh.Master.Service.Sys
                             user.FirstVisit = DateTime.Now;
                         }
                         user.LastVisit = DateTime.Now;
-                        result.Code = -1;
+                        result.Code = 1;
                         result.Msg = "登录成功。";
                         result.Data = user;
                     }
