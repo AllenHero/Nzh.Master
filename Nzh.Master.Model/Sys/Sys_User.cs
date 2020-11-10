@@ -29,7 +29,7 @@ namespace Nzh.Master.Model.Sys
         /// <summary>
         /// 性别
         /// </summary>
-        public Gender Gender { get; set; }
+        public Gender? Gender { get; set; }
 
         /// <summary>
         /// 部门Id
@@ -64,27 +64,27 @@ namespace Nzh.Master.Model.Sys
         /// <summary>
         /// 状态
         /// </summary>
-        public Status UserStatus { get; set; }
+        public Status? UserStatus { get; set; }
 
         /// <summary>
         /// 是否是系统用户
         /// </summary>
-        public IsSystem IsSystem { get; set; }
+        public IsSystem? IsSystem { get; set; }
 
         /// <summary>
         /// 登录次数
         /// </summary>
-        public int LoginCount { get; set; }
+        public int? LoginCount { get; set; }
 
         /// <summary>
         /// 第一次登录时间
         /// </summary>
-        public DateTime FirstVisit { get; set; }
+        public DateTime? FirstVisit { get; set; }
 
         /// <summary>
         /// 上一次登录时间
         /// </summary>
-        public DateTime LastVisit { get; set; }
+        public DateTime? LastVisit { get; set; }
 
         /// <summary>
         /// 备注

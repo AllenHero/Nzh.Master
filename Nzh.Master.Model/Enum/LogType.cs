@@ -7,7 +7,7 @@ namespace Nzh.Master.Model.Enum
     /// <summary>
     /// 日志类型
     /// </summary>
-    public enum LogType
+    public enum LogType 
     {
         /// <summary>
         /// 登录成功

@@ -34,7 +34,7 @@ namespace Nzh.Master.Model.Sys
         /// <summary>
         /// 菜单排序
         /// </summary>
-        public int MenuSort { get; set; }
+        public int? MenuSort { get; set; }
 
         /// <summary>
         /// 备注
@@ -44,7 +44,7 @@ namespace Nzh.Master.Model.Sys
         /// <summary>
         /// 状态
         /// </summary>
-        public Status MenuStatus { get; set; }
+        public Status? MenuStatus { get; set; }
 
     }
 }

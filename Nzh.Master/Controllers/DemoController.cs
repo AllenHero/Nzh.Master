@@ -21,17 +21,14 @@ namespace Nzh.Master.Controllers
     public class DemoController : Controller
     {
         private readonly IDemoService _demoService;
-        private readonly ILogService _logService;
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="demoService"></param>
-        /// <param name="logService"></param>
-        public DemoController(IDemoService demoService, ILogService logService)
+        public DemoController(IDemoService demoService)
         {
             _demoService = demoService;
-            _logService = logService;
         }
 
         /// <summary>
@@ -55,7 +52,6 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result));//此处调用日志记录函数记录日志
-            _logService.WriteLog(LogType.Search, "获取Demo分页");
             return Json(result);
         }
 
@@ -78,7 +74,6 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
-            _logService.WriteLog(LogType.Search, "获取Demo");
             return Json(result);
         }
 
@@ -104,7 +99,6 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
-            _logService.WriteLog(LogType.Add, "添加Demo");
             return Json(result);
         }
 
@@ -131,7 +125,6 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
-            _logService.WriteLog(LogType.Edit, "修改Demo");
             return Json(result);
         }
 
@@ -154,7 +147,6 @@ namespace Nzh.Master.Controllers
                 result.Msg = ex.Message;
             }
             Logger.Info(JsonConvert.SerializeObject(result)); //此处调用日志记录函数记录日志
-            _logService.WriteLog(LogType.Delete, "删除Demo");
             return Json(result);
         }
     }

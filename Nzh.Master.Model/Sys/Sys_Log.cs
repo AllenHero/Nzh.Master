@@ -10,6 +10,8 @@ namespace Nzh.Master.Model.Sys
     /// </summary>
     public class Sys_Log
     {
+        public long Id { get; set; }
+
         /// <summary>
         /// IP地址
         /// </summary>
@@ -33,7 +35,7 @@ namespace Nzh.Master.Model.Sys
         /// <summary>
         /// 创建时间
         /// </summary>
-        public DateTime CreateTime { get; set; }
+        public DateTime? CreateTime { get; set; }
 
         /// <summary>
         /// 创建人Id

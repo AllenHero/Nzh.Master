@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Nzh.Master.Common.Helper;
+using Nzh.Master.IService.Sys;
 using Nzh.Master.Model.Base;
+using Nzh.Master.Model.Enum;
+using Nzh.Master.Model.Sys;
 using Nzh.Master.Web.Models;
 
 namespace Nzh.Master.Web.Controllers
@@ -15,9 +18,15 @@ namespace Nzh.Master.Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public LoginController(ILogger<HomeController> logger)
+        private readonly IUserService _userService;
+
+        private readonly ILogService _logService;
+
+        public LoginController(ILogger<HomeController> logger, IUserService userService, ILogService logService)
         {
             _logger = logger;
+            _userService = userService;
+            _logService = logService;
         }
 
         public IActionResult Index()
@@ -43,58 +52,37 @@ namespace Nzh.Master.Web.Controllers
         /// <returns></returns>
         public dynamic Login(dynamic data) 
         {
-            //var result = new ResultModel<bool>();
-            //if (string.IsNullOrEmpty(data.UserName))
-            //{
-            //    result.Msg = "用户名不能为空。";
-            //    result.Code = -1;
-            //    result.Data = false;
-            //    return Json(result);
-            //}
-            //if (string.IsNullOrEmpty(data.UserName))
-            //{
-            //    result.Msg = "密码不能为空。";
-            //    result.Code = -1;
-            //    result.Data = false;
-            //    return Json(result);
-            //}
-            //TData<UserEntity> userObj = await userBLL.CheckLogin(userName, password, (int)PlatformEnum.Web);
-            //if (userObj.Tag == 1)
-            //{
-            //    await new UserBLL().UpdateUser(userObj.Data);
-            //    await Operator.Instance.AddCurrent(userObj.Data.WebToken);
-            //}
-
-            //string ip = NetHelper.Ip;
-            //string browser = NetHelper.Browser;
-            //string os = NetHelper.GetOSVersion();
-            //string userAgent = NetHelper.UserAgent;
-
-            //Action taskAction = async () =>
-            //{
-            //    LogLoginEntity logLoginEntity = new LogLoginEntity
-            //    {
-            //        LogStatus = userObj.Tag == 1 ? OperateStatusEnum.Success.ParseToInt() : OperateStatusEnum.Fail.ParseToInt(),
-            //        Remark = userObj.Message,
-            //        IpAddress = ip,
-            //        IpLocation = IpLocationHelper.GetIpLocation(ip),
-            //        Browser = browser,
-            //        OS = os,
-            //        ExtraRemark = userAgent,
-            //        BaseCreatorId = userObj.Data?.Id
-            //    };
-
-            //    // 让底层不用获取HttpContext
-            //    logLoginEntity.BaseCreatorId = logLoginEntity.BaseCreatorId ?? 0;
-
-            //    await logLoginBLL.SaveForm(logLoginEntity);
-            //};
-            //AsyncTaskHelper.StartTask(taskAction);
-
-            //obj.Tag = userObj.Tag;
-            //obj.Message = userObj.Message;
-            //return Json(obj);
-            return data;
+            var result = new ResultModel<bool>();
+            if (string.IsNullOrEmpty(data.UserName))
+            {
+                result.Msg = "用户名不能为空。";
+                result.Code = -1;
+                result.Data = false;
+                return Json(result);
+            }
+            if (string.IsNullOrEmpty(data.Password))
+            {
+                result.Msg = "密码不能为空。";
+                result.Code = -1;
+                result.Data = false;
+                return Json(result);
+            }
+            result = _userService.CheckLogin(data.UserName, data.Password);
+            if (result.Code == 1)
+            {
+                _userService.UpDateUser(result.Data);
+            }
+            string IpAddress = "";//TODO
+            Sys_Log log = new Sys_Log
+            {
+                LogStatus = result.Code == 1 ? Status.Enable : Status.Enable,
+                LogType = LogType.LoginSucess,
+                Remark = result.Msg,
+                IpAddress = IpAddress,
+                CreateUserId= result.Data.Id
+            };
+            _logService.WriteLog(log);
+            return Json(result);
         }
     }
 }

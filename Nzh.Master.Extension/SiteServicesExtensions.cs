@@ -1,8 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Nzh.Master.IRepository;
+using Nzh.Master.IRepository.Sys;
 using Nzh.Master.IService;
+using Nzh.Master.IService.Sys;
 using Nzh.Master.Repository;
+using Nzh.Master.Repository.Sys;
 using Nzh.Master.Service;
+using Nzh.Master.Service.Sys;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -32,6 +36,9 @@ namespace Nzh.Master.Extension
 
             services.AddScoped<ILogRepository, LogRepository>();
             services.AddScoped<ILogService, LogService>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
 
             return services;
         }

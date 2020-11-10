@@ -29,6 +29,6 @@ namespace Nzh.Master.Model.Sys
         /// <summary>
         /// 状态
         /// </summary>
-        public Status ButtonStatus { get; set; }
+        public Status? ButtonStatus { get; set; }
     }
 }
