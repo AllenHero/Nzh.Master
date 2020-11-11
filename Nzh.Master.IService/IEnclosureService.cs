@@ -22,6 +22,6 @@ namespace Nzh.Master.IService
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        Enclosure TestDownLoadPicture(Guid Id);
+        Enclosure TestDownLoadPicture(string Id);
     }
 }
