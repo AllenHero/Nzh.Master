@@ -82,7 +82,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql获取List
+        /// 执行sql获取List（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <returns></returns>
@@ -103,7 +103,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         // <summary>
-        /// 执行sql根据条件获取List
+        /// 执行sql根据条件获取List（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="whereExpression"></param>
@@ -127,7 +127,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据条件获取分页
+        /// 执行sql根据条件获取分页（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <returns></returns>
@@ -157,7 +157,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        ///  执行sql根据条件获取分页并且排序
+        ///  执行sql根据条件获取分页并且排序（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="whereExpression"></param>
@@ -189,7 +189,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据多条件获取分页
+        /// 执行sql根据多条件获取分页（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="conditionalList"></param>
@@ -220,7 +220,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        ///  执行sql根据多条件获取分页并且排序
+        ///  执行sql根据多条件获取分页并且排序（异步）
         /// </summary>
         /// <param name="conditionalList"></param>
         /// <param name="page"></param>
@@ -247,7 +247,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据参数返回DataTable
+        /// 执行sql根据参数返回DataTable（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -269,7 +269,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据数组参数返回DataTable
+        /// 执行sql根据数组参数返回DataTable（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -291,7 +291,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据集合参数返回DataTable
+        /// 执行sql根据集合参数返回DataTable（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -313,7 +313,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据参数返回DataSet
+        /// 执行sql根据参数返回DataSet（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -335,7 +335,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据数组参数返回DataSet
+        /// 执行sql根据数组参数返回DataSet（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -357,7 +357,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        ///  执行sql根据集合参数返回DataSet
+        ///  执行sql根据集合参数返回DataSet（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -379,7 +379,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 根据参数执行Sql
+        /// 根据参数执行Sql（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -401,7 +401,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 根据数组参数执行Sql
+        /// 根据数组参数执行Sql（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -423,7 +423,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 根据集合参数执行Sql
+        /// 根据集合参数执行Sql（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -445,7 +445,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据条件获取List
+        /// 执行sql根据条件获取List（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -467,7 +467,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据数组条件获取List
+        /// 执行sql根据数组条件获取List（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -489,7 +489,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据集合条件获取List
+        /// 执行sql根据集合条件获取List（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -511,7 +511,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        ///  执行sql根据条件获取实体
+        ///  执行sql根据条件获取实体（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -533,7 +533,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        ///  执行sql根据数组条件获取实体
+        ///  执行sql根据数组条件获取实体（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -555,7 +555,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据集合条件获取实体
+        /// 执行sql根据集合条件获取实体（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -577,7 +577,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 执行sql根据条件获取结果
+        /// 执行sql根据条件获取结果（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -599,7 +599,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        ///  执行sql根据数组条件获取结果
+        ///  执行sql根据数组条件获取结果（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -621,7 +621,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        ///  执行sql根据集合条件获取结果
+        ///  执行sql根据集合条件获取结果（异步）
         /// </summary>
         /// <param name="Sql"></param>
         /// <param name="parameters"></param>
@@ -648,7 +648,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 查询存储过程
+        /// 查询存储过程（异步）
         /// </summary>
         /// <param name="procedureName"></param>
         /// <param name="parameters"></param>
@@ -673,7 +673,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 查询前多少条数据 
+        /// 查询前多少条数据 （异步）
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="whereLambda"></param>
@@ -698,7 +698,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 查询单条数据
+        /// 查询单条数据（异步）
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="whereLambda"></param>
@@ -722,7 +722,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 求和
+        /// 求和（异步）
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="field"></param>
@@ -746,7 +746,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 最大值
+        /// 最大值（异步）
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="field"></param>
@@ -771,7 +771,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 最小值
+        /// 最小值（异步）
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="field"></param>
@@ -795,7 +795,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 平均值
+        /// 平均值（异步）
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="field"></param>
@@ -817,7 +817,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件返回数量
+        /// 根据条件返回数量（异步）
         /// </summary>
         /// <param name="whereExpression"></param>
         /// <returns></returns>
@@ -837,7 +837,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 是否存在
+        /// 是否存在（异步）
         /// </summary>
         /// <param name="whereExpression"></param>
         /// <returns></returns>
@@ -861,7 +861,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        ///根据Id获取单个实体
+        ///根据Id获取单个实体（异步）
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -880,7 +880,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 获取List
+        /// 获取List（异步）
         /// </summary>
         /// <returns></returns>
         public async Task<List<T>> GetListAsync()
@@ -899,7 +899,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件获取List
+        /// 根据条件获取List（异步）
         /// </summary>
         /// <param name="whereExpression"></param>
         /// <returns></returns>
@@ -919,7 +919,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件获取参数或者列
+        /// 根据条件获取参数或者列（异步）
         /// </summary>
         /// <param name="whereExpression"></param>
         /// <returns></returns>
@@ -944,7 +944,7 @@ namespace Nzh.Master.Repository.Base
 
 
         /// <summary>
-        /// 获取分页
+        /// 获取分页（异步）
         /// </summary>
         /// <param name="whereExpression"></param>
         /// <param name="page"></param>
@@ -974,7 +974,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件获取分页并排序
+        /// 根据条件获取分页并排序（异步）
         /// </summary>
         /// <param name="whereExpression"></param>
         /// <param name="page"></param>
@@ -1004,7 +1004,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 根据多条件获取分页
+        /// 根据多条件获取分页（异步）
         /// </summary>
         /// <param name="conditionalList"></param>
         /// <param name="page"></param>
@@ -1034,7 +1034,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 根据多条件获取分页并分页
+        /// 根据多条件获取分页并分页（异步）
         /// </summary>
         /// <param name="conditionalList"></param>
         /// <param name="page"></param>
@@ -1064,7 +1064,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 新增
+        /// 新增（异步）
         /// </summary>
         /// <param name="insertObj"></param>
         /// <returns></returns>
@@ -1084,7 +1084,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 新增返回Id
+        /// 新增返回Id（异步）
         /// </summary>
         /// <param name="insertObj"></param>
         /// <returns></returns>
@@ -1104,7 +1104,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 新增（实体）
+        /// 新增（实体）（异步）
         /// </summary>
         /// <param name="insertObjs"></param>
         /// <returns></returns>
@@ -1124,7 +1124,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 新增（List）
+        /// 新增（List）（异步）
         /// </summary>
         /// <param name="insertObjs"></param>
         /// <returns></returns>
@@ -1148,7 +1148,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 更新实体
+        /// 更新实体（异步）
         /// </summary>
         /// <param name="updateObj"></param>
         /// <returns></returns>
@@ -1168,7 +1168,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 更新多实体
+        /// 更新多实体（异步）
         /// </summary>
         /// <param name="updateObjs"></param>
         /// <returns></returns>
@@ -1188,7 +1188,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 更新实体
+        /// 更新实体（异步）
         /// </summary>
         /// <param name="updateObjs"></param>
         /// <returns></returns>
@@ -1209,7 +1209,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件更新
+        /// 根据条件更新（异步）
         /// </summary>
         /// <param name="columns"></param>
         /// <param name="whereExpression"></param>
@@ -1234,7 +1234,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 删除实体
+        /// 删除实体（异步）
         /// </summary>
         /// <param name="deleteObj"></param>
         /// <returns></returns>
@@ -1251,10 +1251,10 @@ namespace Nzh.Master.Repository.Base
         public bool Delete(T[] deleteObj)
         {
             return db.Deleteable<T>(deleteObj).ExecuteCommand() > 0;
-        }  
+        }
 
         /// <summary>
-        /// 删除实体
+        /// 删除实体（异步）
         /// </summary>
         /// <param name="deleteObj"></param>
         /// <returns></returns>
@@ -1274,7 +1274,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 更新实体
+        /// 更新实体（异步）
         /// </summary>
         /// <param name="deleteObj"></param>
         /// <returns></returns>
@@ -1294,7 +1294,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 根据条件删除
+        /// 根据条件删除（异步）
         /// </summary>
         /// <param name="whereExpression"></param>
         /// <returns></returns>
@@ -1314,7 +1314,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 删除
+        /// 删除（异步）
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -1334,7 +1334,7 @@ namespace Nzh.Master.Repository.Base
         }
 
         /// <summary>
-        /// 批量删除
+        /// 批量删除（异步）
         /// </summary>
         /// <param name="ids"></param>
         /// <returns></returns>
