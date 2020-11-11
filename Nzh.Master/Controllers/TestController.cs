@@ -96,13 +96,13 @@ namespace Nzh.Master.Controllers
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        [HttpPost("AddDemo")]
-        public JsonResult AddDemo(string Name, string Sex, int Age, string Remark)
+        [HttpPost("InsertDemo")]
+        public JsonResult InsertDemo(string Name, string Sex, int Age, string Remark)
         {
             var result = new ResultModel<bool>();
             try
             {
-                 result = _testService.AddDemo(Name, Sex, Age, Remark);
+                 result = _testService.InsertDemo(Name, Sex, Age, Remark);
             }
             catch (Exception ex)
             {

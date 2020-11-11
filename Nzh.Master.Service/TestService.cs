@@ -61,7 +61,7 @@ namespace Nzh.Master.Service
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public ResultModel<bool> AddDemo(string Name, string Sex, int Age, string Remark)
+        public ResultModel<bool> InsertDemo(string Name, string Sex, int Age, string Remark)
         {
             var result = new ResultModel<bool>();
             try
