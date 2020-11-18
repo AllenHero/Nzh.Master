@@ -1,2 +1,0 @@
-source https://github.com/valums/file-uploader
-demo   http://fineuploader.com/

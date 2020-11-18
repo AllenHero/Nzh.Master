@@ -1,1 +1,0 @@
-Keep all files in the one folder. It should work straight out of the box.
