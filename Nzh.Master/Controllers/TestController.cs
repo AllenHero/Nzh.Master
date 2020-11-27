@@ -71,7 +71,7 @@ namespace Nzh.Master.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("GetDemoById")]
-        public JsonResult GetDemoById(string Id)
+        public JsonResult GetDemoById(long Id)
         {
             var result = new ResultModel<Demo>();
             try
@@ -122,7 +122,7 @@ namespace Nzh.Master.Controllers
         /// <param name="Remark"></param>
         /// <returns></returns>
         [HttpPut("UpdateDemo")]
-        public JsonResult UpdateDemo(string Id, string Name, string Sex, int Age, string Remark)
+        public JsonResult UpdateDemo(long Id, string Name, string Sex, int Age, string Remark)
         {
             var result = new ResultModel<bool>();
             try
@@ -144,7 +144,7 @@ namespace Nzh.Master.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpDelete("DeleteDemo")]
-        public JsonResult DeleteDemo(string Id)
+        public JsonResult DeleteDemo(long Id)
         {
             var result = new ResultModel<bool>();
             try
@@ -316,7 +316,7 @@ namespace Nzh.Master.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("TestDownLoadPicture")]
-        public JsonResult TestDownLoadPicture(string Id)
+        public JsonResult TestDownLoadPicture(long Id)
         {
             var result = new ResultModel<bool>();
             try

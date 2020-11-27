@@ -45,7 +45,7 @@ namespace Nzh.Master.Service
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public Demo GetDemoById(string Id)
+        public Demo GetDemoById(long Id)
         {
             var demoModel = _demoRepository.GetById(Id);
             return demoModel;
@@ -91,22 +91,20 @@ namespace Nzh.Master.Service
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        public ResultModel<bool> UpdateDemo(string Id, string Name, string Sex, int Age, string Remark)
+        public ResultModel<bool> UpdateDemo(long Id, string Name, string Sex, int Age, string Remark)
         {
             var result = new ResultModel<bool>();
             try
             {
                 _demoRepository.BeginTran();//开始事务
-                var Demo = _demoRepository.GetById(Id);
-                if (Demo != null)
-                {
-                    Demo.Name = Name;
-                    Demo.Sex = Sex;
-                    Demo.Age = Age;
-                    Demo.Remark = Remark;
-                    result.Data = _demoRepository.Update(Demo);
-                    _demoRepository.CommitTran();//提交事务
-                }
+                Demo Demo = new Demo();
+                Demo.Id = Id;
+                Demo.Name = Name;
+                Demo.Sex = Sex;
+                Demo.Age = Age;
+                Demo.Remark = Remark;
+                result.Data = _demoRepository.Update(Demo);
+                _demoRepository.CommitTran();//提交事务
                 return result;
             }
             catch (Exception ex)
@@ -121,18 +119,14 @@ namespace Nzh.Master.Service
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public ResultModel<bool> DeleteDemo(string Id)
+        public ResultModel<bool> DeleteDemo(long Id)
         {
             var result = new ResultModel<bool>();
             try
             {
                 _demoRepository.BeginTran();//开始事务
-                var Demo = _demoRepository.GetById(Id);
-                if (Demo != null)
-                {
-                    result.Data = _demoRepository.DeleteById(Id);
-                    _demoRepository.CommitTran();//提交事务
-                }
+                result.Data = _demoRepository.DeleteById(Id);
+                _demoRepository.CommitTran();//提交事务
                 return result;
             }
             catch (Exception ex)
@@ -141,6 +135,5 @@ namespace Nzh.Master.Service
                 throw ex;
             }
         }
-
     }
 }

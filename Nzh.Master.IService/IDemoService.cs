@@ -24,7 +24,7 @@ namespace Nzh.Master.IService
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        Demo GetDemoById(string Id);
+        Demo GetDemoById(long Id);
 
         /// <summary>
         /// 添加Demo
@@ -45,13 +45,13 @@ namespace Nzh.Master.IService
         /// <param name="Age"></param>
         /// <param name="Remark"></param>
         /// <returns></returns>
-        ResultModel<bool> UpdateDemo(string Id, string Name, string Sex, int Age, string Remark);
+        ResultModel<bool> UpdateDemo(long Id, string Name, string Sex, int Age, string Remark);
 
         /// <summary>
         /// 删除Demo
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        ResultModel<bool> DeleteDemo(string Id);
+        ResultModel<bool> DeleteDemo(long Id);
     }
 }

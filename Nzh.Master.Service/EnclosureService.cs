@@ -45,7 +45,7 @@ namespace Nzh.Master.Service
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public Enclosure TestDownLoadPicture(string Id)
+        public Enclosure TestDownLoadPicture(long Id)
         {
             var demoModel = _enclosureRepository.GetById(Id);
             return demoModel;
