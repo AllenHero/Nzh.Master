@@ -4,5 +4,75 @@
         <name>Nzh.Master.Model</name>
     </assembly>
     <members>
+        <member name="T:Nzh.Master.Model.Base.ResultModel`1">
+            <summary>
+            表格数据，支持分页
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Model.Base.ResultModel`1.Code">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Model.Base.ResultModel`1.Msg">
+            <summary>
+            消息
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Model.Base.ResultModel`1.Count">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Model.Base.ResultModel`1.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="T:Nzh.Master.Model.Demo">
+            <summary>
+            Demo
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Model.Demo.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Model.Demo.Name">
+             <summary>
+            名称 
+             </summary>
+        </member>
+        <member name="P:Nzh.Master.Model.Demo.Sex">
+             <summary>
+            性别
+             </summary>
+        </member>
+        <member name="P:Nzh.Master.Model.Demo.Age">
+            <summary>
+            年龄
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Model.Demo.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:Nzh.Master.Model.Enclosure">
+            <summary>
+            附件
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Model.Enclosure.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Model.Enclosure.FilePath">
+            <summary>
+            附件地址
+            </summary>
+        </member>
     </members>
 </doc>

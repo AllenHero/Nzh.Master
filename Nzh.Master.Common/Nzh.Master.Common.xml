@@ -4,6 +4,1480 @@
         <name>Nzh.Master.Common</name>
     </assembly>
     <members>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToLong(System.Object)">
+            <summary>
+            将object转换为long，若转换失败，则返回0。不抛出异常。  
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToLong(System.String,System.Int64)">
+            <summary>
+            将object转换为long，若转换失败，则返回指定值。不抛出异常。  
+            </summary>
+            <param name="str"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToInt(System.Object)">
+            <summary>
+            将object转换为int，若转换失败，则返回0。不抛出异常。  
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToInt(System.Object,System.Int32)">
+            <summary>
+            将object转换为int，若转换失败，则返回指定值。不抛出异常。 
+            null返回默认值
+            </summary>
+            <param name="str"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToShort(System.Object)">
+            <summary>
+            将object转换为short，若转换失败，则返回0。不抛出异常。  
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToShort(System.Object,System.Int16)">
+            <summary>
+            将object转换为short，若转换失败，则返回指定值。不抛出异常。  
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToDecimal(System.Object,System.Decimal)">
+            <summary>
+            将object转换为demical，若转换失败，则返回指定值。不抛出异常。  
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToDecimal(System.Object)">
+            <summary>
+            将object转换为demical，若转换失败，则返回0。不抛出异常。  
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToBool(System.Object)">
+            <summary>
+            将object转换为bool，若转换失败，则返回false。不抛出异常。  
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToBool(System.Object,System.Boolean)">
+            <summary>
+            将object转换为bool，若转换失败，则返回指定值。不抛出异常。  
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToFloat(System.Object)">
+            <summary>
+            将object转换为float，若转换失败，则返回0。不抛出异常。  
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToFloat(System.Object,System.Single)">
+            <summary>
+            将object转换为float，若转换失败，则返回指定值。不抛出异常。  
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToGuid(System.String)">
+            <summary>
+            将string转换为Guid，若转换失败，则返回Guid.Empty。不抛出异常。  
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToDateTime(System.String)">
+            <summary>
+            将string转换为DateTime，若转换失败，则返回日期最小值。不抛出异常。  
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToDateTime(System.String,System.Nullable{System.DateTime})">
+            <summary>
+            将string转换为DateTime，若转换失败，则返回默认值。  
+            </summary>
+            <param name="str"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToString(System.Object)">
+            <summary>
+            将object转换为string，若转换失败，则返回""。不抛出异常。  
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToDouble(System.Object)">
+            <summary>
+            将object转换为double，若转换失败，则返回0。不抛出异常。  
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.ParseToDouble(System.Object,System.Double)">
+            <summary>
+            将object转换为double，若转换失败，则返回指定值。不抛出异常。  
+            </summary>
+            <param name="str"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.CastSuper``1(System.Collections.IEnumerable)">
+            <summary>
+            强制转换类型
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.EnumToDictionary(System.Type)">
+            <summary>
+            转成dictionary类型
+            </summary>
+            <param name="enumType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.EnumToDictionaryString(System.Type)">
+            <summary>
+            枚举成员转成键值对Json字符串
+            </summary>
+            <param name="enumType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.Extensions.GetDescription(System.Enum)">
+            <summary>
+            获取枚举值对应的描述
+            </summary>
+            <param name="enumType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.LinqExtensions.And``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            组合And
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.LinqExtensions.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            组合Or
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.LinqExtensions.Compose``1(System.Linq.Expressions.Expression{``0},System.Linq.Expressions.Expression{``0},System.Func{System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,System.Linq.Expressions.Expression})">
+            <summary>
+            Combines the first expression with the second using the specified merge function.
+            </summary>
+        </member>
+        <member name="T:Nzh.Master.Common.Extension.LinqExtensions.ParameterRebinder">
+            <summary>
+            ParameterRebinder
+            </summary>
+        </member>
+        <member name="F:Nzh.Master.Common.Extension.LinqExtensions.ParameterRebinder.map">
+            <summary>
+            The ParameterExpression map
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.LinqExtensions.ParameterRebinder.#ctor(System.Collections.Generic.Dictionary{System.Linq.Expressions.ParameterExpression,System.Linq.Expressions.ParameterExpression})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nzh.Master.Common.Extension.LinqExtensions.ParameterRebinder"/> class.
+            </summary>
+            <param name="map">The map.</param>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.LinqExtensions.ParameterRebinder.ReplaceParameters(System.Collections.Generic.Dictionary{System.Linq.Expressions.ParameterExpression,System.Linq.Expressions.ParameterExpression},System.Linq.Expressions.Expression)">
+            <summary>
+            Replaces the parameters.
+            </summary>
+            <param name="map">The map.</param>
+            <param name="exp">The exp.</param>
+            <returns>Expression</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Extension.LinqExtensions.ParameterRebinder.VisitParameter(System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            Visits the parameter.
+            </summary>
+            <param name="p">The p.</param>
+            <returns>Expression</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.CaptchaHelper.GetCaptchaCode">
+            <summary>
+            Tuple第一个值是表达式，第二个值是表达式结果
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.CaptchaHelper.CreateCaptchaImage(System.String)">
+            <summary>
+            生成验证码图片
+            </summary>
+            <param name="randomCode"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.CsvHelper">
+            <summary>
+            Csv辅助类 
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.CsvHelper.dt2csv(System.Data.DataTable,System.String,System.String,System.String)">
+            <summary>
+            导出报表为Csv
+            </summary>
+            <param name="dt">DataTable</param>
+            <param name="strFilePath">物理路径</param>
+            <param name="tableheader">表头</param>
+            <param name="columname">字段标题,逗号分隔</param>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.CsvHelper.csv2dt(System.String,System.Int32,System.Data.DataTable)">
+            <summary>
+            将Csv读入DataTable
+            </summary>
+            <param name="filePath">csv文件路径</param>
+            <param name="n">表示第n行是字段title,第n+1行是记录开始</param>
+            <param name="dt">DataTable</param> 
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.DataTableHelper">
+            <summary>
+             DataTable辅助类
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DataTableHelper.ToEntity``1(System.Data.DataTable)">
+            <summary>
+             DataTable转实体
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DataTableHelper.ToEntities``1(System.Data.DataTable)">
+            <summary>
+            实体转DataTable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.DateHelper">
+            <summary>
+            日期辅助类
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateHelper.BeginDay(System.DateTime)">
+            <summary>
+            开始时间
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateHelper.EndDay(System.DateTime)">
+            <summary>
+            结束时间
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateHelper.BeginDay(System.Nullable{System.DateTime})">
+            <summary>
+             开始时间（可为空）
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateHelper.EndDay(System.Nullable{System.DateTime})">
+            <summary>
+            结束时间（可为空）
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateHelper.GetThisMonth(System.DateTime)">
+            <summary>
+            这个月
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateHelper.GetLastMonth(System.DateTime)">
+            <summary>
+            上个月
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateHelper.GetThisWeek(System.DateTime)">
+            <summary>
+            这周
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateHelper.GetLastWeek(System.DateTime)">
+            <summary>
+            上周
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateHelper.GetNextWeek(System.DateTime)">
+            <summary>
+            下周
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateHelper.GetThisSeason(System.DateTime)">
+            <summary>
+            这季度
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateHelper.GetLastSeason(System.DateTime)">
+            <summary>
+            上季度
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateHelper.GetThisYear(System.DateTime)">
+            <summary>
+            这年
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateHelper.GetLastYear(System.DateTime)">
+            <summary>
+            去年
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateHelper.GetYearRanges(System.DateTime,System.Nullable{System.DateTime})">
+            <summary>
+             年范围
+            </summary>
+            <param name="dateTime"></param>
+            <param name="startDateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.YearRange">
+            <summary>
+            年范围
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.YearRange.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.YearRange.Text">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.DateRange">
+            <summary>
+            天范围
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateRange.#ctor">
+            <summary>
+            天范围
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateRange.#ctor(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            天范围
+            </summary>
+            <param name="dateStart"></param>
+            <param name="dateEnd"></param>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.DateRange.Start">
+            <summary>
+            开始
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.DateRange.End">
+            <summary>
+            结束 
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateTimeHelper.FormatTime(System.Int64)">
+            <summary>
+            毫秒转天时分秒
+            </summary>
+            <param name="ms"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DateTimeHelper.GetUnixTimeStamp(System.DateTime)">
+            <summary>
+            获取unix时间戳
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.DecryptionHelper">
+            <summary>
+            Decryption辅助类
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DecryptionHelper.AesDecrypt(System.String,System.String)">
+            <summary>
+             AES 解密
+            </summary>
+            <param name="str">明文（待解密）</param>
+            <param name="key">密文</param>
+            <returns></returns>
+        </member>
+        <member name="F:Nzh.Master.Common.Helper.DecryptionHelper._KEY">
+            <summary>
+            秘钥
+            </summary>
+        </member>
+        <member name="F:Nzh.Master.Common.Helper.DecryptionHelper._IV">
+            <summary>
+            向量
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DecryptionHelper.DesDecrypt(System.String)">
+            <summary>
+            DES解密操作
+            </summary>
+            <param name="securityTxt">加密字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.DecryptionHelper.MD5Decrypt(System.String,System.String)">
+            <summary>
+            MD5解密
+            </summary>
+            <param name="pToDecrypt"></param>
+            <param name="sKey"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.EncryptionHelper">
+            <summary>
+            Encryption辅助类
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.EncryptionHelper.AesEncrypt(System.String,System.String)">
+            <summary>
+             AES 加密
+            </summary>
+            <param name="str">明文（待加密）</param>
+            <param name="key">密文</param>
+            <returns></returns>
+        </member>
+        <member name="F:Nzh.Master.Common.Helper.EncryptionHelper._KEY">
+            <summary>
+            秘钥
+            </summary>
+        </member>
+        <member name="F:Nzh.Master.Common.Helper.EncryptionHelper._IV">
+            <summary>
+            向量
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.EncryptionHelper.DesEncrypt(System.String)">
+            <summary>
+            DES加密操作
+            </summary>
+            <param name="normalTxt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.EncryptionHelper.MD5Encrypt(System.String,System.String)">
+            <summary>
+            MD5加密
+            </summary>
+            <param name="pToEncrypt"></param>
+            <param name="sKey"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.FileHelper">
+            <summary>
+            File辅助类
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.FileHelper.WriteToFile(System.String,System.String,System.Boolean)">
+            <summary>
+            将字符串写入到文件中
+            </summary>
+            <param name="filePath">文件的实际路径</param>
+            <param name="content">内容</param>
+            <param name="isCover">是否覆盖，true就是重新写一遍，false就是往里面添加内容</param>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.HtmlHelper.Resove(System.String,System.String,System.String)">
+            <summary>
+            Get part Content from HTML by apply prefix part and subfix part
+            </summary>
+            <param name="html">souce html</param>
+            <param name="prefix">prefix</param>
+            <param name="subfix">subfix</param>
+            <returns>part content</returns>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.HttpHelper">
+            <summary>
+            Http连接操作帮助类 
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.HttpHelper.HttpGet(System.String,System.Int32)">
+            <summary>
+            GET请求
+            </summary>
+            <param name="url">The URL.</param>
+            <param name="postDataStr">The post data string.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.HttpHelper.HttpPost(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            POST请求
+            </summary>
+            <param name="posturl">The posturl.</param>
+            <param name="postData">The post data.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.HttpHelper.CreateAutoSubmitForm(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Text.Encoding)">
+            <summary>
+            模拟httpPost提交表单
+            </summary>
+            <param name="url">POS请求的网址</param>
+            <param name="data">表单里的参数和值</param>
+            <param name="encoder">页面编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.HttpHelper.GetHttpRequestData(Nzh.Master.Common.Helper.HttpItem)">
+            <summary>
+            根据相传入的数据，得到相应页面数据
+            </summary>
+            <param name="strPostdata">传入的数据Post方式,get方式传NUll或者空字符串都可以</param>
+            <returns>string类型的响应数据</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.HttpHelper.GetMemoryStream(System.IO.Stream)">
+            <summary>
+            4.0以下.net版本取数据使用
+            </summary>
+            <param name="streamResponse">流</param>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.HttpHelper.SetRequest(Nzh.Master.Common.Helper.HttpItem)">
+             <summary>
+             为请求准备参数
+             </summary>
+            <param name="httpItem">参数列表</param>
+             <param name="_Encoding">读取数据时的编码方式</param>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.HttpHelper.SetCer(Nzh.Master.Common.Helper.HttpItem)">
+            <summary>
+            设置证书
+            </summary>
+            <param name="objhttpItem"></param>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.HttpHelper.SetEncoding(Nzh.Master.Common.Helper.HttpItem)">
+            <summary>
+            设置编码
+            </summary>
+            <param name="objhttpItem">Http参数</param>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.HttpHelper.SetCookie(Nzh.Master.Common.Helper.HttpItem)">
+            <summary>
+            设置Cookie
+            </summary>
+            <param name="objhttpItem">Http参数</param>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.HttpHelper.SetPostData(Nzh.Master.Common.Helper.HttpItem)">
+            <summary>
+            设置Post数据
+            </summary>
+            <param name="objhttpItem">Http参数</param>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.HttpHelper.SetProxy(Nzh.Master.Common.Helper.HttpItem)">
+            <summary>
+            设置代理
+            </summary>
+            <param name="objhttpItem">参数对象</param>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.HttpHelper.CheckValidationResult(System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors)">
+            <summary>
+            回调验证证书问题
+            </summary>
+            <param name="sender">流对象</param>
+            <param name="certificate">证书</param>
+            <param name="chain">X509Chain</param>
+            <param name="errors">SslPolicyErrors</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.HttpHelper.GetUrl(System.String)">
+            <summary>    
+            传入一个正确或不正确的URl，返回正确的URL
+            </summary>    
+            <param name="URL">url</param>   
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.HttpHelper.GetHtml(Nzh.Master.Common.Helper.HttpItem)">
+            <summary>
+            采用https协议访问网络,根据传入的URl地址，得到响应的数据字符串。
+            </summary>
+            <param name="httpItem">参数列表</param>
+            <returns>String类型的数据</returns>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.HttpItem">
+            <summary>
+            Http请求参考类 
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.URL">
+            <summary>
+            请求URL必须填写
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.Method">
+            <summary>
+            请求方式默认为GET方式
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.Timeout">
+            <summary>
+            默认请求超时时间
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.ReadWriteTimeout">
+            <summary>
+            默认写入Post数据超时间
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.Accept">
+            <summary>
+            请求标头值 默认为text/html, application/xhtml+xml, */*
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.ContentType">
+            <summary>
+            请求返回类型默认 text/html
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.UserAgent">
+            <summary>
+            客户端访问信息默认Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.Encoding">
+            <summary>
+            返回数据编码默认为NUll,可以自动识别
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.PostDataType">
+            <summary>
+            Post的数据类型
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.Postdata">
+            <summary>
+            Post请求时要发送的字符串Post数据
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.PostdataByte">
+            <summary>
+            Post请求时要发送的Byte类型的Post数据
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.CookieCollection">
+            <summary>
+            Cookie对象集合
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.Cookie">
+            <summary>
+            请求时的Cookie
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.Referer">
+            <summary>
+            来源地址，上次访问地址
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.CerPath">
+            <summary>
+            证书绝对路径
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.IsToLower">
+            <summary>
+            是否设置为全文小写
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.Allowautoredirect">
+            <summary>
+            支持跳转页面，查询结果将是跳转后的页面
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.Connectionlimit">
+            <summary>
+            最大连接数
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.ProxyUserName">
+            <summary>
+            代理Proxy 服务器用户名
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.ProxyPwd">
+            <summary>
+            代理 服务器密码
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.ProxyIp">
+            <summary>
+            代理 服务IP
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpItem.ResultType">
+            <summary>
+            设置返回类型String和Byte
+            </summary>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.HttpResult">
+            <summary>
+            Http返回参数类
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpResult.Cookie">
+            <summary>
+            Http请求返回的Cookie
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpResult.CookieCollection">
+            <summary>
+            Cookie对象集合
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpResult.Html">
+            <summary>
+            返回的String类型数据 只有ResultType.String时才返回数据，其它情况为空
+            </summary>
+        </member>
+        <member name="P:Nzh.Master.Common.Helper.HttpResult.ResultByte">
+            <summary>
+            返回的Byte数组 只有ResultType.Byte时才返回数据，其它情况为空
+            </summary>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.ResultType">
+            <summary>
+            返回类型
+            </summary>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.PostDataType">
+            <summary>
+            Post的数据格式默认为string
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.IpLocationHelper.GetIpNum(System.String)">
+            <summary>
+            把IP地址转换为Long型数字
+            </summary>
+            <param name="ipAddress">IP地址字符串</param>
+            <returns></returns>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.JsonHelper">
+            <summary>
+            Json辅助类
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.JsonHelper.SerializeObject(System.Object)">
+            <summary>
+            对象转Json
+            </summary>
+            <param name="o"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.JsonHelper.DeserializeJsonToObject``1(System.String)">
+            <summary>
+            Json转对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.JsonHelper.String2Json(System.String)">
+            <summary>
+            过滤特殊字符
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.JsonHelper.StringFormat(System.String,System.Type)">
+            <summary>
+            格式化字符型、日期型、布尔型
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.JsonHelper.ListToJson``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            List转换成Json
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.JsonHelper.ListToJson``1(System.Collections.Generic.IList{``0},System.String)">
+            <summary>
+            List转换成Json 
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.JsonHelper.ToJson(System.Object)">
+            <summary> 
+            对象转换为Json 
+            </summary> 
+            <param name="jsonObject">对象</param> 
+            <returns>Json字符串</returns> 
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.JsonHelper.ToJson(System.Collections.IEnumerable)">
+            <summary> 
+            对象集合转换Json 
+            </summary> 
+            <param name="array">集合对象</param> 
+            <returns>Json字符串</returns> 
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.JsonHelper.ToArrayString(System.Collections.IEnumerable)">
+            <summary> 
+            普通集合转换Json 
+            </summary> 
+            <param name="array">集合对象</param> 
+            <returns>Json字符串</returns> 
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.JsonHelper.ToJson(System.Data.DataSet)">
+            <summary> 
+            DataSet转换为Json 
+            </summary> 
+            <param name="dataSet">DataSet对象</param> 
+            <returns>Json字符串</returns> 
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.JsonHelper.ToJson(System.Data.DataTable)">
+            <summary> 
+            Datatable转换为Json 
+            </summary> 
+            <param name="dt">Datatable对象</param> 
+            <returns>Json字符串</returns> 
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.JsonHelper.ToJson(System.Data.DataTable,System.String)">
+            <summary>
+            DataTable转换为Json 
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.JsonHelper.ToJson(System.Data.Common.DbDataReader)">
+            <summary> 
+            DataReader转换为Json 
+            </summary> 
+            <param name="dataReader">DataReader对象</param> 
+            <returns>Json字符串</returns> 
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.JsonHelper.DataTableToDictionary(System.Data.DataTable)">
+            <summary>
+            Datatable转换为Json 2
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.JsonHelper.DeserializeJsonToList``1(System.String)">
+            <summary>
+            解析JSON数组生成对象实体集合
+            </summary>
+            <typeparam name="T">对象类型</typeparam>
+            <param name="json">json数组字符串(eg.[{"Id":"112","Name":"石子儿"}])</param>
+            <returns>对象实体集合</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.JsonHelper.DeserializeAnonymousType``1(System.String,``0)">
+            <summary>
+            反序列化JSON到给定的匿名对象.
+            </summary>
+            <typeparam name="T">匿名对象类型</typeparam>
+            <param name="json">json字符串</param>
+            <param name="anonymousTypeObject">匿名对象</param>
+            <returns>匿名对象</returns>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.ListHelper">
+            <summary>
+             List辅助类
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ListHelper.ToDataTable(System.Collections.IList)">
+            <summary>
+            将指定的集合转换成DataTable。
+            </summary>
+            <param name="list">将指定的集合。</param>
+            <returns>返回转换后的DataTable。</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ListHelper.ToDataTable``1(System.Collections.Generic.List{``0})">
+            <summary>
+            将指定的集合转换成DataTable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.MathHelper">
+            <summary>
+             Math辅助类
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.MathHelper.RandValidateCode(System.Int32,System.Int32)">
+            <summary>
+            生成N位随机数 
+            </summary>
+            <param name="N">N位随机数</param>
+            <param name="needChar">字符串</param>
+            <returns>生成的N位随机数</returns>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.ModelConvertHelper`1">
+            <summary>
+            Model辅助类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ModelConvertHelper`1.FillModel(System.Data.DataSet)">
+            <summary>
+            填充对象列表
+            </summary>
+            <param name="ds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ModelConvertHelper`1.FillModel(System.Data.DataTable)">
+            <summary>
+            填充对象列表
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ModelConvertHelper`1.FillModeldr(System.Data.DataRow)">
+            <summary>
+            填充对象
+            </summary>
+            <param name="dr"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.StringJsonConverter">
+            <summary>
+            Json数据返回到前端js的时候，把数值很大的long类型转成字符串
+            </summary>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.DateTimeJsonConverter">
+            <summary>
+            DateTime类型序列化的时候，转成指定的格式
+            </summary>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.ObjectHelper">
+            <summary>
+            Object辅助类
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.IsNumeric(System.Object)">
+            <summary>
+            判断对象是否为Int32类型的数字
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.IsNumeric(System.String)">
+            <summary>
+            判断对象是否为Int32类型的数字
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.IsDouble(System.Object)">
+            <summary>
+            是否为Double类型
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.GetStrArray(System.String)">
+            <summary>
+            将字符串转换为数组
+            </summary>
+            <param name="str">字符串</param>
+            <returns>字符串数组</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.GetArrayStr(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            将数组转换为字符串
+            </summary>
+            <param name="list">List</param>
+            <param name="speater">分隔符</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.StrToBool(System.Object,System.Boolean)">
+            <summary>
+            object型转换为bool型
+            </summary>
+            <param name="expression">要转换的字符串</param>
+            <param name="defValue">缺省值</param>
+            <returns>转换后的bool类型结果</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.StrToBool(System.String,System.Boolean)">
+            <summary>
+            string型转换为bool型
+            </summary>
+            <param name="expression">要转换的字符串</param>
+            <param name="defValue">缺省值</param>
+            <returns>转换后的bool类型结果</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.ObjToInt(System.Object,System.Int32)">
+            <summary>
+            将对象转换为Int32类型
+            </summary>
+            <param name="expression">要转换的字符串</param>
+            <param name="defValue">缺省值</param>
+            <returns>转换后的int类型结果</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.StrToInt(System.String,System.Int32)">
+            <summary>
+            将字符串转换为Int32类型
+            </summary>
+            <param name="expression">要转换的字符串</param>
+            <param name="defValue">缺省值</param>
+            <returns>转换后的int类型结果</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.ObjToDecimal(System.Object,System.Decimal)">
+            <summary>
+            Object型转换为decimal型
+            </summary>
+            <param name="expression">要转换的字符串</param>
+            <param name="defValue">缺省值</param>
+            <returns>转换后的decimal类型结果</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.StrToDecimal(System.String,System.Decimal)">
+            <summary>
+            string型转换为decimal型
+            </summary>
+            <param name="expression">要转换的字符串</param>
+            <param name="defValue">缺省值</param>
+            <returns>转换后的decimal类型结果</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.ObjToFloat(System.Object,System.Single)">
+            <summary>
+            Object型转换为float型
+            </summary>
+            <param name="expression">要转换的字符串</param>
+            <param name="defValue">缺省值</param>
+            <returns>转换后的int类型结果</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.StrToFloat(System.String,System.Single)">
+            <summary>
+            string型转换为float型
+            </summary>
+            <param name="expression">要转换的字符串</param>
+            <param name="defValue">缺省值</param>
+            <returns>转换后的int类型结果</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.StrToDateTime(System.String,System.DateTime)">
+            <summary>
+            将对象转换为日期时间类型
+            </summary>
+            <param name="str">要转换的字符串</param>
+            <param name="defValue">缺省值</param>
+            <returns>转换后的int类型结果</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.StrToDateTime(System.String)">
+            <summary>
+            将对象转换为日期时间类型
+            </summary>
+            <param name="str">要转换的字符串</param>
+            <returns>转换后的int类型结果</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.ObjectToDateTime(System.Object)">
+            <summary>
+            将对象转换为日期时间类型
+            </summary>
+            <param name="obj">要转换的对象</param>
+            <returns>转换后的int类型结果</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.ObjectToDateTime(System.Object,System.DateTime)">
+            <summary>
+            将对象转换为日期时间类型
+            </summary>
+            <param name="obj">要转换的对象</param>
+            <param name="defValue">缺省值</param>
+            <returns>转换后的int类型结果</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ObjectHelper.ObjectToStr(System.Object)">
+            <summary>
+            将对象转换为字符串
+            </summary>
+            <param name="obj">要转换的对象</param>
+            <returns>转换后的string类型结果</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ReflectionHelper.GetProperties(System.Type,System.String[])">
+            <summary>
+            得到类里面的属性集合
+            </summary>
+            <param name="type"></param>
+            <param name="columns"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.StringHelper">
+            <summary>
+            String辅助类
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.GetStrArray(System.String,System.Char,System.Boolean)">
+            <summary>
+            把字符串按照分隔符转换成 List
+            </summary>
+            <param name="str">源字符串</param>
+            <param name="speater">分隔符</param>
+            <param name="toLower">是否转换为小写</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.GetStrArray(System.String)">
+            <summary>
+            把字符串转 按照, 分割 换为数据
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Nzh.Master.Common.Helper.StringHelper.GetArrayStr(System.Collections.Generic.List{System.String},System.String)" -->
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.GetArrayStr(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            得到数组列表以逗号分隔的字符串
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.GetArrayValueStr(System.Collections.Generic.Dictionary{System.Int32,System.Int32})">
+            <summary>
+            得到数组列表以逗号分隔的字符串
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.DelLastComma(System.String)">
+            <summary>
+            删除最后结尾的一个逗号
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.DelLastChar(System.String,System.String)">
+            <summary>
+            删除最后结尾的指定字符后的字符
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.ToSBC(System.String)">
+            <summary>
+            转全角的函数(SBC case)
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.ToDBC(System.String)">
+            <summary>
+             转半角的函数(SBC case)
+            </summary>
+            <param name="input">输入</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.GetSubStringList(System.String,System.Char)">
+            <summary>
+            把字符串按照指定分隔符装成 List 去除重复
+            </summary>
+            <param name="o_str"></param>
+            <param name="sepeater"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.GetCleanStyle(System.String,System.String)">
+            <summary>
+             将字符串样式转换为纯字符串
+            </summary>
+            <param name="StrList"></param>
+            <param name="SplitString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.GetNewStyle(System.String,System.String,System.String,System.String@)">
+            <summary>
+            将字符串转换为新样式
+            </summary>
+            <param name="StrList"></param>
+            <param name="NewStyle"></param>
+            <param name="SplitString"></param>
+            <param name="Error"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.SplitMulti(System.String,System.String)">
+            <summary>
+            分割字符串
+            </summary>
+            <param name="str"></param>
+            <param name="splitstr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.SqlSafeString(System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="String"></param>
+            <param name="IsDel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.StrToId(System.String)">
+            <summary>
+            获取正确的Id，如果不是正整数，返回0
+            </summary>
+            <param name="_value"></param>
+            <returns>返回正确的整数Id，失败返回0</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.IsNumberId(System.String)">
+            <summary>
+            检查一个字符串是否是纯数字构成的，一般用于查询字符串参数的有效性验证。(0除外)
+            </summary>
+            <param name="_value">需验证的字符串。。</param>
+            <returns>是否合法的bool值。</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.QuickValidate(System.String,System.String)">
+            <summary>
+            快速验证一个字符串是否符合指定的正则表达式。
+            </summary>
+            <param name="_express">正则表达式的内容。</param>
+            <param name="_value">需验证的字符串。</param>
+            <returns>是否合法的bool值。</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.StrLength(System.String)">
+            <summary>
+            得到字符串长度，一个汉字长度为2
+            </summary>
+            <param name="inputString">参数字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.ClipString(System.String,System.Int32)">
+            <summary>
+            截取指定长度字符串
+            </summary>
+            <param name="inputString">要处理的字符串</param>
+            <param name="len">指定长度</param>
+            <returns>返回处理后的字符串</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.HtmlToTxt(System.String)">
+            <summary>
+            HTML转行成TEXT
+            </summary>
+            <param name="strHtml"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.IsNullOrEmpty``1(``0)">
+            <summary>
+            判断对象是否为空，为空返回true
+            </summary>
+            <typeparam name="T">要验证的对象的类型</typeparam>
+            <param name="data">要验证的对象</param>        
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.StringHelper.IsNullOrEmpty(System.Object)">
+            <summary>
+            判断对象是否为空，为空返回true
+            </summary>
+            <param name="data">要验证的对象</param>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.TextHelper.GetCustomValue(System.String,System.String)">
+            <summary>
+            获取默认值
+            </summary>
+            <param name="value"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.TextHelper.GetSubString(System.String,System.Int32,System.Boolean)">
+            <summary>
+            截取指定长度的字符串
+            </summary>
+            <param name="value"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.TextHelper.SplitToArray``1(System.String,System.Char)">
+            <summary>
+            字符串转指定类型数组
+            </summary>
+            <param name="value"></param>
+            <param name="split"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.TimeHelper">
+            <summary>
+             Time辅助类
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.TimeHelper.ConvertToTimeStamp(System.DateTime)">
+            <summary>
+            日期转换为时间戳（时间戳单位秒）
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.TimeHelper.ConvertToDateTime(System.Int64)">
+            <summary>
+            时间戳转换为日期（时间戳单位秒）
+            </summary>
+            <param name="timeStamp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.TimeHelper.GetStartDateTime(System.DateTime)">
+            <summary>
+            获取以0点0分0秒开始的日期
+            </summary>
+            <param name="d"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.TimeHelper.GetEndDateTime(System.DateTime)">
+            <summary>
+            获取以23点59分59秒结束的日期
+            </summary>
+            <param name="d"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nzh.Master.Common.Helper.ValidateCodeHelper">
+            <summary>
+            验证码辅助类
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidateCodeHelper.CreateValidateCode(System.Int32)">
+            <summary>
+            生成几位的验证码
+            </summary>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsNumber(System.String)">
+            <summary>
+            验证输入字符串为带小数点正数
+            </summary>
+            <param name="str">输入字符</param>
+            <returns>返回一个bool类型的值</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsNumberic(System.String)">
+            <summary>
+            验证输入字符串为带小数点正负数
+            </summary>
+            <param name="str">输入字符</param>
+            <returns>返回一个bool类型的值</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsTel(System.String)">
+            <summary>
+            验证中国电话格式是否有效，格式010-85849685
+            </summary>
+            <param name="str">输入字符</param>
+            <returns>返回一个bool类型的值</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsPhone(System.String)">
+            <summary>
+            验证输入字符串为电话号码
+            </summary>
+            <param name="str">输入字符</param>
+            <returns>返回一个bool类型的值</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsFax(System.String)">
+            <summary>
+            验证是否是有效传真号码
+            </summary>
+            <param name="str">输入字符</param>
+            <returns>返回一个bool类型的值</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsMobile(System.String)">
+            <summary>
+            验证手机号是否合法 号段为13,14,15,16,17,18,19  0，86开头将自动识别
+            </summary>
+            <param name="str">输入字符</param>
+            <returns>返回一个bool类型的值</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsIDCard(System.String)">
+            <summary>
+            验证身份证是否有效
+            </summary>
+            <param name="str">输入字符</param>
+            <returns>返回一个bool类型的值</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsIDCard18(System.String)">
+            <summary>
+            验证输入字符串为18位的身份证号码
+            </summary>
+            <param name="str">输入字符</param>
+            <returns>返回一个bool类型的值</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsIDCard15(System.String)">
+            <summary>
+            验证输入字符串为15位的身份证号码
+            </summary>
+            <param name="str">输入字符</param>
+            <returns>返回一个bool类型的值</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsEmail(System.String)">
+            <summary>
+            验证是否是有效邮箱地址
+            </summary>
+            <param name="str">输入字符</param>
+            <returns>返回一个bool类型的值</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsOnlyChinese(System.String)">
+            <summary>
+            验证是否只含有汉字
+            </summary>
+            <param name="strln">输入字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsBadString(System.String)">
+            <summary>
+            是否有多余的字符 防止SQL注入
+            </summary>
+            <param name="str">输入字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsNzx(System.String)">
+            <summary>
+            是否由数字、26个英文字母或者下划线組成的字串 
+            </summary>
+            <param name="str">输入字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsSzzmChinese(System.String)">
+            <summary>
+            由数字、26个英文字母、汉字組成的字串
+            </summary>
+            <param name="str">输入字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsSzzm(System.String)">
+            <summary>
+            是否由数字、26个英文字母組成的字串
+            </summary>
+            <param name="str">输入字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsPostCode(System.String)">
+            <summary>
+            验证输入字符串为邮政编码
+            </summary>
+            <param name="str">输入字符</param>
+            <returns>返回一个bool类型的值</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.CheckLength(System.String,System.Int32)">
+            <summary>
+            检查对象的输入长度
+            </summary>
+            <param name="str">输入字符</param>
+            <param name="length">指定的长度</param>
+            <returns>false 太长，true -太短</returns>
+        </member>
+        <member name="M:Nzh.Master.Common.Helper.ValidatorHelper.IsDateTime(System.String)">
+            <summary>
+            判断用户输入是否为日期
+            </summary>
+            <param name="str">输入字符</param>
+            <returns>返回一个bool类型的值</returns>
+            <remarks>
+            可判断格式如下（其中-可替换为/，不影响验证)
+            YYYY | YYYY-MM | YYYY-MM-DD | YYYY-MM-DD HH:MM:SS | YYYY-MM-DD HH:MM:SS.FFF
+            </remarks>
+        </member>
         <member name="T:Nzh.Frame.Common.Logger.Logger">
             <summary>
             日志

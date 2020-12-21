@@ -4,28 +4,34 @@
         <name>Nzh.Master</name>
     </assembly>
     <members>
+        <member name="T:Nzh.Master.Controllers.DemoController">
+            <summary>
+            Demo 
+            </summary>
+        </member>
         <member name="M:Nzh.Master.Controllers.DemoController.#ctor(Nzh.Master.IService.IDemoService)">
             <summary>
             构造函数
             </summary>
-            <param name="demoServices"></param>
+            <param name="demoService"></param>
         </member>
-        <member name="M:Nzh.Master.Controllers.DemoController.GetDemoList(System.Int32,System.Int32)">
+        <member name="M:Nzh.Master.Controllers.DemoController.GetDemoPageList(System.Int32,System.Int32,System.String)">
             <summary>
-            获取Demo列表
+            获取Demo分页
             </summary>
-            <param name="page_index"></param>
-            <param name="page_size"></param>
+            <param name="PageIndex"></param>
+            <param name="PageSize"></param>
+            <param name="Name"></param>
             <returns></returns>
         </member>
-        <member name="M:Nzh.Master.Controllers.DemoController.GetDemo(System.Int32)">
+        <member name="M:Nzh.Master.Controllers.DemoController.GetDemoById(System.Int64)">
             <summary>
             获取Demo
             </summary>
-            <param name="id"></param>
+            <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:Nzh.Master.Controllers.DemoController.AddDemo(System.String,System.String,System.Int32,System.String)">
+        <member name="M:Nzh.Master.Controllers.DemoController.InsertDemo(System.String,System.String,System.Int32,System.String)">
             <summary>
             添加Demo
             </summary>
@@ -35,23 +41,163 @@
             <param name="Remark"></param>
             <returns></returns>
         </member>
-        <member name="M:Nzh.Master.Controllers.DemoController.UpdateDemo(System.Int32,System.String,System.String,System.Int32,System.String)">
+        <member name="M:Nzh.Master.Controllers.DemoController.UpdateDemo(System.Int64,System.String,System.String,System.Int32,System.String)">
             <summary>
             修改Demo
             </summary>
-            <param name="id"></param>
+            <param name="Id"></param>
             <param name="Name"></param>
             <param name="Sex"></param>
             <param name="Age"></param>
             <param name="Remark"></param>
             <returns></returns>
         </member>
-        <member name="M:Nzh.Master.Controllers.DemoController.DeleteDemo(System.Int32)">
+        <member name="M:Nzh.Master.Controllers.DemoController.DeleteDemo(System.Int64)">
             <summary>
             删除Demo
             </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.DemoController.GetDesEncrypt(System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="Text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.DemoController.GetDesDecrypt(System.String)">
+            <summary>
+            解密
+            </summary>
+            <param name="Text"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nzh.Master.Controllers.TestController">
+            <summary>
+            Test
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Controllers.TestController.#ctor(Nzh.Master.IService.ITestService,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Nzh.Master.IService.IEnclosureService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="testService"></param>
+            <param name="hostingEnvironment"></param> 
+            <param name="enclosureService"></param> 
+        </member>
+        <member name="M:Nzh.Master.Controllers.TestController.GetDemoPageList(System.Int32,System.Int32,System.String)">
+            <summary>
+            获取Demo分页
+            </summary>
+            <param name="PageIndex"></param>
+            <param name="PageSize"></param>
+            <param name="Name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.TestController.GetDemoById(System.Int64)">
+            <summary>
+            获取Demo
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.TestController.InsertDemo(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            添加Demo
+            </summary>
+            <param name="Name"></param>
+            <param name="Sex"></param>
+            <param name="Age"></param>
+            <param name="Remark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.TestController.UpdateDemo(System.Int64,System.String,System.String,System.Int32,System.String)">
+            <summary>
+             修改Demo
+            </summary>
+            <param name="Id"></param>
+            <param name="Name"></param>
+            <param name="Sex"></param>
+            <param name="Age"></param>
+            <param name="Remark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.TestController.DeleteDemo(System.Int64)">
+            <summary>
+            删除Demo
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.TestController.TestExportExcel">
+            <summary>
+            测试导出
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.TestController.TestImportExcel">
+            <summary>
+            测试导入
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.TestController.TestUpLoadPicture(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            测试图片上传
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.TestController.TestDownLoadPicture(System.Int64)">
+            <summary>
+            测试图片下载
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.TestController.GetByName(System.String)">
+            <summary>
+            获取demo
+            </summary>
+            <param name="Name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nzh.Master.Controllers.ValuesController">
+            <summary>
+            Values
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.Controllers.ValuesController.Get">
+            <summary>
+            Get
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.ValuesController.Get(System.Int32)">
+            <summary>
+            Get
+            </summary>
             <param name="id"></param>
             <returns></returns>
+        </member>
+        <member name="M:Nzh.Master.Controllers.ValuesController.Post(System.String)">
+            <summary>
+            Post
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Nzh.Master.Controllers.ValuesController.Put(System.Int32,System.String)">
+            <summary>
+             Put
+            </summary>
+            <param name="id"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Nzh.Master.Controllers.ValuesController.Delete(System.Int32)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
         </member>
         <member name="T:Nzh.Master.SwaggerHelp.SwaggerDocTag">
             <summary>
@@ -63,6 +209,18 @@
             添加附加注释
             </summary>
             <param name="swaggerDoc"></param>
+            <param name="context"></param>
+        </member>
+        <member name="T:Nzh.Master.UpLoadFile.SwaggerFileUploadFilter">
+            <summary>
+            上传
+            </summary>
+        </member>
+        <member name="M:Nzh.Master.UpLoadFile.SwaggerFileUploadFilter.Apply(Swashbuckle.AspNetCore.Swagger.Operation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+             上传
+            </summary>
+            <param name="operation"></param>
             <param name="context"></param>
         </member>
     </members>
